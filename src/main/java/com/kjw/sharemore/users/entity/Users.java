@@ -6,6 +6,7 @@ import com.kjw.sharemore.global.BaseEntity;
 import com.kjw.sharemore.item.entity.Item;
 import com.kjw.sharemore.reivew.entity.Review;
 import com.kjw.sharemore.reservation.Reservation;
+import com.kjw.sharemore.users.dto.UserRequestDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -35,15 +36,22 @@ public class Users extends BaseEntity {
     @Column(nullable = false)
     private String address;
 
-    @JsonManagedReference
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Item> itemList = new ArrayList<>();
 
-    @JsonManagedReference
     @OneToMany(mappedBy = "reviewee", cascade = CascadeType.ALL)
     private List<Review> reviewList = new ArrayList<>();
 
-    @JsonManagedReference
+    @OneToMany(mappedBy = "reviewer", cascade = CascadeType.ALL)
+    private List<Review> postReviewList = new ArrayList<>();
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Reservation> reservationList = new ArrayList<>();
+
+    public void update(UserRequestDTO userRequestDTO) {
+        this.name = userRequestDTO.getName();
+        this.email = userRequestDTO.getEmail();
+        this.password = userRequestDTO.getPassword();
+        this.address = userRequestDTO.getAddress();
+    }
 }

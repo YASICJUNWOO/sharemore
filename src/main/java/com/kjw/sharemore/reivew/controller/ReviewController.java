@@ -5,10 +5,9 @@ import com.kjw.sharemore.reivew.dto.ReviewRequestDTO;
 import com.kjw.sharemore.reivew.dto.ReviewResponseDTO;
 import com.kjw.sharemore.reivew.service.ReviewService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -16,6 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class ReviewController {
 
     private final ReviewService reviewService;
+
+    @GetMapping
+    public ApiResponse<List<ReviewResponseDTO>> getReviewList() {
+        return ApiResponse.onSuccess(reviewService.getReviewList());
+    }
 
     @PostMapping
     public ApiResponse<ReviewResponseDTO> postReview(@RequestBody ReviewRequestDTO reviewRequestDTO) {

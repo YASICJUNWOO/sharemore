@@ -1,19 +1,18 @@
 package com.kjw.sharemore.item.dto;
 
-import com.kjw.sharemore.users.entity.Users;
+import com.kjw.sharemore.users.dto.UserResponseDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Builder
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class ItemRequestDTO {
+public class ItemReservationResponseDTO {
 
-    //private Users user;
-    private String userEmail;
+    private UserResponseDTO owner;
 
     private String name;
 

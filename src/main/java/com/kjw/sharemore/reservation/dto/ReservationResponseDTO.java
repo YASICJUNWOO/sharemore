@@ -1,20 +1,23 @@
 package com.kjw.sharemore.reservation.dto;
 
-import com.kjw.sharemore.item.dto.ItemResponseDTO;
-import com.kjw.sharemore.item.entity.Item;
+import com.kjw.sharemore.item.dto.ItemReservationResponseDTO;
 import com.kjw.sharemore.users.dto.UserResponseDTO;
-import com.kjw.sharemore.users.entity.Users;
-import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
 public class ReservationResponseDTO {
 
-    private UserResponseDTO user;
+    private UserResponseDTO renter;
 
-    private ItemResponseDTO item;
+    private ItemReservationResponseDTO item;
 
     private LocalDateTime startDate;
 

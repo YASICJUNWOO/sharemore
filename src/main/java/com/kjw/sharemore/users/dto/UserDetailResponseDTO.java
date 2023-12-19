@@ -1,11 +1,13 @@
 package com.kjw.sharemore.users.dto;
 
+import com.kjw.sharemore.item.dto.ItemResponseDTO;
+import com.kjw.sharemore.item.dto.ItemUserResponseDTO;
 import com.kjw.sharemore.reivew.dto.ReviewResponseDTO;
-import com.kjw.sharemore.reivew.entity.Review;
-import com.kjw.sharemore.reservation.Reservation;
+import com.kjw.sharemore.reivew.dto.ReviewUserGetResponseDTO;
+import com.kjw.sharemore.reivew.dto.ReviewUserPostResponseDTO;
 import com.kjw.sharemore.reservation.dto.ReservationResponseDTO;
+import com.kjw.sharemore.reservation.dto.ReservationUserResponseDTO;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -19,7 +21,9 @@ import java.util.List;
 @NoArgsConstructor
 public class UserDetailResponseDTO extends UserResponseDTO {
 
-    private List<ReservationResponseDTO> reservationList = new ArrayList<>();
-    private List<ReviewResponseDTO> reviewList = new ArrayList<>();
+    private List<ItemUserResponseDTO> itemList = new ArrayList<>();
+    private List<ReservationUserResponseDTO> reservationList = new ArrayList<>();
+    private List<ReviewUserGetResponseDTO> getReviewList = new ArrayList<>();
+    private List<ReviewUserPostResponseDTO> postReviewList = new ArrayList<>();
 
 }

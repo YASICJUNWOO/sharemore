@@ -25,7 +25,6 @@ public class ItemController {
 
     @PostMapping
     public ApiResponse<ItemResponseDTO> postItem(@RequestBody ItemRequestDTO itemRequestDTO) {
-        System.out.println("itemRequestDTO = " + itemRequestDTO);
         return ApiResponse.onSuccess(itemService.addItem(itemRequestDTO));
     }
 

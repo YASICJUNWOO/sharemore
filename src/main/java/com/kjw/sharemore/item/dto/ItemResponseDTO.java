@@ -1,5 +1,6 @@
 package com.kjw.sharemore.item.dto;
 
+import com.kjw.sharemore.reservation.dto.ReservationItemDTO;
 import com.kjw.sharemore.reservation.dto.ReservationResponseDTO;
 import com.kjw.sharemore.users.dto.UserResponseDTO;
 import lombok.AllArgsConstructor;
@@ -26,8 +27,10 @@ public class ItemResponseDTO {
 
     private int price;
 
+    private String itemImage;
+
     //private List<ReviewResponseDTO> reviewList = new ArrayList<>();
 
-    private List<ReservationResponseDTO> reservationList = new ArrayList<>();
+    private List<ReservationItemDTO> reservationList = new ArrayList<>();
 
 }

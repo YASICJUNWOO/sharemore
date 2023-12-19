@@ -1,5 +1,7 @@
 package com.kjw.sharemore.item.converter;
 
+import com.kjw.sharemore.item.dto.ItemReservationResponseDTO;
+import com.kjw.sharemore.item.dto.ItemUserResponseDTO;
 import com.kjw.sharemore.item.entity.Item;
 import com.kjw.sharemore.item.dto.ItemRequestDTO;
 import com.kjw.sharemore.item.dto.ItemResponseDTO;
@@ -24,18 +26,40 @@ public class ItemConverter {
                 .description(itemRequestDTO.getDescription())
                 .category(itemRequestDTO.getCategory())
                 .price(itemRequestDTO.getPrice())
+                .itemImage(itemRequestDTO.getItemImage())
                 .build();
     }
 
     public static ItemResponseDTO toDTO(Item item) {
         return ItemResponseDTO.builder()
-                .user(UserConverter.toUserDetailResponseDTO(item.getUser()))
+                .user(UserConverter.toUserResponseDTO(item.getUser()))
                 .name(item.getName())
                 .description(item.getDescription())
                 .category(item.getCategory())
                 .price(item.getPrice())
-                //.reviewList(validate(item.getReviewList()).stream().map(ReviewConverter::toDTO).toList())
-                .reservationList(validate(item.getReservationList()).stream().map(ReservationConverter::toDto).toList())
+                .reservationList(item.getReservationList().stream().map(ReservationConverter::toReservationItemDTO).toList())
+                .itemImage(item.getItemImage())
+                .build();
+    }
+
+    public static ItemUserResponseDTO toItemUserDTO(Item item) {
+        return ItemUserResponseDTO.builder()
+                .name(item.getName())
+                .description(item.getDescription())
+                .category(item.getCategory())
+                .price(item.getPrice())
+                .itemImage(item.getItemImage())
+                .build();
+    }
+
+    public static ItemReservationResponseDTO toItemReservationDTO(Item item) {
+        return ItemReservationResponseDTO.builder()
+                .owner(UserConverter.toUserResponseDTO(item.getUser()))
+                .name(item.getName())
+                .description(item.getDescription())
+                .category(item.getCategory())
+                .price(item.getPrice())
+                .itemImage(item.getItemImage())
                 .build();
     }
 

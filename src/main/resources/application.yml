@@ -13,11 +13,16 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update #테이블 자동 생성
+      ddl-auto: create #테이블 자동 생성
     properties:
       hibernate:
         format_sql: true #쿼리 출력
         show_sql: true #쿼리 출력
+    defer-datasource-initialization: true
+
+  sql:
+    init:
+      mode: always
 
 logging:
   level:

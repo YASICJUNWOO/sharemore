@@ -9,6 +9,8 @@ import com.kjw.sharemore.users.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ReviewService {
@@ -23,5 +25,9 @@ public class ReviewService {
                 userService.getUserByEmail(reviewRequestDTO.getReviewerEmail())
         );
         return ReviewConverter.toDTO(reviewRepository.save(entity));
+    }
+
+    public List<ReviewResponseDTO> getReviewList() {
+        return reviewRepository.findAll().stream().map(ReviewConverter::toDTO).toList();
     }
 }

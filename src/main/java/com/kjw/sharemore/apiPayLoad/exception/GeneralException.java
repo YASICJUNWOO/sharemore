@@ -4,9 +4,11 @@ import com.kjw.sharemore.apiPayLoad.code.BaseErrorCode;
 import com.kjw.sharemore.apiPayLoad.code.ErrorReasonDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class GeneralException extends RuntimeException {
 
     private BaseErrorCode code;

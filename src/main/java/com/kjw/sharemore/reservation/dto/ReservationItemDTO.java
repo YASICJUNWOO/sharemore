@@ -1,7 +1,7 @@
 package com.kjw.sharemore.reservation.dto;
 
-import com.kjw.sharemore.item.entity.Item;
-import com.kjw.sharemore.users.entity.Users;
+import com.kjw.sharemore.item.dto.ItemReservationResponseDTO;
+import com.kjw.sharemore.users.dto.UserResponseDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -10,17 +10,15 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Getter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class ReservationRequestDTO {
+public class ReservationItemDTO {
 
-    //private Users user;
-    private String userEmail;
-
-    private String itemName;
+    private UserResponseDTO renter;
 
     private LocalDateTime startDate;
 
     private LocalDateTime endDate;
+
 }

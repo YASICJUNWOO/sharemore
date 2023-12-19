@@ -1,5 +1,7 @@
 package com.kjw.sharemore.reivew.converter;
 
+import com.kjw.sharemore.reivew.dto.ReviewUserGetResponseDTO;
+import com.kjw.sharemore.reivew.dto.ReviewUserPostResponseDTO;
 import com.kjw.sharemore.reivew.entity.Review;
 import com.kjw.sharemore.reivew.dto.ReviewRequestDTO;
 import com.kjw.sharemore.reivew.dto.ReviewResponseDTO;
@@ -20,11 +22,28 @@ public class ReviewConverter {
 
     public static ReviewResponseDTO toDTO(Review review) {
         return ReviewResponseDTO.builder()
-                .reviewer(UserConverter.toUserDetailResponseDTO(review.getReviewer()))
-                .reviewee(UserConverter.toUserDetailResponseDTO(review.getReviewee()))
+                .reviewer(UserConverter.toUserResponseDTO(review.getReviewer()))
+                .reviewee(UserConverter.toUserResponseDTO(review.getReviewee()))
                 //.item(ItemConverter.toDTO(review.getItem()))
                 .comment(review.getComment())
                 .rating(review.getRating())
                 .build();
     }
+
+    public static ReviewUserPostResponseDTO toUserPostDTO(Review review) {
+        return ReviewUserPostResponseDTO.builder()
+                .reviewee(UserConverter.toUserResponseDTO(review.getReviewee()))
+                .comment(review.getComment())
+                .rating(review.getRating())
+                .build();
+    }
+
+    public static ReviewUserGetResponseDTO toUserGetDTO(Review review) {
+        return ReviewUserGetResponseDTO.builder()
+                .reviewer(UserConverter.toUserResponseDTO(review.getReviewer()))
+                .comment(review.getComment())
+                .rating(review.getRating())
+                .build();
+    }
+
 }

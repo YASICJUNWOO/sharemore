@@ -16,7 +16,21 @@ public enum ErrorStatus implements BaseErrorCode {
     _FORBIDDEN(HttpStatus.FORBIDDEN, "COMMON403", "금지된 요청입니다"),
     //가장 일반저긴 응답
 
-    TEMP_EXCEPTION(HttpStatus.BAD_REQUEST, "TEMP40001", "이거는 테스트");
+    TEMP_EXCEPTION(HttpStatus.BAD_REQUEST, "TEMP40001", "이거는 테스트"),
+
+    //shoremore 에러
+    //item
+    NEGATIVE_PRICE(HttpStatus.BAD_REQUEST, "ITEM001", "가격은 0원 이상이어야 합니다"),
+
+    //user
+    EXSIST_USER(HttpStatus.CONFLICT, "USER001", "이미 존재하는 유저입니다"),
+    NO_EXIST_USER(HttpStatus.NOT_FOUND, "USER002", "존재하지 않는 유저입니다"),
+
+    //reservation
+    OVER_NOW_DATE(HttpStatus.BAD_REQUEST, "RESERVATION001", "현재 시간보다 이전 시간을 선택할 수 없습니다"),
+    DATE_TIME_ERROR(HttpStatus.BAD_REQUEST, "RESERVATION002", "시작 시간보다 이전 시간을 선택할 수 없습니다");
+
+    //review
 
     private final HttpStatus httpStatus;
     private final String code;

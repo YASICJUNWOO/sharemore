@@ -1,5 +1,7 @@
 package com.kjw.sharemore.users.service;
 
+import com.kjw.sharemore.apiPayLoad.exception.handler.CustomExceptionHandler;
+import com.kjw.sharemore.users.dto.UserDetailResponseDTO;
 import com.kjw.sharemore.users.entity.Users;
 import com.kjw.sharemore.users.converter.UserConverter;
 import com.kjw.sharemore.users.dto.UserRequestDTO;
@@ -18,20 +20,30 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public List<UserResponseDTO> getUserList() {
+    public List<UserDetailResponseDTO> getUserList() {
         return userRepository.findAll().stream().map(
                 UserConverter::toUserDetailResponseDTO
         ).toList();
     }
 
-    public UserResponseDTO addUser(UserRequestDTO userRequestDTO) {
+    public UserDetailResponseDTO addUser(UserRequestDTO userRequestDTO) {
         Users users = UserConverter.toEntity(userRequestDTO);
         return UserConverter.toUserDetailResponseDTO(userRepository.save(users));
     }
 
     public Users getUserByEmail(String email) {
-        log.info("email: {}", email);
-        return userRepository.findByEmail(email).orElseThrow();
+        return userRepository.findByEmail(email).orElseThrow(new CustomExceptionHandler());
     }
 
+    public UserDetailResponseDTO updateUser(String email, UserRequestDTO userRequestDTO) {
+        Users user = userRepository.findByEmail(email).orElseThrow();
+        user.update(userRequestDTO);
+        return UserConverter.toUserDetailResponseDTO(userRepository.save(user));
+    }
+
+    public UserDetailResponseDTO deleteUser(String email) {
+        Users user = userRepository.findByEmail(email).orElseThrow();
+        userRepository.delete(user);
+        return UserConverter.toUserDetailResponseDTO(user);
+    }
 }

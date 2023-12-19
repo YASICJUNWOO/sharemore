@@ -34,4 +34,9 @@ public class ItemService {
         return ItemConverter.toDTO(savedItem);
     }
 
+    public Item getItemByName(String itemName) {
+        log.info("itemName: {}", itemName);
+        return itemRepository.findByName(itemName);
+    }
+
 }
