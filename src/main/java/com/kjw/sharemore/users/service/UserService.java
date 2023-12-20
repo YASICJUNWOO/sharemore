@@ -1,7 +1,6 @@
 package com.kjw.sharemore.users.service;
 
-import com.kjw.sharemore.apiPayLoad.code.status.ErrorStatus;
-import com.kjw.sharemore.apiPayLoad.exception.handler.CustomExceptionHandler;
+import com.kjw.sharemore.apiPayLoad.exception.handler.UserExceptionHandler;
 import com.kjw.sharemore.users.converter.UserConverter;
 import com.kjw.sharemore.users.dto.UserDetailResponseDTO;
 import com.kjw.sharemore.users.dto.UserRequestDTO;
@@ -35,13 +34,13 @@ public class UserService {
     private void isExistUser(String email) {
         userRepository.findByEmail(email).ifPresent(
                 user -> {
-                    throw new CustomExceptionHandler(ErrorStatus.EXSIST_USER);
+                    throw new UserExceptionHandler.ExistUser();
                 }
         );
     }
 
     public Users getUserByEmail(String email) {
-        return userRepository.findByEmail(email).orElseThrow();
+        return userRepository.findByEmail(email).orElseThrow(UserExceptionHandler.NoExistUser::new);
     }
 
     public UserDetailResponseDTO updateUser(String email, UserRequestDTO userRequestDTO) {
