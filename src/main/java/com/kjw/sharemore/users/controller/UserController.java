@@ -4,8 +4,8 @@ import com.kjw.sharemore.apiPayLoad.ApiResponse;
 import com.kjw.sharemore.users.converter.UserConverter;
 import com.kjw.sharemore.users.dto.UserDetailResponseDTO;
 import com.kjw.sharemore.users.dto.UserRequestDTO;
-import com.kjw.sharemore.users.dto.UserResponseDTO;
 import com.kjw.sharemore.users.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +32,7 @@ public class UserController {
 
     //유저 등록
     @PostMapping
-    public ApiResponse<UserDetailResponseDTO> postUser(@RequestBody UserRequestDTO userRequestDTO) {
+    public ApiResponse<UserDetailResponseDTO> postUser(@Valid @RequestBody UserRequestDTO userRequestDTO) {
         return ApiResponse.onSuccess(userService.addUser(userRequestDTO));
     }
 

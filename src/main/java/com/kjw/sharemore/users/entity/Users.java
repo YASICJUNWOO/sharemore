@@ -1,7 +1,5 @@
 package com.kjw.sharemore.users.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.kjw.sharemore.global.BaseEntity;
 import com.kjw.sharemore.item.entity.Item;
 import com.kjw.sharemore.reivew.entity.Review;
@@ -36,15 +34,19 @@ public class Users extends BaseEntity {
     @Column(nullable = false)
     private String address;
 
+    @Builder.Default
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Item> itemList = new ArrayList<>();
 
+    @Builder.Default
     @OneToMany(mappedBy = "reviewee", cascade = CascadeType.ALL)
     private List<Review> reviewList = new ArrayList<>();
 
+    @Builder.Default
     @OneToMany(mappedBy = "reviewer", cascade = CascadeType.ALL)
     private List<Review> postReviewList = new ArrayList<>();
 
+    @Builder.Default
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Reservation> reservationList = new ArrayList<>();
 
