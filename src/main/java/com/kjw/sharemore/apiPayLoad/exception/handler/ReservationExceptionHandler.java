@@ -15,4 +15,10 @@ public class ReservationExceptionHandler extends GeneralException {
         }
     }
 
+    public static class DuplicateReservation extends ReservationExceptionHandler {
+        public DuplicateReservation() {
+            super(ErrorStatus.DUPLICATE_RESERVATION);
+        }
+    }
+
 }

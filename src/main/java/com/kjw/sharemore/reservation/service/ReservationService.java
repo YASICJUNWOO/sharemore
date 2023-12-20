@@ -29,6 +29,7 @@ public class ReservationService {
         Users userByEmail = userService.getUserByEmail(reservationRequestDTO.getUserEmail());
         Item itemByName = itemService.getItemByName(reservationRequestDTO.getItemName());
         validateTimeOrder(reservationRequestDTO);
+        validateDuplicateReservation(itemByName,reservationRequestDTO);
         Reservation entity = ReservationConverter.toEntity(reservationRequestDTO, userByEmail, itemByName);
         return ReservationConverter.toDto(reservationRepository.save(entity));
     }
@@ -36,6 +37,12 @@ public class ReservationService {
     public void validateTimeOrder(ReservationRequestDTO reservationRequestDTO) {
         if (reservationRequestDTO.getStartDate().isAfter(reservationRequestDTO.getEndDate())) {
             throw new ReservationExceptionHandler.WrongTimeOrder();
+        }
+    }
+
+    public void validateDuplicateReservation(Item item, ReservationRequestDTO reservationRequestDTO) {
+        if (reservationRepository.findByItemAndStartDateGreaterThanEqualAndEndDateLessThanEqual(item, reservationRequestDTO.getStartDate(), reservationRequestDTO.getEndDate()).isPresent()) {
+            throw new ReservationExceptionHandler.DuplicateReservation();
         }
     }
 

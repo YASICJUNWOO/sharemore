@@ -23,7 +23,8 @@ public enum ErrorStatus implements BaseErrorCode {
     NO_EXIST_USER(HttpStatus.NOT_FOUND, "USER002", "존재하지 않는 유저입니다"),
 
     //reservation
-    DATE_TIME_ERROR(HttpStatus.BAD_REQUEST, "RESERVATION002", "시작 시간보다 이전 시간을 선택할 수 없습니다");
+    DATE_TIME_ERROR(HttpStatus.BAD_REQUEST, "RESERVATION002", "시작 시간보다 이전 시간을 선택할 수 없습니다"),
+    DUPLICATE_RESERVATION(HttpStatus.CONFLICT, "RESERVATION003", "이미 예약된 시간입니다");
 
     //review
 
