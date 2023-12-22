@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @Service
@@ -39,4 +41,24 @@ public class ItemService {
         return itemRepository.findByName(itemName);
     }
 
+    /**
+    * @methodName : getItemByCategory
+    * @param : category (카테고리)
+    * @return : List<ItemResponseDTO>
+    * @Description: 카테고리 별 아이템 조회
+    **/
+    public List<ItemResponseDTO> getItemByCategory(String category) {
+        String decodedCategory = decode(category);
+        return itemRepository.findAllByCategory(decodedCategory).stream().map(
+                ItemConverter::toDTO
+        ).toList();
+    }
+
+    /**
+    * @methodName : decode
+    * @Description: 한글 디코딩
+    **/
+    private String decode(String str) {
+        return URLDecoder.decode(str, StandardCharsets.UTF_8);
+    }
 }

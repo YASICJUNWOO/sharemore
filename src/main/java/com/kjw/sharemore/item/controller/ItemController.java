@@ -24,6 +24,18 @@ public class ItemController {
         return ApiResponse.onSuccess(itemService.getItemList());
     }
 
+    /**
+    * @methodName : getItemByCategory
+    * @param : category (카테고리)
+    * @return : List<ItemResponseDTO>
+    * @Description: 카테고리별 아이템 조회
+    * @note:
+    **/
+    @GetMapping("/{category}")
+    public ApiResponse<List<ItemResponseDTO>> getItemByCategory(@PathVariable(name = "category") String category) {
+        return ApiResponse.onSuccess(itemService.getItemByCategory(category));
+    }
+
     @PostMapping
     public ApiResponse<ItemResponseDTO> postItem(@Valid @RequestBody ItemRequestDTO itemRequestDTO) {
         return ApiResponse.onSuccess(itemService.addItem(itemRequestDTO));
