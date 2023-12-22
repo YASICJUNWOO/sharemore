@@ -40,10 +40,18 @@ public class ReservationService {
         }
     }
 
+    /**
+    * @methodName : validateDuplicateReservation
+    * @param :
+    * @return :
+    * @Description: 중복된 예약이 있는지 검사
+    * @note:
+    **/
     public void validateDuplicateReservation(Item item, ReservationRequestDTO reservationRequestDTO) {
-        if (reservationRepository.findByItemAndStartDateGreaterThanEqualAndEndDateLessThanEqual(item, reservationRequestDTO.getStartDate(), reservationRequestDTO.getEndDate()).isPresent()) {
-            throw new ReservationExceptionHandler.DuplicateReservation();
-        }
+        reservationRepository.findByItemAndStartDateGreaterThanEqualAndEndDateLessThanEqual(item, reservationRequestDTO.getStartDate(), reservationRequestDTO.getEndDate())
+                .ifPresent(reservation -> {
+                    throw new ReservationExceptionHandler.DuplicateReservation();
+                });
     }
 
     public List<ReservationResponseDTO> getReservationList() {
