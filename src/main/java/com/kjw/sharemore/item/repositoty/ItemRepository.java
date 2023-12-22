@@ -8,5 +8,8 @@ import java.util.List;
 public interface ItemRepository extends JpaRepository<Item, Long> {
     Item findByName(String itemName);
 
-    List<Item> findAllByCategory(String category);
+    List<Item> findAllByCategoryAndPriceBetween(String category, int minPrice, int maxPrice);
+    List<Item> findAllByPriceBetween(int minPrice, int maxPrice);
+
+    //List<Item> findAllByCategory(String category);
 }
