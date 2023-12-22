@@ -47,18 +47,18 @@ public class ItemService {
     * @return : List<ItemResponseDTO>
     * @Description: 카테고리 별 아이템 조회
     **/
-    public List<ItemResponseDTO> getItemByCategory(String category) {
+    /*public List<ItemResponseDTO> getItemByCategory(String category) {
         String decodedCategory = decode(category);
         return itemRepository.findAllByCategory(decodedCategory).stream().map(
                 ItemConverter::toDTO
         ).toList();
-    }
+    }*/
 
     /**
     * @methodName : decode
     * @Description: 한글 디코딩
     **/
-    private String decode(String str) {
+    /*private String decode(String str) {
         return URLDecoder.decode(str, StandardCharsets.UTF_8);
-    }
+    }*/
 }
