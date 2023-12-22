@@ -1,11 +1,8 @@
 package com.kjw.sharemore.users.dto;
 
-import com.kjw.sharemore.item.dto.ItemResponseDTO;
 import com.kjw.sharemore.item.dto.ItemUserResponseDTO;
-import com.kjw.sharemore.reivew.dto.ReviewResponseDTO;
 import com.kjw.sharemore.reivew.dto.ReviewUserGetResponseDTO;
 import com.kjw.sharemore.reivew.dto.ReviewUserPostResponseDTO;
-import com.kjw.sharemore.reservation.dto.ReservationResponseDTO;
 import com.kjw.sharemore.reservation.dto.ReservationUserResponseDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

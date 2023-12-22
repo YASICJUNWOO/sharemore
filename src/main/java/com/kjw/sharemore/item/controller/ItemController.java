@@ -4,6 +4,7 @@ import com.kjw.sharemore.apiPayLoad.ApiResponse;
 import com.kjw.sharemore.item.dto.ItemRequestDTO;
 import com.kjw.sharemore.item.dto.ItemResponseDTO;
 import com.kjw.sharemore.item.service.ItemService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,7 @@ public class ItemController {
     }
 
     @PostMapping
-    public ApiResponse<ItemResponseDTO> postItem(@RequestBody ItemRequestDTO itemRequestDTO) {
+    public ApiResponse<ItemResponseDTO> postItem(@Valid @RequestBody ItemRequestDTO itemRequestDTO) {
         return ApiResponse.onSuccess(itemService.addItem(itemRequestDTO));
     }
 

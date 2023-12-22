@@ -1,9 +1,8 @@
 package com.kjw.sharemore.reservation.service;
 
+import com.kjw.sharemore.apiPayLoad.exception.handler.ReservationExceptionHandler;
 import com.kjw.sharemore.item.entity.Item;
 import com.kjw.sharemore.item.service.ItemService;
-import com.kjw.sharemore.reivew.dto.ReviewRequestDTO;
-import com.kjw.sharemore.reivew.dto.ReviewResponseDTO;
 import com.kjw.sharemore.reservation.Reservation;
 import com.kjw.sharemore.reservation.converter.ReservationConverter;
 import com.kjw.sharemore.reservation.dto.ReservationRequestDTO;
@@ -29,9 +28,30 @@ public class ReservationService {
     public ReservationResponseDTO addReview(ReservationRequestDTO reservationRequestDTO) {
         Users userByEmail = userService.getUserByEmail(reservationRequestDTO.getUserEmail());
         Item itemByName = itemService.getItemByName(reservationRequestDTO.getItemName());
-        log.info("itenByName: {}", itemByName.getName());
+        validateTimeOrder(reservationRequestDTO);
+        validateDuplicateReservation(itemByName,reservationRequestDTO);
         Reservation entity = ReservationConverter.toEntity(reservationRequestDTO, userByEmail, itemByName);
         return ReservationConverter.toDto(reservationRepository.save(entity));
+    }
+
+    public void validateTimeOrder(ReservationRequestDTO reservationRequestDTO) {
+        if (reservationRequestDTO.getStartDate().isAfter(reservationRequestDTO.getEndDate())) {
+            throw new ReservationExceptionHandler.WrongTimeOrder();
+        }
+    }
+
+    /**
+    * @methodName : validateDuplicateReservation
+    * @param :
+    * @return :
+    * @Description: 중복된 예약이 있는지 검사
+    * @note:
+    **/
+    public void validateDuplicateReservation(Item item, ReservationRequestDTO reservationRequestDTO) {
+        reservationRepository.findByItemAndStartDateGreaterThanEqualAndEndDateLessThanEqual(item, reservationRequestDTO.getStartDate(), reservationRequestDTO.getEndDate())
+                .ifPresent(reservation -> {
+                    throw new ReservationExceptionHandler.DuplicateReservation();
+                });
     }
 
     public List<ReservationResponseDTO> getReservationList() {
