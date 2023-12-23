@@ -16,5 +16,6 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
     * @Description: 해당 Item에 대해서 시간 사이의 예약이 탐색
     * @note:
     **/
-    Optional<Reservation> findByItemAndStartDateGreaterThanEqualAndEndDateLessThanEqual(Item item, LocalDateTime startDate, LocalDateTime endDate);
+    Optional<Reservation> findByItemAndStartDateLessThanEqualAndEndDateGreaterThan(Item item, LocalDateTime startDate, LocalDateTime startDate2);
+    Optional<Reservation> findByItemAndStartDateGreaterThanAndStartDateLessThan(Item item, LocalDateTime startDate, LocalDateTime startDate2);
 }
