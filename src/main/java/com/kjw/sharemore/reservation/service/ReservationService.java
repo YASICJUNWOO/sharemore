@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -29,7 +30,7 @@ public class ReservationService {
         Users userByEmail = userService.getUserByEmail(reservationRequestDTO.getUserEmail());
         Item itemByName = itemService.getItemByName(reservationRequestDTO.getItemName());
         validateTimeOrder(reservationRequestDTO);
-        validateDuplicateReservation(itemByName,reservationRequestDTO);
+        validateDuplicateReservation(itemByName,reservationRequestDTO.getStartDate(),reservationRequestDTO.getEndDate());
         Reservation entity = ReservationConverter.toEntity(reservationRequestDTO, userByEmail, itemByName);
         return ReservationConverter.toDto(reservationRepository.save(entity));
     }
@@ -47,11 +48,13 @@ public class ReservationService {
     * @Description: 중복된 예약이 있는지 검사
     * @note:
     **/
-    public void validateDuplicateReservation(Item item, ReservationRequestDTO reservationRequestDTO) {
-        reservationRepository.findByItemAndStartDateGreaterThanEqualAndEndDateLessThanEqual(item, reservationRequestDTO.getStartDate(), reservationRequestDTO.getEndDate())
-                .ifPresent(reservation -> {
-                    throw new ReservationExceptionHandler.DuplicateReservation();
-                });
+    public void validateDuplicateReservation(Item item, LocalDateTime startDate, LocalDateTime endDate ) {
+
+        if(reservationRepository.findByItemAndStartDateLessThanEqualAndEndDateGreaterThan(item, startDate, startDate).isPresent()||
+        reservationRepository.findByItemAndStartDateGreaterThanAndStartDateLessThan(item,startDate,startDate).isPresent()){
+            throw new ReservationExceptionHandler.DuplicateReservation();
+        }
+
     }
 
     public List<ReservationResponseDTO> getReservationList() {
