@@ -20,16 +20,17 @@ public class SpringSecurityConfig {
                 .cors().disable()
                 .authorizeHttpRequests(request-> request
                         .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
-                        .requestMatchers("/api/users/**","/status","/h2-console/**").permitAll()
+                        .requestMatchers("/api/users/**","/status/**","/h2-console/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .headers(header -> header
-                        .frameOptions(HeadersConfigurer.FrameOptionsConfig::disable)
+                        .frameOptions(HeadersConfigurer.FrameOptionsConfig::disable) //h2-console관련
                 )
                 .formLogin(login -> login
                         .usernameParameter("email")
                         .passwordParameter("password")
-                        .defaultSuccessUrl("/status",true)
+                        .failureForwardUrl("/status/fail")
+                        .defaultSuccessUrl("/status/ok",true)
                         .permitAll()
                 )
                 .logout(Customizer.withDefaults());

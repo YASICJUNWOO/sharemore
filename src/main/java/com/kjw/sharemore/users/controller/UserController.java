@@ -7,6 +7,8 @@ import com.kjw.sharemore.users.dto.UserRequestDTO;
 import com.kjw.sharemore.users.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,6 +30,11 @@ public class UserController {
     @GetMapping("/{email}")
     public ApiResponse<UserDetailResponseDTO> getUser(@PathVariable String email) {
         return ApiResponse.onSuccess(UserConverter.toUserDetailResponseDTO(userService.getUserByEmail(email)));
+    }
+
+    @GetMapping("detail")
+    public ApiResponse<UserDetailResponseDTO> getUserDetail(@AuthenticationPrincipal User user) {
+        return ApiResponse.onSuccess(UserConverter.toUserDetailResponseDTO(userService.getUserByEmail(user.getUsername())));
     }
 
     //유저 등록
