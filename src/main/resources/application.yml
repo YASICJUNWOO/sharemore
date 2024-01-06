@@ -27,3 +27,7 @@ spring:
 logging:
   level:
     root: info
+
+jwt:
+  secret: secretKeysecretKeysecretKeysecretKeysecretKeysecretKeysecretKeysecretKeysecretKeysecretKey
+  token-validity-in-seconds : 86400 # 24시간

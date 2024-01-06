@@ -1,4 +1,4 @@
-package com.kjw.sharemore.global.security;
+package com.kjw.sharemore.auth;
 
 import com.kjw.sharemore.users.entity.Users;
 import com.kjw.sharemore.users.service.UserService;
