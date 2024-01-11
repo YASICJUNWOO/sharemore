@@ -27,7 +27,7 @@ public class AuthController {
     //로그인 처리를 수행할 클래스
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
 
-    @PostMapping("/login")
+    /*@PostMapping("/login")
     public ResponseEntity<TokenDto> login(@RequestBody LoginDto loginDto) {
 
         //로그인 정보 생성
@@ -48,5 +48,5 @@ public class AuthController {
         httpHeaders.add(JwtAuthorizationFilter.AUTHORIZATION_HEADER, "Bearer " + token);
 
         return ResponseEntity.ok().headers(httpHeaders).body(new TokenDto(token));
-    }
+    }*/
 }

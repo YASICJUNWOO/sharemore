@@ -32,6 +32,8 @@ public class SpringSecurityConfig {
     //토큰 생성 및 검증을 수행할 클래스
     private final TokenProvider jwtProvider;
 
+    private final Oauth2Service oauth2Service;
+
     @Bean
     public SecurityFilterChain filerChain(HttpSecurity http) throws Exception {
         http
@@ -39,10 +41,10 @@ public class SpringSecurityConfig {
                 .cors(AbstractHttpConfigurer::disable)
 
                 //예외처리
-                .exceptionHandling(exception -> exception
+                /*.exceptionHandling(exception -> exception
                         .authenticationEntryPoint(jwtAuthenticationEntryPoint)
                         .accessDeniedHandler(jwtAccessDeniedHandler)
-                )
+                )*/
 
                 //세션 사용하지 않음
                 .sessionManagement(session -> session
@@ -61,7 +63,14 @@ public class SpringSecurityConfig {
                         .anyRequest().authenticated()
                 )
 
-                .addFilterBefore(new JwtAuthorizationFilter(jwtProvider), UsernamePasswordAuthenticationFilter.class);
+                .oauth2Login(login -> login
+                        .defaultSuccessUrl("/status/ok",true)
+                        .userInfoEndpoint(userInfo -> userInfo
+                                .userService(oauth2Service)
+                        )
+                );
+
+                //.addFilterBefore(new JwtAuthorizationFilter(jwtProvider), UsernamePasswordAuthenticationFilter.class);
 
                 /*.formLogin(login -> login
                         .usernameParameter("email")
