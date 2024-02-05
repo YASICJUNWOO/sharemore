@@ -4,6 +4,7 @@ import com.kjw.sharemore.apiPayLoad.ApiResponse;
 import com.kjw.sharemore.users.converter.UserConverter;
 import com.kjw.sharemore.users.dto.UserDetailResponseDTO;
 import com.kjw.sharemore.users.dto.UserRequestDTO;
+import com.kjw.sharemore.users.entity.Users;
 import com.kjw.sharemore.users.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -20,21 +21,52 @@ public class UserController {
 
     private final UserService userService;
 
-    //전체 유저 조회
+    //기본 유저 생성
+    //       ('공준우', 'joonoo3@inha.edu', '1234', '성남시 분당구');
+    private final Users defaultUser = Users.builder()
+            .name("공준우")
+            .email("joonoo3@inha.edu")
+            .password("1234")
+            .address("성남시 분당구")
+            .build();
+
+
+    /**
+    * @methodName : getUserList
+    * @param :
+    * @return :
+    * @Description: 전체 유저 조회
+    * @note:
+    **/
     @GetMapping
     public ApiResponse<List<UserDetailResponseDTO>> getUserList() {
         return ApiResponse.onSuccess(userService.getUserList());
     }
 
-    //유저 개별 조회
-    @GetMapping("/{email}")
-    public ApiResponse<UserDetailResponseDTO> getUser(@PathVariable String email) {
-        return ApiResponse.onSuccess(UserConverter.toUserDetailResponseDTO(userService.getUserByEmail(email)));
+    /**
+    * @methodName : getMyDetail
+    * @param :
+     * @path : emeail
+    * @return :
+    * @Description: 유저 상세 조회
+    * @note: defaultUser로 일단 조회
+    **/
+    @GetMapping("/detail")
+    public ApiResponse<UserDetailResponseDTO> getMyDetail() {
+        return ApiResponse.onSuccess(userService.getUserDetailByEmail(defaultUser.getEmail()));
     }
 
-    @GetMapping("detail")
-    public ApiResponse<UserDetailResponseDTO> getUserDetail(@AuthenticationPrincipal User user) {
-        return ApiResponse.onSuccess(UserConverter.toUserDetailResponseDTO(userService.getUserByEmail(user.getUsername())));
+    /**
+     * @methodName : getUser
+     * @param :
+     * @path : emeail
+     * @return :
+     * @Description: 유저 상세 조회
+     * @note: defaultUser로 일단 조회
+     **/
+    @GetMapping("/detail/{email}")
+    public ApiResponse<UserDetailResponseDTO> getUserDetail(@PathVariable("email") String email) {
+        return ApiResponse.onSuccess(userService.getUserDetailByEmail(email));
     }
 
     //유저 등록

@@ -1,9 +1,7 @@
 package com.kjw.sharemore.reivew.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.kjw.sharemore.global.BaseEntity;
-import com.kjw.sharemore.item.entity.Item;
 import com.kjw.sharemore.users.entity.Users;
 import jakarta.persistence.*;
 import lombok.*;
@@ -13,7 +11,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Review extends BaseEntity {
+public class UserReview extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

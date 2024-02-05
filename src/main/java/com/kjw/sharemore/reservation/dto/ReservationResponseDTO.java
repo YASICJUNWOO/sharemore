@@ -15,6 +15,8 @@ import java.time.LocalDateTime;
 @Getter
 public class ReservationResponseDTO {
 
+    private Long id;
+
     private UserResponseDTO renter;
 
     private ItemReservationResponseDTO item;

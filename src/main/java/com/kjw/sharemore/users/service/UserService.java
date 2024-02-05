@@ -53,6 +53,10 @@ public class UserService {
         );
     }
 
+    public UserDetailResponseDTO getUserDetailByEmail(String email) {
+        return UserConverter.toUserDetailResponseDTO(userRepository.findByEmail(email).orElseThrow(UserExceptionHandler.NoExistUser::new));
+    }
+
     /**
      * @param :
      * @return :

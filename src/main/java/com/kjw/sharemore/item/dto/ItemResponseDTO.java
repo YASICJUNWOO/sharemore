@@ -17,6 +17,8 @@ import java.util.List;
 @Builder
 public class ItemResponseDTO {
 
+    private Long id;
+
     private UserResponseDTO user;
 
     private String name;

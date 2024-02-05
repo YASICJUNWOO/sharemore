@@ -11,8 +11,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.net.URLDecoder;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @Service
@@ -29,9 +27,8 @@ public class ItemService {
         ).toList();
     }
 
-    public ItemResponseDTO addItem(ItemRequestDTO itemRequestDTO) {
-        Users userByEmail = userService.getUserByEmail(itemRequestDTO.getUserEmail()); //email로 유저 찾기
-        log.info("userByEmail: {}", userByEmail);
+    public ItemResponseDTO addItem(ItemRequestDTO itemRequestDTO,Users user) {
+        Users userByEmail = userService.getUserByEmail(user.getEmail()); //email로 유저 찾기
         Item savedItem = itemRepository.save(ItemConverter.toEntity(itemRequestDTO,userByEmail)); //저장된 item
         return ItemConverter.toDTO(savedItem);
     }
@@ -39,6 +36,22 @@ public class ItemService {
     public Item getItemByName(String itemName) {
         log.info("itemName: {}", itemName);
         return itemRepository.findByName(itemName);
+    }
+
+    //아이템 조회해서 DTO로 변환
+    public ItemResponseDTO getItemResponseById(Long itemId) {
+        return ItemConverter.toDTO(getItemByItemId(itemId));
+    }
+
+    //아이템 조회
+    public Item getItemByItemId(Long itemId) {
+        return itemRepository.findById(itemId).orElseThrow();
+    }
+
+    public ItemResponseDTO updateItem(ItemRequestDTO itemRequestDTO,Long itemId) {
+        Item item = getItemByItemId(itemId);
+        Item update = item.update(itemRequestDTO);
+        return ItemConverter.toDTO(itemRepository.save(update));
     }
 
     /**

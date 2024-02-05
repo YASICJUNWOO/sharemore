@@ -60,7 +60,7 @@ VALUES (1, 2, '2023-12-16 00:00:00', '2023-12-19 02:00:00'),
        (9, 20, '2023-04-15 00:00:00', '2023-04-25 00:00:00'),
        (10, 1, '2023-04-20 00:00:00', '2023-04-30 00:00:00');
 
-INSERT INTO review (reviewee_id, reviewer_id, comment, rating)
+INSERT INTO user_Review (reviewee_id, reviewer_id, comment, rating)
 VALUES (1, 2, '훌륭한 제품!', 5),
        (2, 1, '빠른 배송', 4),
        (3, 4, '잘 포장되어 있음', 5),

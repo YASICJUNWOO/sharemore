@@ -3,6 +3,7 @@ package com.kjw.sharemore.item.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.kjw.sharemore.global.BaseEntity;
+import com.kjw.sharemore.item.dto.ItemRequestDTO;
 import com.kjw.sharemore.reservation.Reservation;
 import com.kjw.sharemore.users.entity.Users;
 import jakarta.persistence.*;
@@ -49,4 +50,13 @@ public class Item extends BaseEntity {
     @Builder.Default
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
     private List<Reservation> reservationList = new ArrayList<>();
+
+    public Item update(ItemRequestDTO itemRequestDTO) {
+        this.name = itemRequestDTO.getName();
+        this.description = itemRequestDTO.getDescription();
+        this.category = itemRequestDTO.getCategory();
+        this.price = itemRequestDTO.getPrice();
+        this.itemImage = itemRequestDTO.getItemImage();
+        return this;
+    }
 }

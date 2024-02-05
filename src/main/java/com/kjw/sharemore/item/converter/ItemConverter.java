@@ -32,6 +32,7 @@ public class ItemConverter {
 
     public static ItemResponseDTO toDTO(Item item) {
         return ItemResponseDTO.builder()
+                .id(item.getItemId())
                 .user(UserConverter.toUserResponseDTO(item.getUser()))
                 .name(item.getName())
                 .description(item.getDescription())

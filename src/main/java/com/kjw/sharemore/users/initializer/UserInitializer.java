@@ -13,7 +13,7 @@ public class UserInitializer implements ApplicationRunner {
 
     private final UserRepository userRepository;
 
-    private final PasswordEncoder passwordEncoder;
+    //private final PasswordEncoder passwordEncoder;
 
     //INSERT INTO USERS (name, email, password, address)
     //VALUES ('김철수', 'chulsoo1@example.com', 'password123', '서울특별시 강남구'),

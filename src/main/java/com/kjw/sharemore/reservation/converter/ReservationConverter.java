@@ -14,6 +14,7 @@ public class ReservationConverter {
 
     public static ReservationResponseDTO toDto(Reservation reservation) {
         return ReservationResponseDTO.builder()
+                .id(reservation.getReservationId())
                 .renter(UserConverter.toUserResponseDTO(reservation.getUser()))
                 .item(ItemConverter.toItemReservationDTO(reservation.getItem()))
                 .startDate(reservation.getStartDate())

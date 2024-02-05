@@ -26,12 +26,12 @@ public class ReservationService {
     private final UserService userService;
     private final ItemService itemService;
 
-    public ReservationResponseDTO addReview(ReservationRequestDTO reservationRequestDTO) {
+    public ReservationResponseDTO addReview(ReservationRequestDTO reservationRequestDTO, Long itemId) {
         Users userByEmail = userService.getUserByEmail(reservationRequestDTO.getUserEmail());
-        Item itemByName = itemService.getItemByName(reservationRequestDTO.getItemName());
+        Item itemByItemId = itemService.getItemByItemId(itemId);
         validateTimeOrder(reservationRequestDTO);
-        validateDuplicateReservation(itemByName,reservationRequestDTO.getStartDate(),reservationRequestDTO.getEndDate());
-        Reservation entity = ReservationConverter.toEntity(reservationRequestDTO, userByEmail, itemByName);
+        validateDuplicateReservation(itemByItemId,reservationRequestDTO.getStartDate(),reservationRequestDTO.getEndDate());
+        Reservation entity = ReservationConverter.toEntity(reservationRequestDTO, userByEmail, itemByItemId);
         return ReservationConverter.toDto(reservationRepository.save(entity));
     }
 
@@ -50,8 +50,7 @@ public class ReservationService {
     **/
     public void validateDuplicateReservation(Item item, LocalDateTime startDate, LocalDateTime endDate ) {
 
-        if(reservationRepository.findByItemAndStartDateLessThanEqualAndEndDateGreaterThan(item, startDate, startDate).isPresent()||
-        reservationRepository.findByItemAndStartDateGreaterThanAndStartDateLessThan(item,startDate,startDate).isPresent()){
+        if(reservationRepository.findFirstByItemAndStartDateLessThanEqualAndEndDateGreaterThanEqual(item,endDate,startDate).isPresent()){
             throw new ReservationExceptionHandler.DuplicateReservation();
         }
 
@@ -61,4 +60,14 @@ public class ReservationService {
         return reservationRepository.findAll().stream().map(ReservationConverter::toDto).toList();
     }
 
+    public List<ReservationResponseDTO> getReservationByIdAndDate(Long reservationId, LocalDateTime date) {
+
+        LocalDateTime startDate = date.withHour(0).withMinute(0).withSecond(0);
+        LocalDateTime endDate = date.withHour(23).withMinute(59).withSecond(59);
+
+        Item itemByItemId = itemService.getItemByItemId(reservationId);
+        List<ReservationResponseDTO> list = reservationRepository.findAllByItemAndStartDateLessThanEqualAndEndDateGreaterThan(itemByItemId, endDate, startDate)
+                .stream().map(ReservationConverter::toDto).toList();
+        return list;
+    }
 }

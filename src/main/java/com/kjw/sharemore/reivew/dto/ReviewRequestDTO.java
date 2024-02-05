@@ -9,12 +9,6 @@ import lombok.Getter;
 public class ReviewRequestDTO {
 
     private String revieweeEmail;
-    //private Users reviewee;
-
-    private String reviewerEmail;
-    //private Users reviewer;
-
-    //private Item item;
 
     private String comment;
 
