@@ -1,4 +1,4 @@
-package com.kjw.sharemore.reivew.dto;
+package com.kjw.sharemore.userReivew.dto;
 
 import com.kjw.sharemore.users.dto.UserResponseDTO;
 import lombok.AllArgsConstructor;
@@ -10,11 +10,12 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ReviewUserPostResponseDTO {
+public class ReviewUserGetResponseDTO {
 
-    private UserResponseDTO reviewee;
+    private UserResponseDTO reviewer;
 
     private String comment;
 
     private int rating;
+
 }

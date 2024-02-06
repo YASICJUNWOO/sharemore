@@ -1,10 +1,10 @@
-package com.kjw.sharemore.reivew.converter;
+package com.kjw.sharemore.userReivew.converter;
 
-import com.kjw.sharemore.reivew.dto.ReviewUserGetResponseDTO;
-import com.kjw.sharemore.reivew.dto.ReviewUserPostResponseDTO;
-import com.kjw.sharemore.reivew.entity.UserReview;
-import com.kjw.sharemore.reivew.dto.ReviewRequestDTO;
-import com.kjw.sharemore.reivew.dto.ReviewResponseDTO;
+import com.kjw.sharemore.userReivew.dto.ReviewUserGetResponseDTO;
+import com.kjw.sharemore.userReivew.dto.ReviewUserPostResponseDTO;
+import com.kjw.sharemore.userReivew.entity.UserReview;
+import com.kjw.sharemore.userReivew.dto.ReviewRequestDTO;
+import com.kjw.sharemore.userReivew.dto.ReviewResponseDTO;
 import com.kjw.sharemore.users.converter.UserConverter;
 import com.kjw.sharemore.users.entity.Users;
 

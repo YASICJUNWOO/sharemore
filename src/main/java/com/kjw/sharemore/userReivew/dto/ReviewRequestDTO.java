@@ -1,8 +1,5 @@
-package com.kjw.sharemore.reivew.dto;
+package com.kjw.sharemore.userReivew.dto;
 
-import com.kjw.sharemore.item.entity.Item;
-import com.kjw.sharemore.users.entity.Users;
-import lombok.Builder;
 import lombok.Getter;
 
 @Getter

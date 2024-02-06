@@ -1,0 +1,29 @@
+package com.kjw.sharemore.item.service;
+
+import com.kjw.sharemore.item.entity.ItemDocument;
+import com.kjw.sharemore.item.repositoty.ItemSearchRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+@RequiredArgsConstructor
+public class ItemSearchService {
+
+    private final ItemSearchRepository itemSearchRepository;
+
+    public ItemDocument createItem(ItemDocument itemDocument) {
+        return itemSearchRepository.save(itemDocument);
+    }
+
+    public List<ItemDocument> getItem(String keyword) {
+        List<ItemDocument> byName = itemSearchRepository.findByNameContainingOrDescriptionContaining(keyword, keyword);
+        return byName;
+    }
+
+    public void deleteItemIndex() {
+        itemSearchRepository.deleteAll();
+    }
+
+}

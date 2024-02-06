@@ -1,10 +1,10 @@
-package com.kjw.sharemore.reivew.service;
+package com.kjw.sharemore.userReivew.service;
 
-import com.kjw.sharemore.reivew.converter.UserReviewConverter;
-import com.kjw.sharemore.reivew.dto.ReviewRequestDTO;
-import com.kjw.sharemore.reivew.dto.ReviewResponseDTO;
-import com.kjw.sharemore.reivew.entity.UserReview;
-import com.kjw.sharemore.reivew.repository.UserReviewRepository;
+import com.kjw.sharemore.userReivew.converter.UserReviewConverter;
+import com.kjw.sharemore.userReivew.dto.ReviewRequestDTO;
+import com.kjw.sharemore.userReivew.dto.ReviewResponseDTO;
+import com.kjw.sharemore.userReivew.entity.UserReview;
+import com.kjw.sharemore.userReivew.repository.UserReviewRepository;
 import com.kjw.sharemore.users.entity.Users;
 import com.kjw.sharemore.users.service.UserService;
 import lombok.RequiredArgsConstructor;

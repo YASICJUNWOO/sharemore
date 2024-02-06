@@ -1,0 +1,27 @@
+{
+  "properties": {
+    "id": {
+      "type": "keyword"
+    },
+    "user": {
+      "type": "text"
+    },
+    "name": {
+      "type": "text",
+      "analyzer": "my_nori_analyzer",
+      "search_analyzer": "my_nori_analyzer"
+    },
+    "description": {
+      "type": "text"
+    },
+    "category": {
+      "type": "text"
+    },
+    "price": {
+      "type": "integer"
+    },
+    "itemImage": {
+      "type": "text"
+    }
+  }
+}

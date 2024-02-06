@@ -1,7 +1,7 @@
 package com.kjw.sharemore.users.converter;
 
 import com.kjw.sharemore.item.converter.ItemConverter;
-import com.kjw.sharemore.reivew.converter.UserReviewConverter;
+import com.kjw.sharemore.userReivew.converter.UserReviewConverter;
 import com.kjw.sharemore.reservation.converter.ReservationConverter;
 import com.kjw.sharemore.users.dto.UserDetailResponseDTO;
 import com.kjw.sharemore.users.dto.UserResponseDTO;

@@ -1,4 +1,4 @@
-package com.kjw.sharemore.reivew.entity;
+package com.kjw.sharemore.userReivew.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.kjw.sharemore.global.BaseEntity;

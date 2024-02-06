@@ -1,0 +1,32 @@
+{
+  "analysis": {
+    "analyzer": {
+      "autocomplete": {
+        "tokenizer": "autocomplete",
+        "filter": ["lowercase"]
+      },
+      "autocomplete_search": {
+        "tokenizer": "lowercase"
+      },
+      "my_nori_analyzer": {
+        "type": "custom",
+        "tokenizer": "my_nori_tokenizer",
+        "filter": ["lowercase", "stop"],
+        "char_filter": ["html_strip"]
+      }
+    },
+    "tokenizer": {
+      "autocomplete": {
+        "type": "nGram",
+        "min_gram": 2,
+        "max_gram": 3,
+        "token_chars": ["letter"]
+      },
+      "my_nori_tokenizer": {
+        "type": "nori_tokenizer",
+        "decompound_mode": "mixed",
+        "discard_punctuation": "false"
+      }
+    }
+  }
+}

@@ -1,9 +1,9 @@
-package com.kjw.sharemore.reivew.controller;
+package com.kjw.sharemore.userReivew.controller;
 
 import com.kjw.sharemore.apiPayLoad.ApiResponse;
-import com.kjw.sharemore.reivew.dto.ReviewRequestDTO;
-import com.kjw.sharemore.reivew.dto.ReviewResponseDTO;
-import com.kjw.sharemore.reivew.service.UserReviewService;
+import com.kjw.sharemore.userReivew.dto.ReviewRequestDTO;
+import com.kjw.sharemore.userReivew.dto.ReviewResponseDTO;
+import com.kjw.sharemore.userReivew.service.UserReviewService;
 import com.kjw.sharemore.users.entity.Users;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

@@ -56,10 +56,10 @@ public class ItemController {
         return ApiResponse.onSuccess(itemService.getItemResponseById(ItemId));
     }
 
-    @PostMapping("/search")
+    /*@PostMapping("/search")
     public ApiResponse<List<ItemResponseDTO>> searchItemList(@RequestBody SearchDTO searchDTO) {
         return ApiResponse.onSuccess(searchService.searchItem(searchDTO));
-    }
+    }*/
 
     /**
     * @methodName : postItem
