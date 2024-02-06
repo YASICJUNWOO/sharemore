@@ -8,7 +8,7 @@ spring:
 
   h2:
     console:
-      enabled: true #h2-console 사용 여부
+      enabled: true #h2-console 사용 여부docker-compose.yml
       path: /h2-console #h2-console 접근 경로
 
   jpa:
