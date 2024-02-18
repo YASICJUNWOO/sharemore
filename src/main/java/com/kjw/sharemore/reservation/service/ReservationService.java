@@ -4,9 +4,8 @@ import com.kjw.sharemore.apiPayLoad.exception.handler.ReservationExceptionHandle
 import com.kjw.sharemore.item.entity.Item;
 import com.kjw.sharemore.item.service.ItemService;
 import com.kjw.sharemore.reservation.Reservation;
-import com.kjw.sharemore.reservation.converter.ReservationConverter;
-import com.kjw.sharemore.reservation.dto.ReservationRequestDTO;
-import com.kjw.sharemore.reservation.dto.ReservationResponseDTO;
+import com.kjw.sharemore.reservation.dto.request.ReservationRequestDTO;
+import com.kjw.sharemore.reservation.dto.response.ReservationResponseDTO;
 import com.kjw.sharemore.reservation.repository.ReservationRepository;
 import com.kjw.sharemore.users.entity.Users;
 import com.kjw.sharemore.users.service.UserService;
@@ -26,13 +25,13 @@ public class ReservationService {
     private final UserService userService;
     private final ItemService itemService;
 
-    public ReservationResponseDTO addReview(ReservationRequestDTO reservationRequestDTO, Long itemId) {
-        Users userByEmail = userService.getUserByEmail(reservationRequestDTO.getUserEmail());
+    public ReservationResponseDTO addReview(ReservationRequestDTO reservationRequestDTO, Long itemId, Users user) {
         Item itemByItemId = itemService.getItemByItemId(itemId);
         validateTimeOrder(reservationRequestDTO);
         validateDuplicateReservation(itemByItemId,reservationRequestDTO.getStartDate(),reservationRequestDTO.getEndDate());
-        Reservation entity = ReservationConverter.toEntity(reservationRequestDTO, userByEmail, itemByItemId);
-        return ReservationConverter.toDto(reservationRepository.save(entity));
+
+        Reservation entity = ReservationRequestDTO.toEntity(reservationRequestDTO, user, itemByItemId);
+        return ReservationResponseDTO.of(reservationRepository.save(entity));
     }
 
     public void validateTimeOrder(ReservationRequestDTO reservationRequestDTO) {
@@ -57,7 +56,7 @@ public class ReservationService {
     }
 
     public List<ReservationResponseDTO> getReservationList() {
-        return reservationRepository.findAll().stream().map(ReservationConverter::toDto).toList();
+        return reservationRepository.findAll().stream().map(ReservationResponseDTO::of).toList();
     }
 
     public List<ReservationResponseDTO> getReservationByIdAndDate(Long reservationId, LocalDateTime date) {
@@ -67,7 +66,7 @@ public class ReservationService {
 
         Item itemByItemId = itemService.getItemByItemId(reservationId);
         List<ReservationResponseDTO> list = reservationRepository.findAllByItemAndStartDateLessThanEqualAndEndDateGreaterThan(itemByItemId, endDate, startDate)
-                .stream().map(ReservationConverter::toDto).toList();
+                .stream().map(ReservationResponseDTO::of).toList();
         return list;
     }
 }

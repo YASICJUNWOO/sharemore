@@ -1,41 +1,39 @@
-package com.kjw.sharemore.reservation.dto;
+package com.kjw.sharemore.reservation.dto.response;
 
+import com.kjw.sharemore.item.dto.response.ItemResponseBaseDTO;
 import com.kjw.sharemore.reservation.Reservation;
-import com.kjw.sharemore.users.dto.UserResponseDTO;
 import com.kjw.sharemore.users.dto.UserSimpleResponseDTO;
-import com.kjw.sharemore.users.entity.Users;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
-@Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ReservationItemDTO {
+@Getter
+public class ReservationResponseDTO {
+
+    private Long id;
 
     private UserSimpleResponseDTO renter;
+
+    private ItemResponseBaseDTO item;
 
     private LocalDateTime startDate;
 
     private LocalDateTime endDate;
 
-    public static ReservationItemDTO createList(Reservation reservation) {
-        return ReservationItemDTO.builder()
+    public static ReservationResponseDTO of(Reservation reservation) {
+        return ReservationResponseDTO.builder()
+                .id(reservation.getReservationId())
                 .renter(UserSimpleResponseDTO.of(reservation.getUser()))
+                .item(ItemResponseBaseDTO.of(reservation.getItem()))
                 .startDate(reservation.getStartDate())
                 .endDate(reservation.getEndDate())
                 .build();
-    }
-
-    public static List<ReservationItemDTO> createList(List<Reservation> reservation) {
-        return reservation.stream()
-                .map(ReservationItemDTO::createList)
-                .toList();
     }
 
 }

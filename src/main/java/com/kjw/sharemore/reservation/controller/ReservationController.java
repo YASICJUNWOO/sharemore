@@ -1,17 +1,17 @@
 package com.kjw.sharemore.reservation.controller;
 
 import com.kjw.sharemore.apiPayLoad.ApiResponse;
-import com.kjw.sharemore.reservation.dto.ReservationRequestDTO;
-import com.kjw.sharemore.reservation.dto.ReservationResponseDTO;
+import com.kjw.sharemore.reservation.dto.request.ReservationRequestDTO;
+import com.kjw.sharemore.reservation.dto.response.ReservationResponseDTO;
 import com.kjw.sharemore.reservation.service.ReservationService;
+import com.kjw.sharemore.users.entity.Users;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.List;
 
 @Slf4j
@@ -23,11 +23,11 @@ public class ReservationController {
     private final ReservationService reservationService;
 
     /**
-    * @methodName : getReservationList
+    * @Description:  전체 예약 조회
     * @param :
+    * @path :
+    * @body :
     * @return :
-    * @Description: 전체 예약 조회
-    * @note:
     **/
     @GetMapping
     public ApiResponse<List<ReservationResponseDTO>> getReservationList() {
@@ -35,12 +35,11 @@ public class ReservationController {
     }
 
     /**
-    * @methodName : getReservationByIdAndDate
-    * @param :date (해당 날짜)
-     * @path : reservationId (예약 아이디)
+    * @Description: 해당 날짜의 예약 조회
+    * @param :
+    * @path :
+    * @body :
     * @return :
-    * @Description: 날짜와 아이템 id로 해당 날짜의 예약 조회
-    * @note:
     **/
     @GetMapping("/{reservationId}")
     public ApiResponse<List<ReservationResponseDTO>> getReservationByIdAndDate(@PathVariable(name = "reservationId") Long reservationId,
@@ -49,18 +48,17 @@ public class ReservationController {
     }
     
     /**
-    * @methodName : postReservation
+    * @Description: 예약 등록
     * @param :
-     * @path : itemId (아이템 아이디)
-     * @body : ReservationRequestDTO
+    * @path :
+    * @body :
     * @return :
-    * @Description: 예약 추가
-    * @note:
     **/
     @PostMapping("/{itemId}")
     public ApiResponse<ReservationResponseDTO> postReservation(@Valid @RequestBody ReservationRequestDTO reservationRequestDTO,
-                                                               @PathVariable(name = "itemId") Long itemId) {
-        return ApiResponse.onSuccess(reservationService.addReview(reservationRequestDTO, itemId));
+                                                               @PathVariable(name = "itemId") Long itemId,
+                                                               @AuthenticationPrincipal Users user) {
+        return ApiResponse.onSuccess(reservationService.addReview(reservationRequestDTO, itemId, user));
     }
 
 }
