@@ -48,9 +48,9 @@ public class ItemController {
     /**
     * @Description: 아이템 등록
     * @param :
-    * @path : 
+    * @path :
     * @body : ItemRequestDTO
-    * @return : 
+    * @return :
     **/
     @PostMapping
     public ApiResponse<ItemResponseDTO> postItem(@Valid @RequestBody ItemRequestDTO itemRequestDTO,
@@ -63,7 +63,7 @@ public class ItemController {
     * @param :
     * @path :  ItemId (아이템 아이디)
     * @body : ItemRequestDTO
-    * @return : 
+    * @return :
     **/
     @PatchMapping("/{itemId}")
     public ApiResponse<ItemResponseDTO> patchItem(@PathVariable("itemId") Long id,
