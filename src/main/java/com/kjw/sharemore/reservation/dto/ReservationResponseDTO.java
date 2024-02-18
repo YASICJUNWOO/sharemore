@@ -1,6 +1,6 @@
 package com.kjw.sharemore.reservation.dto;
 
-import com.kjw.sharemore.item.dto.ItemReservationResponseDTO;
+import com.kjw.sharemore.item.dto.response.ItemResponseBaseDTO;
 import com.kjw.sharemore.users.dto.UserResponseDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,7 +19,7 @@ public class ReservationResponseDTO {
 
     private UserResponseDTO renter;
 
-    private ItemReservationResponseDTO item;
+    private ItemResponseBaseDTO item;
 
     private LocalDateTime startDate;
 

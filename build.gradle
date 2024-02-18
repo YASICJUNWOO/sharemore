@@ -1,6 +1,6 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '3.2.0'
+	id 'org.springframework.boot' version '3.2.1'
 	id 'io.spring.dependency-management' version '1.1.4'
 	id 'org.jetbrains.kotlin.jvm'
 }
@@ -49,6 +49,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-reactor-netty:3.0.0'
 
 	implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
+
+	// jwt 관련
+	implementation("io.jsonwebtoken:jjwt-api:0.11.5")
+	runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.5")
+	runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.5")
 
 }
 

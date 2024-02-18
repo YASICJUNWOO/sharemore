@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
-@Component("DataInitializer")
+@Component("ItemDataInitializer")
 @RequiredArgsConstructor
-public class initializer {
+public class ItemDataInitializer {
 
     private final ItemSearchService itemSearchService;
     private final ItemSearchRepository itemSearchRepository;

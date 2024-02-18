@@ -4,23 +4,24 @@
       "type": "keyword"
     },
     "user": {
-      "type": "keyword"
+      "type": "text"
     },
     "name": {
       "type": "text",
-      "analyzer": "my_analyzer"
+      "analyzer": "my_nori_analyzer",
+      "search_analyzer": "my_nori_analyzer"
     },
     "description": {
-      "type": "keyword"
+      "type": "text"
     },
     "category": {
-      "type": "keyword"
+      "type": "text"
     },
     "price": {
       "type": "integer"
     },
     "itemImage": {
-      "type": "keyword"
+      "type": "text"
     }
   }
 }

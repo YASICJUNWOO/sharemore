@@ -8,12 +8,15 @@ import com.kjw.sharemore.users.entity.Users;
 import com.kjw.sharemore.users.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/users")
 @RequiredArgsConstructor
@@ -52,8 +55,9 @@ public class UserController {
     * @note: defaultUser로 일단 조회
     **/
     @GetMapping("/detail")
-    public ApiResponse<UserDetailResponseDTO> getMyDetail() {
-        return ApiResponse.onSuccess(userService.getUserDetailByEmail(defaultUser.getEmail()));
+    public ApiResponse<UserDetailResponseDTO> getMyDetail(@AuthenticationPrincipal Users user) {
+        log.info("user: {}", user.getAddress());
+        return ApiResponse.onSuccess(userService.getUserDetailByEmail(user.getEmail()));
     }
 
     /**

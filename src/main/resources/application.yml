@@ -38,3 +38,6 @@ spring:
 logging:
   level:
     root: info
+
+jwt:
+  secret: ThisIsTestKeyThisIsTestKeyThisIsTestKeyThisIsTestKeyThisIsTestKeyThisIsTestKey
