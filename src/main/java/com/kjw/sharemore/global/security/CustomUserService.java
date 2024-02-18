@@ -3,27 +3,26 @@ package com.kjw.sharemore.global.security;
 import com.kjw.sharemore.users.entity.Users;
 import com.kjw.sharemore.users.service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Slf4j
+@Service
 @RequiredArgsConstructor
-public class MyUserDetailService implements UserDetailsService {
+public class CustomUserService implements UserDetailsService {
 
     private final UserService userService;
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Users user = userService.getUserByEmail(email);
-        return User.builder()
-                .username(user.getEmail())
-                .password(user.getPassword())
-                .roles("USER")
-                .build();
+    public Users loadUserByUsername(String username) throws UsernameNotFoundException {
+        log.info("username: {}", username);
+
+        return userService.getUserByEmail(username);
     }
 
-}
 
+}

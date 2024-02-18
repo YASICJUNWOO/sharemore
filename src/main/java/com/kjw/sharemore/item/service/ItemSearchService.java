@@ -17,7 +17,12 @@ public class ItemSearchService {
         return itemSearchRepository.save(itemDocument);
     }
 
-    public List<ItemDocument> getItem(String keyword) {
+    public List<ItemDocument> getItemByName(String keyword) {
+        List<ItemDocument> byName = itemSearchRepository.findByName(keyword);
+        return byName;
+    }
+
+    public List<ItemDocument> getItemByNameAndDescription(String keyword) {
         List<ItemDocument> byName = itemSearchRepository.findByNameContainingOrDescriptionContaining(keyword, keyword);
         return byName;
     }

@@ -1,9 +1,8 @@
 package com.kjw.sharemore.item.service;
 
+import com.kjw.sharemore.item.dto.request.ItemRequestDTO;
+import com.kjw.sharemore.item.dto.response.ItemResponseDTO;
 import com.kjw.sharemore.item.entity.Item;
-import com.kjw.sharemore.item.converter.ItemConverter;
-import com.kjw.sharemore.item.dto.ItemRequestDTO;
-import com.kjw.sharemore.item.dto.ItemResponseDTO;
 import com.kjw.sharemore.item.repositoty.ItemRepository;
 import com.kjw.sharemore.users.entity.Users;
 import com.kjw.sharemore.users.service.UserService;
@@ -23,14 +22,14 @@ public class ItemService {
 
     public List<ItemResponseDTO> getItemList() {
         return itemRepository.findAll().stream().map(
-                ItemConverter::toDTO
+                ItemResponseDTO::of
         ).toList();
     }
 
-    public ItemResponseDTO addItem(ItemRequestDTO itemRequestDTO,Users user) {
+    public ItemResponseDTO addItem(ItemRequestDTO itemRequestDTO, Users user) {
         Users userByEmail = userService.getUserByEmail(user.getEmail()); //email로 유저 찾기
-        Item savedItem = itemRepository.save(ItemConverter.toEntity(itemRequestDTO,userByEmail)); //저장된 item
-        return ItemConverter.toDTO(savedItem);
+        Item savedItem = itemRepository.save(ItemRequestDTO.toEntity(itemRequestDTO, userByEmail)); //저장된 item
+        return ItemResponseDTO.of(savedItem);
     }
 
     public Item getItemByName(String itemName) {
@@ -40,7 +39,7 @@ public class ItemService {
 
     //아이템 조회해서 DTO로 변환
     public ItemResponseDTO getItemResponseById(Long itemId) {
-        return ItemConverter.toDTO(getItemByItemId(itemId));
+        return ItemResponseDTO.of(getItemByItemId(itemId));
     }
 
     //아이템 조회
@@ -48,18 +47,18 @@ public class ItemService {
         return itemRepository.findById(itemId).orElseThrow();
     }
 
-    public ItemResponseDTO updateItem(ItemRequestDTO itemRequestDTO,Long itemId) {
+    public ItemResponseDTO updateItem(ItemRequestDTO itemRequestDTO, Long itemId) {
         Item item = getItemByItemId(itemId);
         Item update = item.update(itemRequestDTO);
-        return ItemConverter.toDTO(itemRepository.save(update));
+        return ItemResponseDTO.of(itemRepository.save(update));
     }
 
     /**
-    * @methodName : getItemByCategory
-    * @param : category (카테고리)
-    * @return : List<ItemResponseDTO>
-    * @Description: 카테고리 별 아이템 조회
-    **/
+     * @methodName : getItemByCategory
+     * @param : category (카테고리)
+     * @return : List<ItemResponseDTO>
+     * @Description: 카테고리 별 아이템 조회
+     **/
     /*public List<ItemResponseDTO> getItemByCategory(String category) {
         String decodedCategory = decode(category);
         return itemRepository.findAllByCategory(decodedCategory).stream().map(
@@ -68,9 +67,9 @@ public class ItemService {
     }*/
 
     /**
-    * @methodName : decode
-    * @Description: 한글 디코딩
-    **/
+     * @methodName : decode
+     * @Description: 한글 디코딩
+     **/
     /*private String decode(String str) {
         return URLDecoder.decode(str, StandardCharsets.UTF_8);
     }*/

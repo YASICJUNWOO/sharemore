@@ -1,6 +1,7 @@
 package com.kjw.sharemore.users.converter;
 
-import com.kjw.sharemore.item.converter.ItemConverter;
+import com.kjw.sharemore.item.dto.response.ItemResponseBaseDTO;
+import com.kjw.sharemore.item.dto.response.ItemResponseDTO;
 import com.kjw.sharemore.userReivew.converter.UserReviewConverter;
 import com.kjw.sharemore.reservation.converter.ReservationConverter;
 import com.kjw.sharemore.users.dto.UserDetailResponseDTO;
@@ -27,7 +28,7 @@ public class UserConverter {
                 .email(users.getEmail())
                 .password(users.getPassword())
                 .address(users.getAddress())
-                .itemList(users.getItemList().stream().map(ItemConverter::toItemUserDTO).toList())
+                .itemList(users.getItemList().stream().map(ItemResponseBaseDTO::of).toList())
                 .getReviewList(users.getUserReviewList().stream().map(UserReviewConverter::toUserGetDTO).toList())
                 .postReviewList(users.getPostUserReviewList().stream().map(UserReviewConverter::toUserPostDTO).toList())
                 .reservationList(users.getReservationList().stream().map(ReservationConverter::toReservationUserResponseDTO).toList())

@@ -1,8 +1,9 @@
 package com.kjw.sharemore.global.security;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
-public class SimplePaaswordEncoder implements PasswordEncoder {
+public class CustomPasswordEncoder implements PasswordEncoder {
 
     @Override
     public String encode(CharSequence rawPassword) {
@@ -11,6 +12,8 @@ public class SimplePaaswordEncoder implements PasswordEncoder {
 
     @Override
     public boolean matches(CharSequence rawPassword, String encodedPassword) {
-        return encodedPassword.equals(encode(rawPassword));
+        return rawPassword.equals(encode(encodedPassword));
     }
+
+
 }

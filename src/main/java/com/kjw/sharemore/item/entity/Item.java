@@ -3,7 +3,7 @@ package com.kjw.sharemore.item.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.kjw.sharemore.global.BaseEntity;
-import com.kjw.sharemore.item.dto.ItemRequestDTO;
+import com.kjw.sharemore.item.dto.request.ItemRequestDTO;
 import com.kjw.sharemore.reservation.Reservation;
 import com.kjw.sharemore.users.entity.Users;
 import jakarta.persistence.*;
@@ -26,7 +26,7 @@ public class Item extends BaseEntity {
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id", nullable = false)
-    private Users user;
+    private Users owner;
 
     @Column(nullable = false)
     private String name;

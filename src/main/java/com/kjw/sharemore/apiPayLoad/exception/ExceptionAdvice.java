@@ -27,7 +27,7 @@ import java.util.Optional;
 @RestControllerAdvice(annotations = {RestController.class})
 public class ExceptionAdvice extends ResponseEntityExceptionHandler {
 
-    // ConstraintViolationException 발생시 -> @PathVariable 에 매핑되는 경로 파라미터 또는 @RequestParam 에 매핑되는 쿼리 파라미터를 검증하는데 실패했을 때 발생
+    // Constra  intViolationException 발생시 -> @PathVariable 에 매핑되는 경로 파라미터 또는 @RequestParam 에 매핑되는 쿼리 파라미터를 검증하는데 실패했을 때 발생
     //해당 타입은 DefaultHandlerExceptionResolver 에 핸들러가 선언되어 있지 않기 때문에 HTTP Status 500 으로 처리됩니다.
     @ExceptionHandler
     public ResponseEntity<Object> validation(ConstraintViolationException e, WebRequest request) {
