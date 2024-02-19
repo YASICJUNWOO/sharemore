@@ -1,7 +1,6 @@
 package com.kjw.sharemore.users.controller;
 
 import com.kjw.sharemore.apiPayLoad.ApiResponse;
-import com.kjw.sharemore.users.converter.UserConverter;
 import com.kjw.sharemore.users.dto.UserDetailResponseDTO;
 import com.kjw.sharemore.users.dto.UserRequestDTO;
 import com.kjw.sharemore.users.entity.Users;
@@ -10,8 +9,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,16 +20,6 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
-
-    //기본 유저 생성
-    //       ('공준우', 'joonoo3@inha.edu', '1234', '성남시 분당구');
-    private final Users defaultUser = Users.builder()
-            .name("공준우")
-            .email("joonoo3@inha.edu")
-            .password("1234")
-            .address("성남시 분당구")
-            .build();
-
 
     /**
     * @methodName : getUserList
@@ -46,19 +33,6 @@ public class UserController {
         return ApiResponse.onSuccess(userService.getUserList());
     }
 
-    /**
-    * @methodName : getMyDetail
-    * @param :
-     * @path : emeail
-    * @return :
-    * @Description: 유저 상세 조회
-    * @note: defaultUser로 일단 조회
-    **/
-    @GetMapping("/detail")
-    public ApiResponse<UserDetailResponseDTO> getMyDetail(@AuthenticationPrincipal Users user) {
-        log.info("user: {}", user.getAddress());
-        return ApiResponse.onSuccess(userService.getUserDetailByEmail(user.getEmail()));
-    }
 
     /**
      * @methodName : getUser
@@ -68,9 +42,9 @@ public class UserController {
      * @Description: 유저 상세 조회
      * @note: defaultUser로 일단 조회
      **/
-    @GetMapping("/detail/{email}")
-    public ApiResponse<UserDetailResponseDTO> getUserDetail(@PathVariable("email") String email) {
-        return ApiResponse.onSuccess(userService.getUserDetailByEmail(email));
+    @GetMapping("/detail")
+    public ApiResponse<UserDetailResponseDTO> getUserDetail(@AuthenticationPrincipal Users user) {
+        return ApiResponse.onSuccess(userService.getUserDetail(user));
     }
 
     //유저 등록
@@ -80,9 +54,10 @@ public class UserController {
     }
 
     //유저 수정
-    @PatchMapping("/{email}")
-    public ApiResponse<UserDetailResponseDTO> patchUser(@PathVariable String email, @RequestBody UserRequestDTO userRequestDTO) {
-        return ApiResponse.onSuccess(userService.updateUser(email, userRequestDTO));
+    @PatchMapping()
+    public ApiResponse<UserDetailResponseDTO> patchUser(@AuthenticationPrincipal Users user,
+                                                        @RequestBody UserRequestDTO userRequestDTO) {
+        return ApiResponse.onSuccess(userService.updateUser(user, userRequestDTO));
     }
 
     //유저 삭제

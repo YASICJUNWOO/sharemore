@@ -24,7 +24,10 @@ public enum ErrorStatus implements BaseErrorCode {
 
     //reservation
     DATE_TIME_ERROR(HttpStatus.BAD_REQUEST, "RESERVATION002", "시작 시간보다 이전 시간을 선택할 수 없습니다"),
-    DUPLICATE_RESERVATION(HttpStatus.CONFLICT, "RESERVATION003", "이미 예약된 시간입니다");
+    DUPLICATE_RESERVATION(HttpStatus.CONFLICT, "RESERVATION003", "이미 예약된 시간입니다"),
+
+    //item
+    NO_EXIST_ITEM(HttpStatus.NOT_FOUND, "ITEM001", "존재하지 않는 아이템입니다");
 
     //review
 

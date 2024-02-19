@@ -1,13 +1,18 @@
 package com.kjw.sharemore.users.converter;
 
 import com.kjw.sharemore.item.dto.response.ItemResponseBaseDTO;
+import com.kjw.sharemore.reivew.dto.ReviewResponseDTO;
+import com.kjw.sharemore.reivew.dto.ReviewUserGetResponseDTO;
+import com.kjw.sharemore.reivew.dto.ReviewUserPostResponseDTO;
+import com.kjw.sharemore.reivew.entity.Review;
 import com.kjw.sharemore.reservation.dto.response.ReservationUserResponseDTO;
-import com.kjw.sharemore.userReivew.converter.UserReviewConverter;
 import com.kjw.sharemore.users.dto.UserDetailResponseDTO;
 import com.kjw.sharemore.users.dto.UserResponseDTO;
 import com.kjw.sharemore.users.entity.Users;
 import com.kjw.sharemore.users.dto.UserRequestDTO;
 import lombok.Builder;
+
+import java.util.List;
 
 @Builder
 public class UserConverter {
@@ -21,15 +26,15 @@ public class UserConverter {
                 .build();
     }
 
-    public static UserDetailResponseDTO toUserDetailResponseDTO(Users users) {
+    public static UserDetailResponseDTO toUserDetailResponseDTO(Users users, List<Review> getReviewList) {
         return UserDetailResponseDTO.builder()
                 .name(users.getName())
                 .email(users.getEmail())
                 .password(users.getPassword())
                 .address(users.getAddress())
                 .itemList(users.getItemList().stream().map(ItemResponseBaseDTO::of).toList())
-                .getReviewList(users.getUserReviewList().stream().map(UserReviewConverter::toUserGetDTO).toList())
-                .postReviewList(users.getPostUserReviewList().stream().map(UserReviewConverter::toUserPostDTO).toList())
+                .getReviewList(getReviewList.stream().map(ReviewResponseDTO::of).toList())
+                .postReviewList(users.getPostReviewList().stream().map(ReviewUserPostResponseDTO::of).toList())
                 .reservationList(ReservationUserResponseDTO.createList(users.getReservationList()))
                 .build();
     }

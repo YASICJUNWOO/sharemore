@@ -2,7 +2,7 @@ package com.kjw.sharemore.users.entity;
 
 import com.kjw.sharemore.global.BaseEntity;
 import com.kjw.sharemore.item.entity.Item;
-import com.kjw.sharemore.userReivew.entity.UserReview;
+import com.kjw.sharemore.reivew.entity.Review;
 import com.kjw.sharemore.reservation.Reservation;
 import com.kjw.sharemore.users.dto.UserRequestDTO;
 import jakarta.persistence.*;
@@ -42,13 +42,10 @@ public class Users extends BaseEntity implements UserDetails {
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     private List<Item> itemList = new ArrayList<>();
 
-    @Builder.Default
-    @OneToMany(mappedBy = "reviewee", cascade = CascadeType.ALL)
-    private List<UserReview> userReviewList = new ArrayList<>();
 
     @Builder.Default
     @OneToMany(mappedBy = "reviewer", cascade = CascadeType.ALL)
-    private List<UserReview> postUserReviewList = new ArrayList<>();
+    private List<Review> postReviewList = new ArrayList<>();
 
     @Builder.Default
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)

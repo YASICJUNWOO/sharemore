@@ -25,6 +25,9 @@ public class ReservationService {
     private final UserService userService;
     private final ItemService itemService;
 
+    /**
+     * @Description: 예약 등록
+     **/
     public ReservationResponseDTO addReview(ReservationRequestDTO reservationRequestDTO, Long itemId, Users user) {
         Item itemByItemId = itemService.getItemByItemId(itemId);
         validateTimeOrder(reservationRequestDTO);
@@ -34,6 +37,9 @@ public class ReservationService {
         return ReservationResponseDTO.of(reservationRepository.save(entity));
     }
 
+    /**
+     * @Description: 시간 순서 확인
+     **/
     public void validateTimeOrder(ReservationRequestDTO reservationRequestDTO) {
         if (reservationRequestDTO.getStartDate().isAfter(reservationRequestDTO.getEndDate())) {
             throw new ReservationExceptionHandler.WrongTimeOrder();
@@ -41,12 +47,8 @@ public class ReservationService {
     }
 
     /**
-    * @methodName : validateDuplicateReservation
-    * @param :
-    * @return :
-    * @Description: 중복된 예약이 있는지 검사
-    * @note:
-    **/
+     * @Description: 중복 예약 확인
+     **/
     public void validateDuplicateReservation(Item item, LocalDateTime startDate, LocalDateTime endDate ) {
 
         if(reservationRepository.findFirstByItemAndStartDateLessThanEqualAndEndDateGreaterThanEqual(item,endDate,startDate).isPresent()){
@@ -55,10 +57,16 @@ public class ReservationService {
 
     }
 
+    /**
+     * @Description: 전체 예약 조회
+     **/
     public List<ReservationResponseDTO> getReservationList() {
         return reservationRepository.findAll().stream().map(ReservationResponseDTO::of).toList();
     }
 
+    /**
+    * @Description: 해당 날짜의 예약 조회
+    **/
     public List<ReservationResponseDTO> getReservationByIdAndDate(Long reservationId, LocalDateTime date) {
 
         LocalDateTime startDate = date.withHour(0).withMinute(0).withSecond(0);

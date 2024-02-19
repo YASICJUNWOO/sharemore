@@ -1,6 +1,8 @@
 package com.kjw.sharemore.users.service;
 
 import com.kjw.sharemore.apiPayLoad.exception.handler.UserExceptionHandler;
+import com.kjw.sharemore.reivew.entity.Review;
+import com.kjw.sharemore.reivew.service.ReviewService;
 import com.kjw.sharemore.users.converter.UserConverter;
 import com.kjw.sharemore.users.dto.UserDetailResponseDTO;
 import com.kjw.sharemore.users.dto.UserRequestDTO;
@@ -18,6 +20,7 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final ReviewService reviewService;
 
     /**
      * @param :
@@ -28,7 +31,7 @@ public class UserService {
      **/
     public List<UserDetailResponseDTO> getUserList() {
         return userRepository.findAll().stream().map(
-                UserConverter::toUserDetailResponseDTO
+                user -> UserDetailResponseDTO.of(user, reviewService.getReviewByReviewee(user))
         ).toList();
     }
 
@@ -42,7 +45,7 @@ public class UserService {
     public UserDetailResponseDTO addUser(UserRequestDTO userRequestDTO) {
         isExistUser(userRequestDTO.getEmail());
         Users users = UserConverter.toEntity(userRequestDTO);
-        return UserConverter.toUserDetailResponseDTO(userRepository.save(users));
+        return getUserDetail(userRepository.save(users));
     }
 
     private void isExistUser(String email) {
@@ -53,8 +56,10 @@ public class UserService {
         );
     }
 
-    public UserDetailResponseDTO getUserDetailByEmail(String email) {
-        return UserConverter.toUserDetailResponseDTO(userRepository.findByEmail(email).orElseThrow(UserExceptionHandler.NoExistUser::new));
+    public UserDetailResponseDTO getUserDetail(Users user) {
+        List<Review> reviewByReviewee = reviewService.getReviewByReviewee(user);
+
+        return UserConverter.toUserDetailResponseDTO(user,reviewByReviewee);
     }
 
     /**
@@ -75,10 +80,9 @@ public class UserService {
      * @Description: 유저 정보 수정
      * @note:
      **/
-    public UserDetailResponseDTO updateUser(String email, UserRequestDTO userRequestDTO) {
-        Users user = userRepository.findByEmail(email).orElseThrow();
+    public UserDetailResponseDTO updateUser(Users user, UserRequestDTO userRequestDTO) {
         user.update(userRequestDTO);
-        return UserConverter.toUserDetailResponseDTO(userRepository.save(user));
+        return getUserDetail(user);
     }
 
     /**
@@ -91,6 +95,6 @@ public class UserService {
     public UserDetailResponseDTO deleteUser(String email) {
         Users user = userRepository.findByEmail(email).orElseThrow();
         userRepository.delete(user);
-        return UserConverter.toUserDetailResponseDTO(user);
+        return getUserDetail(user);
     }
 }
