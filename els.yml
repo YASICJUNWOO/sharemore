@@ -30,6 +30,19 @@ services:
     networks:
       - es-bridge
 
+  redis: # container name
+    image: redis:latest
+    ports: # 바인딩할 포트:내부 포트
+      - 6379:6379
+    command: redis-server /usr/local/conf/redis.conf
+    volumes:
+      - ./redis/data:/data
+      - ./redis/conf/redis.conf:/usr/local/conf/redis.conf
+    restart: always
+
 networks:
   es-bridge:
     driver: bridge
+
+    #docker compose -f els.yml up -d
+    #docker compose -f els.yml down

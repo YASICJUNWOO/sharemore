@@ -1,6 +1,7 @@
 package com.kjw.sharemore.item.service;
 
 import com.kjw.sharemore.item.dto.request.ItemRequestDTO;
+import com.kjw.sharemore.item.dto.response.ItemResponseBaseDTO;
 import com.kjw.sharemore.item.dto.response.ItemResponseDTO;
 import com.kjw.sharemore.item.entity.Item;
 import com.kjw.sharemore.item.repositoty.ItemRepository;
@@ -18,7 +19,6 @@ import java.util.List;
 public class ItemService {
 
     private final ItemRepository itemRepository;
-    private final UserService userService;
 
     public List<ItemResponseDTO> getItemList() {
         return itemRepository.findAll().stream().map(
@@ -27,8 +27,7 @@ public class ItemService {
     }
 
     public ItemResponseDTO addItem(ItemRequestDTO itemRequestDTO, Users user) {
-        Users userByEmail = userService.getUserByEmail(user.getEmail()); //email로 유저 찾기
-        Item savedItem = itemRepository.save(ItemRequestDTO.toEntity(itemRequestDTO, userByEmail)); //저장된 item
+        Item savedItem = itemRepository.save(ItemRequestDTO.toEntity(itemRequestDTO, user)); //저장된 item
         return ItemResponseDTO.of(savedItem);
     }
 
@@ -51,6 +50,12 @@ public class ItemService {
         Item item = getItemByItemId(itemId);
         Item update = item.update(itemRequestDTO);
         return ItemResponseDTO.of(itemRepository.save(update));
+    }
+
+    public List<ItemResponseBaseDTO> getItemByOwner(Users user) {
+        return itemRepository.findAllByOwner(user).stream().map(
+                ItemResponseBaseDTO::of
+        ).toList();
     }
 
     /**

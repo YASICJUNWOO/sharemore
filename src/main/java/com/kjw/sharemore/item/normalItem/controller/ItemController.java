@@ -1,9 +1,9 @@
-package com.kjw.sharemore.item.controller;
+package com.kjw.sharemore.item.normalItem.controller;
 
 import com.kjw.sharemore.apiPayLoad.ApiResponse;
-import com.kjw.sharemore.item.dto.request.ItemRequestDTO;
-import com.kjw.sharemore.item.dto.response.ItemResponseDTO;
-import com.kjw.sharemore.item.service.ItemService;
+import com.kjw.sharemore.item.normalItem.dto.request.ItemRequestDTO;
+import com.kjw.sharemore.item.normalItem.dto.response.ItemResponseDTO;
+import com.kjw.sharemore.item.normalItem.service.ItemService;
 import com.kjw.sharemore.users.entity.Users;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

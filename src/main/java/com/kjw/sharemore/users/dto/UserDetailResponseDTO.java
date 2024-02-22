@@ -4,7 +4,6 @@ import com.kjw.sharemore.item.dto.response.ItemResponseBaseDTO;
 import com.kjw.sharemore.reivew.dto.ReviewResponseDTO;
 import com.kjw.sharemore.reivew.entity.Review;
 import com.kjw.sharemore.reservation.dto.response.ReservationUserResponseDTO;
-import com.kjw.sharemore.reivew.dto.ReviewUserGetResponseDTO;
 import com.kjw.sharemore.reivew.dto.ReviewUserPostResponseDTO;
 import com.kjw.sharemore.users.entity.Users;
 import lombok.AllArgsConstructor;
@@ -34,16 +33,20 @@ public class UserDetailResponseDTO extends UserResponseDTO {
     @Builder.Default
     private List<ReviewUserPostResponseDTO> postReviewList = new ArrayList<>();
 
-    public static UserDetailResponseDTO of(Users users, List<Review> getReviewList) {
+    public static UserDetailResponseDTO of(Users users,
+                                           List<ItemResponseBaseDTO> itemList,
+                                           List<ReviewResponseDTO> getReviewList,
+                                           List<ReviewUserPostResponseDTO> postReviewList,
+                                           List<ReservationUserResponseDTO> reservationList) {
         return UserDetailResponseDTO.builder()
                 .name(users.getName())
                 .email(users.getEmail())
                 .password(users.getPassword())
                 .address(users.getAddress())
-                .itemList(users.getItemList().stream().map(ItemResponseBaseDTO::of).toList())
-                .getReviewList(getReviewList.stream().map(ReviewResponseDTO::of).toList())
-                .postReviewList(users.getPostReviewList().stream().map(ReviewUserPostResponseDTO::of).toList())
-                .reservationList(ReservationUserResponseDTO.createList(users.getReservationList()))
+                .itemList(itemList)
+                .getReviewList(getReviewList)
+                .postReviewList(postReviewList)
+                .reservationList(reservationList)
                 .build();
     }
 

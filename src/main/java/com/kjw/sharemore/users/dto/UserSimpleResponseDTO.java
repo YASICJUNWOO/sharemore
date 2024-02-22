@@ -15,11 +15,13 @@ import lombok.NoArgsConstructor;
 @Builder
 public class UserSimpleResponseDTO {
 
+    private Long id;
     private String name;
     private String email;
 
     public static UserSimpleResponseDTO of(Users user) {
         return UserSimpleResponseDTO.builder()
+                .id(user.getUserId())
                 .name(user.getName())
                 .email(user.getEmail())
                 .build();

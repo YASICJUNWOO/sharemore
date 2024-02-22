@@ -41,10 +41,22 @@ public class ReservationController {
     * @body :
     * @return :
     **/
-    @GetMapping("/{reservationId}")
-    public ApiResponse<List<ReservationResponseDTO>> getReservationByIdAndDate(@PathVariable(name = "reservationId") Long reservationId,
+    @GetMapping("/{itemId}/date")
+    public ApiResponse<List<ReservationResponseDTO>> getReservationByIdAndDate(@PathVariable(name = "itemId") Long itemId,
                                                                          @RequestParam(name = "date") LocalDateTime date) {
-        return ApiResponse.onSuccess(reservationService.getReservationByIdAndDate(reservationId, date));
+        return ApiResponse.onSuccess(reservationService.getReservationByIdAndDate(itemId, date));
+    }
+
+    /**
+     * @Description: 해당 아이템의 예약 조회ㄴ
+     * @param :
+     * @path :
+     * @body :
+     * @return :
+     **/
+    @GetMapping("/{itemId}")
+    public ApiResponse<List<ReservationResponseDTO>> getReservationByIdAndDate(@PathVariable(name = "itemId") Long itemId) {
+        return ApiResponse.onSuccess(reservationService.getReservationList(itemId));
     }
     
     /**
@@ -59,6 +71,20 @@ public class ReservationController {
                                                                @PathVariable(name = "itemId") Long itemId,
                                                                @AuthenticationPrincipal Users user) {
         return ApiResponse.onSuccess(reservationService.addReview(reservationRequestDTO, itemId, user));
+    }
+
+    /**
+    * @Description: 해당 년 월의 예약 조회
+    * @param : year, month
+    * @path :
+    * @body :
+    * @return :
+    **/
+    @GetMapping("/{itemId}/month")
+    public ApiResponse<List<String>> getReservationByMonth(@PathVariable(name = "itemId") Long itemId,
+                                                                           @RequestParam(name = "year") int year,
+                                                                          @RequestParam(name = "month") int month) {
+        return ApiResponse.onSuccess(reservationService.getReservationByMonth(itemId, year, month));
     }
 
 }
