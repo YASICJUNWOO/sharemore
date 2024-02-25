@@ -1,6 +1,6 @@
-package com.kjw.sharemore.item.repositoty;
+package com.kjw.sharemore.item.normalItem.repositoty;
 
-import com.kjw.sharemore.item.entity.ItemDocument;
+import com.kjw.sharemore.item.normalItem.entity.ItemDocument;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
 import java.util.List;

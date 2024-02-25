@@ -1,6 +1,6 @@
 package com.kjw.sharemore.reservation.repository;
 
-import com.kjw.sharemore.item.entity.Item;
+import com.kjw.sharemore.item.normalItem.entity.Item;
 import com.kjw.sharemore.reservation.Reservation;
 import com.kjw.sharemore.users.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;

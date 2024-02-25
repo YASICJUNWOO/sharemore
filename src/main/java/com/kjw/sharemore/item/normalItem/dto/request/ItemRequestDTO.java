@@ -1,15 +1,14 @@
-package com.kjw.sharemore.item.dto.request;
+package com.kjw.sharemore.item.normalItem.dto.request;
 
-import com.kjw.sharemore.item.entity.Item;
+import com.kjw.sharemore.item.normalItem.entity.Item;
 import com.kjw.sharemore.users.entity.Users;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
 
 /**
-* @Description: 아이템 등록 요청 DTO
-**/
+ * @Description: 아이템 등록 요청 DTO
+ **/
 
 @Getter
 @ToString

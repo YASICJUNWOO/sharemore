@@ -2,7 +2,7 @@ package com.kjw.sharemore.reivew.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.kjw.sharemore.global.BaseEntity;
-import com.kjw.sharemore.item.entity.Item;
+import com.kjw.sharemore.item.normalItem.entity.Item;
 import com.kjw.sharemore.users.entity.Users;
 import jakarta.persistence.*;
 import lombok.*;

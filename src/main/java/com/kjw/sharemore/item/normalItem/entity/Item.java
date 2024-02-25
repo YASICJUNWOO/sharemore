@@ -1,9 +1,9 @@
-package com.kjw.sharemore.item.entity;
+package com.kjw.sharemore.item.normalItem.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.kjw.sharemore.global.BaseEntity;
-import com.kjw.sharemore.item.dto.request.ItemRequestDTO;
+import com.kjw.sharemore.item.normalItem.dto.request.ItemRequestDTO;
 import com.kjw.sharemore.reservation.Reservation;
 import com.kjw.sharemore.users.entity.Users;
 import jakarta.persistence.*;

@@ -1,12 +1,11 @@
-package com.kjw.sharemore.item.service;
+package com.kjw.sharemore.item.normalItem.service;
 
-import com.kjw.sharemore.item.dto.request.ItemRequestDTO;
-import com.kjw.sharemore.item.dto.response.ItemResponseBaseDTO;
-import com.kjw.sharemore.item.dto.response.ItemResponseDTO;
-import com.kjw.sharemore.item.entity.Item;
-import com.kjw.sharemore.item.repositoty.ItemRepository;
+import com.kjw.sharemore.item.normalItem.dto.request.ItemRequestDTO;
+import com.kjw.sharemore.item.normalItem.dto.response.ItemResponseBaseDTO;
+import com.kjw.sharemore.item.normalItem.dto.response.ItemResponseDTO;
+import com.kjw.sharemore.item.normalItem.entity.Item;
+import com.kjw.sharemore.item.normalItem.repositoty.ItemRepository;
 import com.kjw.sharemore.users.entity.Users;
-import com.kjw.sharemore.users.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

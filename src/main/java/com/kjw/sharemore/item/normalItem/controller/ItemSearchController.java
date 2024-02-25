@@ -1,9 +1,9 @@
 package com.kjw.sharemore.item.normalItem.controller;
 
 import com.kjw.sharemore.apiPayLoad.ApiResponse;
-import com.kjw.sharemore.item.ItemDataInitializer;
 import com.kjw.sharemore.item.normalItem.entity.ItemDocument;
-import com.kjw.sharemore.item.service.ItemSearchService;
+import com.kjw.sharemore.item.normalItem.service.ItemSearchService;
+import com.kjw.sharemore.item.normalItem.ItemDataInitializer;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

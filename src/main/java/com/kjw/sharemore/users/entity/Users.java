@@ -1,7 +1,7 @@
 package com.kjw.sharemore.users.entity;
 
 import com.kjw.sharemore.global.BaseEntity;
-import com.kjw.sharemore.item.entity.Item;
+import com.kjw.sharemore.item.normalItem.entity.Item;
 import com.kjw.sharemore.reivew.entity.Review;
 import com.kjw.sharemore.reservation.Reservation;
 import com.kjw.sharemore.users.dto.UserRequestDTO;

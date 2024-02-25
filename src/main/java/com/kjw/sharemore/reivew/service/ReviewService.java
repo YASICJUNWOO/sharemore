@@ -2,7 +2,7 @@ package com.kjw.sharemore.reivew.service;
 
 import com.kjw.sharemore.apiPayLoad.code.status.ErrorStatus;
 import com.kjw.sharemore.apiPayLoad.exception.GeneralException;
-import com.kjw.sharemore.item.repositoty.ItemRepository;
+import com.kjw.sharemore.item.normalItem.repositoty.ItemRepository;
 import com.kjw.sharemore.reivew.dto.ReviewRequestDTO;
 import com.kjw.sharemore.reivew.dto.ReviewResponseDTO;
 import com.kjw.sharemore.reivew.dto.ReviewUserPostResponseDTO;

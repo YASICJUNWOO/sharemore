@@ -9,7 +9,8 @@ VALUES ('김철수', 'chulsoo1@example.com', 'password123', '서울특별시 강
        ('최준영', 'junyoung8@example.com', 'password852', '서울특별시 성동구'),
        ('김하은', 'haeun9@example.com', 'password963', '서울특별시 중랑구'),
        ('이지아', 'jia10@example.com', 'password159', '서울특별시 강북구'),
-       ('공준우', 'joonoo3@inha.edu', '1234', '성남시 분당구');
+       ('공준우', 'joonoo3@inha.edu', 'hwilove', '성남시 분당구'),
+       ('정휘진', 'hwiollf@naver.edu', 'konglove', '성남시 분당구');
 
 INSERT INTO item (owner_id, name, description, category, price,item_image)
 VALUES (1, '책상', '나무로 만든 책상', '가구', 50000, 'https://source.unsplash.com/random/?desk'),

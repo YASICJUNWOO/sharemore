@@ -1,4 +1,4 @@
-package com.kjw.sharemore.item.dto.search;
+package com.kjw.sharemore.item.normalItem.dto.search;
 
 import lombok.Getter;
 

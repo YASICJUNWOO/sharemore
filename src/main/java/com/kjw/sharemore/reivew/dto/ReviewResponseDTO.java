@@ -1,6 +1,6 @@
 package com.kjw.sharemore.reivew.dto;
 
-import com.kjw.sharemore.item.dto.response.ItemResponseBaseDTO;
+import com.kjw.sharemore.item.normalItem.dto.response.ItemResponseBaseDTO;
 import com.kjw.sharemore.reivew.entity.Review;
 import com.kjw.sharemore.users.dto.UserSimpleResponseDTO;
 import lombok.AllArgsConstructor;

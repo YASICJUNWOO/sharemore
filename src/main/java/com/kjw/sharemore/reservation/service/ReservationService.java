@@ -1,8 +1,8 @@
 package com.kjw.sharemore.reservation.service;
 
 import com.kjw.sharemore.apiPayLoad.exception.handler.ReservationExceptionHandler;
-import com.kjw.sharemore.item.entity.Item;
-import com.kjw.sharemore.item.service.ItemService;
+import com.kjw.sharemore.item.normalItem.entity.Item;
+import com.kjw.sharemore.item.normalItem.service.ItemService;
 import com.kjw.sharemore.reservation.Reservation;
 import com.kjw.sharemore.reservation.dto.request.ReservationRequestDTO;
 import com.kjw.sharemore.reservation.dto.response.ReservationResponseDTO;

@@ -1,8 +1,8 @@
 package com.kjw.sharemore.users.service;
 
 import com.kjw.sharemore.apiPayLoad.exception.handler.UserExceptionHandler;
-import com.kjw.sharemore.item.dto.response.ItemResponseBaseDTO;
-import com.kjw.sharemore.item.service.ItemService;
+import com.kjw.sharemore.item.normalItem.dto.response.ItemResponseBaseDTO;
+import com.kjw.sharemore.item.normalItem.service.ItemService;
 import com.kjw.sharemore.reivew.dto.ReviewResponseDTO;
 import com.kjw.sharemore.reivew.dto.ReviewUserPostResponseDTO;
 import com.kjw.sharemore.reivew.service.ReviewService;
