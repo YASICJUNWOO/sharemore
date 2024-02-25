@@ -29,6 +29,10 @@ spring:
     password: junwoo # 3. admin, vhost 추가한 경우
     virtual-host: junwoo # 3. admin, vhost 추가한 경우
 
+  redis:
+    host: localhost
+    port: 6379
+
 
 
   sql:

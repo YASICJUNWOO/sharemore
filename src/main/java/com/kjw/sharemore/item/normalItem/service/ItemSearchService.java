@@ -1,7 +1,7 @@
-package com.kjw.sharemore.item.service;
+package com.kjw.sharemore.item.normalItem.service;
 
-import com.kjw.sharemore.item.entity.ItemDocument;
-import com.kjw.sharemore.item.repositoty.ItemSearchRepository;
+import com.kjw.sharemore.item.normalItem.entity.ItemDocument;
+import com.kjw.sharemore.item.normalItem.repositoty.ItemSearchRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

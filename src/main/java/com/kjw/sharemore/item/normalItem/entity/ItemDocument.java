@@ -1,4 +1,4 @@
-package com.kjw.sharemore.item.entity;
+package com.kjw.sharemore.item.normalItem.entity;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;

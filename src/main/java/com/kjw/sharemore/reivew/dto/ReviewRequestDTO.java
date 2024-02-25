@@ -1,6 +1,6 @@
 package com.kjw.sharemore.reivew.dto;
 
-import com.kjw.sharemore.item.entity.Item;
+import com.kjw.sharemore.item.normalItem.entity.Item;
 import com.kjw.sharemore.reivew.entity.Review;
 import com.kjw.sharemore.users.entity.Users;
 import lombok.Getter;

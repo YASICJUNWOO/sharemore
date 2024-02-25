@@ -1,6 +1,7 @@
-package com.kjw.sharemore.item.repositoty;
+package com.kjw.sharemore.item.normalItem.repositoty;
 
-import com.kjw.sharemore.item.entity.Item;
+import com.kjw.sharemore.item.normalItem.entity.Item;
+import com.kjw.sharemore.users.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Collection;
@@ -14,6 +15,8 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     List<Item> findAllByPriceBetween(int minPrice, int maxPrice);
 
     Optional<Object> findAllByItemId(Long itemId);
+
+    List<Item> findAllByOwner(Users user);
 
     //List<Item> findAllByCategory(String category);
 }

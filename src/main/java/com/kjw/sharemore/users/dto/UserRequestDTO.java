@@ -1,5 +1,6 @@
 package com.kjw.sharemore.users.dto;
 
+import com.kjw.sharemore.users.entity.Users;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 
@@ -17,5 +18,14 @@ public class UserRequestDTO {
 
     @NotBlank
     private String address;
+
+    public static Users toEntity(UserRequestDTO userRequestDTO) {
+        return Users.builder()
+                .name(userRequestDTO.getName())
+                .email(userRequestDTO.getEmail())
+                .password(userRequestDTO.getPassword())
+                .address(userRequestDTO.getAddress())
+                .build();
+    }
 
 }

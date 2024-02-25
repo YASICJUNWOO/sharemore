@@ -12,6 +12,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 public class UserResponseDTO {
 
+    private Long id;
     private String name;
     private String email;
     private String password;
@@ -19,6 +20,7 @@ public class UserResponseDTO {
 
     public static UserResponseDTO of(Users user) {
         return UserResponseDTO.builder()
+                .id(user.getUserId())
                 .name(user.getName())
                 .email(user.getEmail())
                 .password(user.getPassword())

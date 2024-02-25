@@ -1,6 +1,6 @@
-package com.kjw.sharemore.item.dto.response;
+package com.kjw.sharemore.item.normalItem.dto.response;
 
-import com.kjw.sharemore.item.entity.Item;
+import com.kjw.sharemore.item.normalItem.entity.Item;
 import com.kjw.sharemore.users.dto.UserSimpleResponseDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
