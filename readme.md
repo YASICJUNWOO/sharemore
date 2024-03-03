@@ -52,6 +52,20 @@
 #### 5. 보안 및 신뢰도(진행중)
 사용자 인증, 거래 완료 확인 등의 시스템을 통해 사용자의 신뢰를 확보하고, 안전한 거래를 보장합니다.
 
+## 페이지
+<p>
+
+#### 홈 페이지
+<img width="1266" alt="image" src="https://github.com/YASICJUNWOO/sharemore/assets/99794552/96ceb7ac-c081-45d2-832b-be2b1cacc1ff">
+
+<ul>
+<li>광고 배너</li> 
+<li>인기 검색어</li> 
+  ➡️ Redis Zset 사용하여 인기 검색어 관리
+<li>사용자 최근 탐색 관련 아이템 추천</li> 
+  ➡️ Redis Zset. Elastic Search 사용하여 관리
+</ul>
+
 ## 👨‍💻 규칙
 
 ### Commit Message
