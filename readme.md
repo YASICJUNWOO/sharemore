@@ -56,7 +56,8 @@
 <p>
 
 #### 홈 페이지
-<img width="1266" alt="image" src="https://github.com/YASICJUNWOO/sharemore/assets/99794552/96ceb7ac-c081-45d2-832b-be2b1cacc1ff">
+<img width="950" alt="image" src="https://github.com/YASICJUNWOO/sharemore/assets/99794552/aee99859-4239-47cc-b744-59cc620ceb8a">
+
 
 <ul>
 <li>광고 배너</li> 
