@@ -56,16 +56,35 @@
 ## 페이지
 <p>
 
-#### 홈 페이지
+### ✅ 홈 페이지
 <img width="950" alt="image" src="https://github.com/YASICJUNWOO/sharemore/assets/99794552/aee99859-4239-47cc-b744-59cc620ceb8a">
 
 
 <ul>
 <li>광고 배너</li> 
 <li>인기 검색어</li> 
-  ➡️ Redis Zset 사용하여 인기 검색어 관리
+  ➡️ Redis Zset 사용하여 인기 검색어 10개 관리
 <li>사용자 최근 탐색 관련 아이템 추천</li> 
   ➡️ Redis Zset. Elastic Search 사용하여 관리
+</ul>
+
+### ✅상품 페이지
+<img width="1260" alt="image" src="https://github.com/YASICJUNWOO/sharemore/assets/99794552/bae536fa-76fe-4af6-8281-68f5f25d3ff1">
+
+<ul>
+<li>상품 조건에 따라 필터링</li> 
+  <ul>
+    <li>카테고리</li>
+    <li>가격 조건</li>
+    <li>최신 순</li>
+    <li>인기 순</li>
+  </ul>
+<li>최근 탐색 아이템</li> 
+  ➡️ Redis Zset 사용하여 최근 탐색 아이템 5개 관리
+<li>아이템 검색</li> 
+  ➡️ Elastic Search 사용하여 관리
+  </br>
+  ➡️ nori 한글 형태소 분석기 사용하여 analize, tokenize 하였습니다.
 </ul>
 
 ## 👨‍💻 규칙
