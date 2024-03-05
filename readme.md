@@ -24,7 +24,8 @@
 - AWS EC2, CodeDeploy, S3, RDS (진행중)
 
 ## 🎯 ERD
-![ITEM](https://github.com/YASICJUNWOO/sharemore/assets/99794552/d34dce60-3e0f-427b-a2d2-7f576f04b373)
+
+![sharemoreerd](https://github.com/YASICJUNWOO/sharemore/assets/99794552/9ecb1a59-d5aa-4c93-9d0c-3d2dd6a412ec)
 
 
 <!-- ## 🎯 시스템 아키텍처 --> 
