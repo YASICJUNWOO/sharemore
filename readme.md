@@ -69,7 +69,8 @@
 </ul>
 
 ### ✅상품 페이지
-<img width="1260" alt="image" src="https://github.com/YASICJUNWOO/sharemore/assets/99794552/bae536fa-76fe-4af6-8281-68f5f25d3ff1">
+<img width="1250" alt="image" src="https://github.com/YASICJUNWOO/sharemore/assets/99794552/3c541b10-aed5-4292-a88c-73070a4a7508">
+
 
 <ul>
 <li>상품 조건에 따라 필터링</li> 
