@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.kjw.sharemore.global.BaseEntity;
 import com.kjw.sharemore.item.normalItem.dto.request.ItemRequestDTO;
+import com.kjw.sharemore.like.Likes;
 import com.kjw.sharemore.reservation.Reservation;
 import com.kjw.sharemore.users.entity.Users;
 import jakarta.persistence.*;
@@ -43,13 +44,22 @@ public class Item extends BaseEntity {
     @Column(nullable = true)
     private String itemImage;
 
-    //@OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
-    //private List<Review> reviewList = new ArrayList<>();
+    @Builder.Default
+    @Column(nullable = true)
+    private Integer likeCount = 0;
 
     @JsonManagedReference
     @Builder.Default
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
     private List<Reservation> reservationList = new ArrayList<>();
+
+    public void addLikeCount() {
+        this.likeCount++;
+    }
+
+    public void subtractLikeCount() {
+        this.likeCount--;
+    }
 
     public Item update(ItemRequestDTO itemRequestDTO) {
         this.name = itemRequestDTO.getName();

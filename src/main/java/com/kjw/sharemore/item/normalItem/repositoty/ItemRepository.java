@@ -18,5 +18,9 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 
     List<Item> findAllByOwner(Users user);
 
+    List<Item> findAllByOrderByCreatedAtDesc();
+
+    List<Item> findAllByOrderByLikeCountDesc();
+
     //List<Item> findAllByCategory(String category);
 }

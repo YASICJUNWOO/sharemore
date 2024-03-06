@@ -1,6 +1,7 @@
 package com.kjw.sharemore.item.normalItem.service;
 
 import com.kjw.sharemore.item.normalItem.entity.ItemDocument;
+import com.kjw.sharemore.item.normalItem.repositoty.ItemRepository;
 import com.kjw.sharemore.item.normalItem.repositoty.ItemSearchRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import java.util.List;
 public class ItemSearchService {
 
     private final ItemSearchRepository itemSearchRepository;
+    private final ItemRepository itemRepository;
 
     public ItemDocument createItem(ItemDocument itemDocument) {
         return itemSearchRepository.save(itemDocument);

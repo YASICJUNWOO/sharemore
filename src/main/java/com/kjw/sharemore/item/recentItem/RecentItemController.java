@@ -27,4 +27,9 @@ public class RecentItemController {
         return ApiResponse.onSuccess(recentItemService.saveRecentItem(itemId, user));
     }
 
+    @GetMapping("/hot")
+    public ApiResponse<List<HotKeyWordDTO>> getHotKeyWord() {
+        return ApiResponse.onSuccess(recentItemService.getHotKeyWord());
+    }
+
 }

@@ -3,6 +3,7 @@ package com.kjw.sharemore.item.normalItem.controller;
 import com.kjw.sharemore.apiPayLoad.ApiResponse;
 import com.kjw.sharemore.item.normalItem.dto.request.ItemRequestDTO;
 import com.kjw.sharemore.item.normalItem.dto.response.ItemResponseDTO;
+import com.kjw.sharemore.item.normalItem.service.ItemQueryService;
 import com.kjw.sharemore.item.normalItem.service.ItemService;
 import com.kjw.sharemore.item.recentItem.RecentItemService;
 import com.kjw.sharemore.users.entity.Users;
@@ -21,6 +22,7 @@ import java.util.List;
 public class ItemController {
 
     private final ItemService itemService;
+    private final ItemQueryService itemQueryService;
     private final RecentItemService recentItemService;
 
     /**
@@ -73,6 +75,12 @@ public class ItemController {
     public ApiResponse<ItemResponseDTO> patchItem(@PathVariable("itemId") Long id,
                                                   @Valid @RequestBody ItemRequestDTO itemRequestDTO) {
         return ApiResponse.onSuccess(itemService.updateItem(itemRequestDTO, id));
+    }
+
+    @GetMapping("/filter")
+    public ApiResponse<List<ItemResponseDTO>> getFilterItem(@RequestParam(name = "keyword", required = false) String keyword,
+                                                            @RequestParam(name = "sort-type", required = false) String sortType) {
+        return ApiResponse.onSuccess(itemService.getItemListByFilter(keyword, sortType));
     }
 
 }

@@ -47,12 +47,12 @@ public class SpringSecurityConfig {
                 .headers(headers->
                         headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/status/**","/auth","/api/item/**").permitAll()
+                        .requestMatchers("/status/**","/auth","/api/item/**","/**").permitAll()
                         .requestMatchers(GET,"/api/item","/api/reservation/**").permitAll()
                         .anyRequest().authenticated()
                 )
-                .exceptionHandling(handler->
-                        handler.authenticationEntryPoint(jwtAuthenticationEntryPoint))
+                /*.exceptionHandling(handler->
+                        handler.authenticationEntryPoint(jwtAuthenticationEntryPoint))*/
                 .sessionManagement(session->
                         session.sessionCreationPolicy(STATELESS)
                 )

@@ -4,12 +4,16 @@ import com.kjw.sharemore.item.normalItem.dto.request.ItemRequestDTO;
 import com.kjw.sharemore.item.normalItem.dto.response.ItemResponseBaseDTO;
 import com.kjw.sharemore.item.normalItem.dto.response.ItemResponseDTO;
 import com.kjw.sharemore.item.normalItem.entity.Item;
+import com.kjw.sharemore.item.normalItem.entity.ItemDocument;
 import com.kjw.sharemore.item.normalItem.repositoty.ItemRepository;
+import com.kjw.sharemore.like.LikeService;
 import com.kjw.sharemore.users.entity.Users;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -18,10 +22,23 @@ import java.util.List;
 public class ItemService {
 
     private final ItemRepository itemRepository;
+    private final ItemSearchService itemSearchService;
+    private final LikeService likeService;
 
     public List<ItemResponseDTO> getItemList() {
-        return itemRepository.findAll().stream().map(
-                ItemResponseDTO::of
+        List<Item> all = itemRepository.findAll();
+
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
+            return all.stream().map(
+                    ItemResponseDTO::of
+            ).toList();
+        }
+        Users user = (Users) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return all.stream().map(
+                item -> {
+                    boolean isLike = likeService.isLike(user.getUserId(), item.getItemId());
+                    return ItemResponseDTO.toDTOWithLike(item, isLike);
+                }
         ).toList();
     }
 
@@ -57,24 +74,62 @@ public class ItemService {
         ).toList();
     }
 
-    /**
-     * @methodName : getItemByCategory
-     * @param : category (카테고리)
-     * @return : List<ItemResponseDTO>
-     * @Description: 카테고리 별 아이템 조회
-     **/
-    /*public List<ItemResponseDTO> getItemByCategory(String category) {
-        String decodedCategory = decode(category);
-        return itemRepository.findAllByCategory(decodedCategory).stream().map(
-                ItemConverter::toDTO
-        ).toList();
-    }*/
+    public List<ItemResponseDTO> getItemListByFilter(String keyword, String sortType) {
 
-    /**
-     * @methodName : decode
-     * @Description: 한글 디코딩
-     **/
-    /*private String decode(String str) {
-        return URLDecoder.decode(str, StandardCharsets.UTF_8);
-    }*/
+        List<Item> itemList = getItems(keyword);
+
+        itemList = sortList(sortType, itemList);
+        log.info("itemList: {}", itemList.size());
+
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
+            return itemList.stream().map(
+                    ItemResponseDTO::of
+            ).toList();
+        }
+
+        Users user = (Users) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return itemList.stream().map(
+                item -> {
+                    boolean isLike = likeService.isLike(user.getUserId(), item.getItemId());
+                    return ItemResponseDTO.toDTOWithLike(item, isLike);
+                }
+        ).toList();
+
+    }
+
+    private List<Item> getItems(String keyword) {
+
+        if (!keyword.isEmpty()){
+            log.info("keyword is empty");
+            List<ItemDocument> itemByName = itemSearchService.getItemByName(keyword);
+            return toItemList(itemByName);
+        }
+
+        return itemRepository.findAll();
+    }
+
+    public List<Item> toItemList(List<ItemDocument> itemDocumentList) {
+        return itemDocumentList.stream().map(
+                itemDocument -> itemRepository.findById(Long.parseLong(itemDocument.getId())).orElseThrow()
+        ).toList();
+    }
+
+    private List<Item> sortList(String sortType, List<Item> itemList) {
+
+        List<Item> sortedList = new ArrayList<>();
+
+        log.info("sortType: {}", sortType);
+        //좋아요 순으로 정렬
+        if (sortType.equals("likeDesc")) {
+            log.info("likeDesc");
+            sortedList = itemList.stream().sorted((o1, o2) -> o2.getLikeCount().compareTo(o1.getLikeCount())).toList();
+        }
+        //최신순으로 정렬
+        else if (sortType.equals("recentDesc") || sortType.isEmpty()) {
+            sortedList = itemList.stream().sorted((o1, o2) -> o2.getCreatedAt().compareTo(o1.getCreatedAt())).toList();
+        }
+
+        return sortedList;
+    }
+
 }

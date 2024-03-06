@@ -1,27 +1,36 @@
-/*
 package com.kjw.sharemore.socket.config;
 
 import com.kjw.sharemore.socket.WebSocketHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.socket.config.annotation.EnableWebSocket;
-import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
-import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
+import org.springframework.messaging.simp.config.MessageBrokerRegistry;
+import org.springframework.web.socket.config.annotation.*;
 
 //@EnableWebSocket
-//@Configuration
-@RequiredArgsConstructor
-public class WebSocketConfig implements WebSocketConfigurer {
+@Configuration
+@EnableWebSocketMessageBroker
+//@RequiredArgsConstructor
+public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
-    private final WebSocketHandler webSocketHandler;
+    //private final WebSocketHandler webSocketHandler;
 
-    @Override
+    /*@Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
 
         registry.addHandler(webSocketHandler, "/ws/chat")
                 .setAllowedOrigins("*");
 
+    }*/
+
+    @Override
+    public void registerStompEndpoints(StompEndpointRegistry registry) {
+        registry.addEndpoint("/chatting").setAllowedOriginPatterns("**").withSockJS();
+    }
+
+    @Override
+    public void configureMessageBroker(MessageBrokerRegistry registry) {
+        registry.setApplicationDestinationPrefixes("/kafka");
+        registry.enableSimpleBroker("/topic");
     }
 
 }
-*/

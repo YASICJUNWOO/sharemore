@@ -32,6 +32,24 @@ public class ItemResponseDTO extends ItemResponseBaseDTO {
                 .category(item.getCategory())
                 .price(item.getPrice())
                 .itemImage(item.getItemImage())
+                .createdAt(item.getCreatedAt())
+                .likeCount(item.getLikeCount())
+                .reservationList(ReservationItemDTO.createList(item.getReservationList()))
+                .owner(UserSimpleResponseDTO.of(item.getOwner()))
+                .build();
+    }
+
+    public static ItemResponseDTO toDTOWithLike(Item item, boolean isLike) {
+        return ItemResponseDTO.builder()
+                .id(item.getItemId())
+                .name(item.getName())
+                .description(item.getDescription())
+                .category(item.getCategory())
+                .price(item.getPrice())
+                .itemImage(item.getItemImage())
+                .isLike(isLike)
+                .createdAt(item.getCreatedAt())
+                .likeCount(item.getLikeCount())
                 .reservationList(ReservationItemDTO.createList(item.getReservationList()))
                 .owner(UserSimpleResponseDTO.of(item.getOwner()))
                 .build();

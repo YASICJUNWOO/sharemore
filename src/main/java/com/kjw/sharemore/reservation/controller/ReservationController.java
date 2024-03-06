@@ -87,4 +87,10 @@ public class ReservationController {
         return ApiResponse.onSuccess(reservationService.getReservationByMonth(itemId, year, month));
     }
 
+    @PostMapping("/{itemId}/check")
+    public ApiResponse<Boolean> checkReservation(@PathVariable(name = "itemId") Long itemId,
+                                                                @RequestBody ReservationRequestDTO reservationRequestDTO) {
+        return ApiResponse.onSuccess(reservationService.checkReservation(reservationRequestDTO, itemId));
+    }
+
 }

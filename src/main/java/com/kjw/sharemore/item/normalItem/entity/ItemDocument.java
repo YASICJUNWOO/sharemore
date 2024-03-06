@@ -15,8 +15,8 @@ import org.springframework.data.elasticsearch.annotations.*;
 public class ItemDocument {
 
     @Id
-    @Field(name = "id", type = FieldType.Keyword)
-    private String itemId;
+    @Field(type = FieldType.Keyword)
+    private String id;
 
     @Field(type = FieldType.Keyword)
     private String user;

@@ -80,8 +80,6 @@ public class ReservationService {
 
         LocalDateTime startDate = date.withHour(0).withMinute(0).withSecond(0);
         LocalDateTime endDate = date.withHour(23).withMinute(59).withSecond(59);
-log.info("startDate: {}", startDate.toString());
-log.info("endDate: {}", endDate.toString());
         Item itemByItemId = itemService.getItemByItemId(itemId);
         List<ReservationResponseDTO> list = reservationRepository.findAllByItemAndStartDateLessThanEqualAndEndDateGreaterThan(itemByItemId, endDate, startDate)
                 .stream().map(ReservationResponseDTO::of).toList();
@@ -104,5 +102,12 @@ log.info("endDate: {}", endDate.toString());
         }
 
         return reservationDays;
+    }
+
+    public Boolean checkReservation(ReservationRequestDTO reservationRequestDTO, Long itemId) {
+        Item itemByItemId = itemService.getItemByItemId(itemId);
+        validateTimeOrder(reservationRequestDTO);
+        validateDuplicateReservation(itemByItemId, reservationRequestDTO.getStartDate(), reservationRequestDTO.getEndDate());
+        return true;
     }
 }
