@@ -23,6 +23,7 @@
 - Redis, Kafka
 - AWS EC2, CodeDeploy, S3, RDS (진행중)
 
+![sharemoreerd](https://github.com/YASICJUNWOO/sharemore/assets/99794552/bb21bb88-7969-478a-ae01-8f432681cc7b)
 ## 🎯 ERD
 
 ![sharemoreerd](https://github.com/YASICJUNWOO/sharemore/assets/99794552/da6b47dd-9d62-477f-bc50-2f8705a07c47)
