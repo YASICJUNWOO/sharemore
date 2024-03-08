@@ -1,7 +1,7 @@
 # SHARE MORE
 #### "ShareMore: 더 나누고, 더 절약하는 물건 공유 서비스"
 
-![쉐어모어](https://github.com/DevEx-senier-project/DevEx-BE/assets/99794552/7348858a-9d53-431b-adfb-7a58ef8bd0f9)
+![36 (1)](https://github.com/YASICJUNWOO/sharemore/assets/99794552/36983da0-c755-463a-bb34-81c22ffadb57)
 
 <p align="middle"></p>
 
@@ -27,6 +27,8 @@
 
 ![sharemoreerd](https://github.com/YASICJUNWOO/sharemore/assets/99794552/9ecb1a59-d5aa-4c93-9d0c-3d2dd6a412ec)
 
+## 🎯 Kafka 구조
+![Frame 2 (2)](https://github.com/YASICJUNWOO/sharemore/assets/99794552/34635e95-0b09-412d-a932-f57d40f7f676)
 
 <!-- ## 🎯 시스템 아키텍처 --> 
 
