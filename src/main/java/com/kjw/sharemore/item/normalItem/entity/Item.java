@@ -53,12 +53,14 @@ public class Item extends BaseEntity {
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
     private List<Reservation> reservationList = new ArrayList<>();
 
-    public void addLikeCount() {
+    public int addLikeCount() {
         this.likeCount++;
+        return this.likeCount;
     }
 
-    public void subtractLikeCount() {
+    public int subtractLikeCount() {
         this.likeCount--;
+        return this.likeCount;
     }
 
     public Item update(ItemRequestDTO itemRequestDTO) {

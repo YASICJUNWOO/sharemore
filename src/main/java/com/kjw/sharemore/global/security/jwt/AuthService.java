@@ -2,6 +2,7 @@ package com.kjw.sharemore.global.security.jwt;
 
 import com.kjw.sharemore.global.security.CustomUserService;
 import com.kjw.sharemore.users.entity.Users;
+import com.kjw.sharemore.users.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.h2.command.Token;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,6 +17,7 @@ public class AuthService {
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private final CustomUserService customUserService;
     private final TokenProvider tokenProvider;
+    private final UserRepository userRepository;
 
     public TokenInfo login(LoginDto dto) {
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(dto.getEmail(),dto.getPassword());
@@ -24,11 +26,12 @@ public class AuthService {
         TokenInfo tokenInfo = tokenProvider.generateToken(authenticate);
         String userName = getUserName(authenticate);
 
-        return TokenInfo.builder()
-                .userName(userName)
-                .userEmail(tokenInfo.getUserEmail())
-                .accessToken(tokenInfo.getAccessToken())
-                .build();
+        return addUserInfo(tokenInfo.getUserEmail(), tokenInfo);
+    }
+
+    public TokenInfo addUserInfo(String email, TokenInfo tokenInfo) {
+        Users user = userRepository.findByEmail(email).orElseThrow();
+        return tokenInfo.addUserInfo(user);
     }
 
     private String getUserName(Authentication authenticate){

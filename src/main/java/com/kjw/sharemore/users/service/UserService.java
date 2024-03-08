@@ -11,6 +11,7 @@ import com.kjw.sharemore.reservation.service.ReservationService;
 import com.kjw.sharemore.users.dto.UserDetailResponseDTO;
 import com.kjw.sharemore.users.dto.UserRequestDTO;
 import com.kjw.sharemore.users.dto.UserSimpleDetailDTO;
+import com.kjw.sharemore.users.dto.UserSimpleResponseDTO;
 import com.kjw.sharemore.users.entity.Users;
 import com.kjw.sharemore.users.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -29,6 +30,7 @@ public class UserService {
     private final ReviewService reviewService;
     private final ItemService itemService;
     private final ReservationService reservationService;
+    private final UserRedisService userRedisService;
 
     /**
      * @param :
@@ -37,8 +39,10 @@ public class UserService {
      * @path :
      * @body :
      **/
-    public List<UserDetailResponseDTO> getUserList() {
-        return userRepository.findAll().stream().map(this::getUserDetail).toList();
+    public List<UserSimpleDetailDTO> getUserList() {
+        return userRepository.findAll().stream().map(
+                user -> UserSimpleDetailDTO.of(user, itemService.getItemByOwner(user), reviewService.getReviewByReviewee(user))
+        ).toList();
     }
 
     /**
@@ -49,12 +53,19 @@ public class UserService {
      * @body :
      **/
     @Transactional
-    public UserDetailResponseDTO getUserDetail(Users user) {
-        List<ItemResponseBaseDTO> itemList = itemService.getItemByOwner(user);
-        List<ReviewResponseDTO> reviewByReviewee = reviewService.getReviewByReviewee(user);
-        List<ReviewUserPostResponseDTO> postReviewList = reviewService.getReviewByReviewer(user);
-        List<ReservationUserResponseDTO> reservationList = reservationService.getReservationByUser(user);
-        return UserDetailResponseDTO.of(user, itemList, reviewByReviewee, postReviewList, reservationList);
+    public Object getUserDetail(Long userId,Users requestUser) {
+        Users targetUser = userRepository.findById(userId).orElseThrow(UserExceptionHandler.NoExistUser::new);
+
+        List<ItemResponseBaseDTO> itemList = itemService.getItemByOwner(targetUser);
+        List<ReviewResponseDTO> reviewByReviewee = reviewService.getReviewByReviewee(targetUser);
+        List<ReviewUserPostResponseDTO> postReviewList = reviewService.getReviewByReviewer(targetUser);
+        List<ReservationUserResponseDTO> reservationList = reservationService.getReservationByUser(targetUser);
+        Long viewCount = userRedisService.addViewCount(targetUser.getUserId().toString(), requestUser.getUserId().toString());
+
+        if(requestUser.getUserId().equals(targetUser.getUserId())){
+            return UserDetailResponseDTO.of(targetUser, itemList, reviewByReviewee, postReviewList, reservationList,viewCount);
+        }
+        return UserSimpleDetailDTO.of(targetUser, itemList, reviewByReviewee);
     }
 
     /**
@@ -80,10 +91,10 @@ public class UserService {
      * @path :
      * @body :
      **/
-    public UserDetailResponseDTO addUser(UserRequestDTO userRequestDTO) {
+    public UserSimpleResponseDTO addUser(UserRequestDTO userRequestDTO) {
         isExistUser(userRequestDTO.getEmail());
         Users users = UserRequestDTO.toEntity(userRequestDTO);
-        return getUserDetail(userRepository.save(users));
+        return UserSimpleResponseDTO.of(userRepository.save(users));
     }
 
     /**
@@ -119,9 +130,9 @@ public class UserService {
      * @path :
      * @body :
      **/
-    public UserDetailResponseDTO updateUser(Users user, UserRequestDTO userRequestDTO) {
+    public UserSimpleResponseDTO updateUser(Users user, UserRequestDTO userRequestDTO) {
         user.update(userRequestDTO);
-        return getUserDetail(user);
+        return UserSimpleResponseDTO.of(user);
     }
 
     /**
@@ -131,8 +142,8 @@ public class UserService {
      * @path :
      * @body :
      **/
-    public UserDetailResponseDTO deleteUser(Users user) {
+    public UserSimpleResponseDTO deleteUser(Users user) {
         userRepository.delete(user);
-        return getUserDetail(user);
+        return UserSimpleResponseDTO.of(user);
     }
 }

@@ -19,10 +19,10 @@ public class LikeController {
     private final LikeService likeService;
 
     @PostMapping
-    public ApiResponse<String> addLike(@AuthenticationPrincipal Users user,
+    public ApiResponse<Integer> addLike(@AuthenticationPrincipal Users user,
                                        @RequestParam Long itemId) {
-        likeService.addLike(user, itemId);
-        return ApiResponse.onSuccess("좋아요 추가 완료");
+
+        return ApiResponse.onSuccess(likeService.addLike(user, itemId));
     }
 
 }

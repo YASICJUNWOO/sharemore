@@ -32,11 +32,14 @@ public class UserDetailResponseDTO extends UserResponseDTO {
     @Builder.Default
     private List<ReviewUserPostResponseDTO> postReviewList = new ArrayList<>();
 
+    private Long viewCount;
+
     public static UserDetailResponseDTO of(Users users,
                                            List<ItemResponseBaseDTO> itemList,
                                            List<ReviewResponseDTO> getReviewList,
                                            List<ReviewUserPostResponseDTO> postReviewList,
-                                           List<ReservationUserResponseDTO> reservationList) {
+                                           List<ReservationUserResponseDTO> reservationList,
+                                           Long viewCount) {
         return UserDetailResponseDTO.builder()
                 .name(users.getName())
                 .email(users.getEmail())
@@ -46,6 +49,7 @@ public class UserDetailResponseDTO extends UserResponseDTO {
                 .getReviewList(getReviewList)
                 .postReviewList(postReviewList)
                 .reservationList(reservationList)
+                .viewCount(viewCount)
                 .build();
     }
 

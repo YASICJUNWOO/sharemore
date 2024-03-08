@@ -1,5 +1,7 @@
 package com.kjw.sharemore.global.security.jwt;
 
+import com.kjw.sharemore.users.dto.UserResponseDTO;
+import com.kjw.sharemore.users.entity.Users;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,6 +19,11 @@ public class TokenInfo {
 
     private String userEmail;
 
-    private String userName;
+    private UserResponseDTO userInfo;
+
+    public TokenInfo addUserInfo(Users user) {
+        this.userInfo = UserResponseDTO.of(user);
+        return this;
+    }
 
 }

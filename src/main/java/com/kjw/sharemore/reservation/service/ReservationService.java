@@ -96,7 +96,11 @@ public class ReservationService {
         for (int i = 1; i <= startDate.getDayOfMonth(); i++) {
             List<ReservationResponseDTO> reservationByIdAndDate = getReservationByIdAndDate(itemId, startDate);
             if (!reservationByIdAndDate.isEmpty()) {
-                reservationDays.add(month + "-" + i);
+                if( month < 10) {
+                    reservationDays.add("0" + month + "-" + i);
+                } else {
+                    reservationDays.add(month + "-" + i);
+                }
             }
             startDate = startDate.plusDays(1);
         }

@@ -4,7 +4,9 @@ import com.kjw.sharemore.apiPayLoad.ApiResponse;
 import com.kjw.sharemore.users.dto.UserDetailResponseDTO;
 import com.kjw.sharemore.users.dto.UserRequestDTO;
 import com.kjw.sharemore.users.dto.UserSimpleDetailDTO;
+import com.kjw.sharemore.users.dto.UserSimpleResponseDTO;
 import com.kjw.sharemore.users.entity.Users;
+import com.kjw.sharemore.users.service.UserRedisService;
 import com.kjw.sharemore.users.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -30,7 +32,7 @@ public class UserController {
    * @return :
    **/
     @GetMapping
-    public ApiResponse<List<UserDetailResponseDTO>> getUserList() {
+    public ApiResponse<List<UserSimpleDetailDTO>> getUserList() {
         return ApiResponse.onSuccess(userService.getUserList());
     }
 
@@ -42,21 +44,10 @@ public class UserController {
     * @body :
     * @return :
     **/
-    @GetMapping("/detail")
-    public ApiResponse<UserDetailResponseDTO> getUserDetail(@AuthenticationPrincipal Users user) {
-        return ApiResponse.onSuccess(userService.getUserDetail(user));
-    }
-
-    /**
-     * @Description: 유저 id로 상세 조회
-     * @param :
-     * @path :
-     * @body :
-     * @return :
-     **/
-    @GetMapping("/detail/{userId}")
-    public ApiResponse<UserSimpleDetailDTO> getUserDetail(@PathVariable(name = "userId") Long userId) {
-        return ApiResponse.onSuccess(userService.getUserDetail(userId));
+    @GetMapping("/{userId}/detail")
+    public ApiResponse<?> getUserDetail(@PathVariable(name = "userId") Long userId,
+                                                            @AuthenticationPrincipal Users user) {
+        return ApiResponse.onSuccess(userService.getUserDetail(userId,user));
     }
 
     /**
@@ -67,7 +58,7 @@ public class UserController {
     * @return :
     **/
     @PostMapping
-    public ApiResponse<UserDetailResponseDTO> postUser(@Valid @RequestBody UserRequestDTO userRequestDTO) {
+    public ApiResponse<UserSimpleResponseDTO> postUser(@Valid @RequestBody UserRequestDTO userRequestDTO) {
         return ApiResponse.onSuccess(userService.addUser(userRequestDTO));
     }
 
@@ -79,7 +70,7 @@ public class UserController {
     * @return :
     **/
     @PatchMapping()
-    public ApiResponse<UserDetailResponseDTO> patchUser(@AuthenticationPrincipal Users user,
+    public ApiResponse<UserSimpleResponseDTO> patchUser(@AuthenticationPrincipal Users user,
                                                         @RequestBody UserRequestDTO userRequestDTO) {
         return ApiResponse.onSuccess(userService.updateUser(user, userRequestDTO));
     }
@@ -92,9 +83,8 @@ public class UserController {
     * @return :
     **/
     @DeleteMapping()
-    public ApiResponse<String> deleteUser(@AuthenticationPrincipal Users user) {
-        userService.deleteUser(user);
-        return ApiResponse.onSuccess("success");
+    public ApiResponse<UserSimpleResponseDTO> deleteUser(@AuthenticationPrincipal Users user) {
+        return ApiResponse.onSuccess(userService.deleteUser(user));
     }
 
 }

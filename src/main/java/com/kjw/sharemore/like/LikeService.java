@@ -17,8 +17,10 @@ public class LikeService {
     private final ItemRepository itemRepository;
 
     @Transactional
-    public Likes addLike(Users users, Long itemId) {
+    public Integer addLike(Users users, Long itemId) {
         Item item = itemRepository.findById(itemId).orElseThrow(() -> new IllegalArgumentException("해당 아이템이 없습니다."));
+
+        int likeCount = item.getLikeCount();
 
         if (isLike(users.getUserId(), itemId)) {
             return updateLike(users, item);
@@ -27,20 +29,22 @@ public class LikeService {
         Likes likes = Likes.of(users, item);
         Likes save = likeRepository.save(likes);
         item.addLikeCount();
-        return save;
+        return item.getLikeCount();
     }
 
-    private Likes updateLike(Users users, Item item) {
+    @Transactional
+    public int updateLike(Users users, Item item) {
         Likes likes = likeRepository.findByUser_UserIdAndItem_ItemId(users.getUserId(), item.getItemId()).get();
+
+        int likeCount;
         if (likes.isState()){
-            log.info("좋아요 취소");
-            item.subtractLikeCount();
+            likeCount = item.subtractLikeCount();
         }
         else{
-            log.info("좋아요 추가");
-            item.addLikeCount();
+            likeCount = item.addLikeCount();
         }
-        return likes.update();
+        likes.update();
+        return likeCount;
     }
 
     public boolean isLike(Long userId, Long itemId) {
