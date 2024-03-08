@@ -25,7 +25,7 @@
 
 ## 🎯 ERD
 
-![sharemoreerd](https://github.com/YASICJUNWOO/sharemore/assets/99794552/9ecb1a59-d5aa-4c93-9d0c-3d2dd6a412ec)
+![sharemoreerd](https://github.com/YASICJUNWOO/sharemore/assets/99794552/da6b47dd-9d62-477f-bc50-2f8705a07c47)
 
 ## 🎯 Kafka 구조
 ![Frame 2 (2)](https://github.com/YASICJUNWOO/sharemore/assets/99794552/34635e95-0b09-412d-a932-f57d40f7f676)
