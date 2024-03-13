@@ -1,6 +1,7 @@
 package com.kjw.sharemore.reservation.dto.response;
 
 import com.kjw.sharemore.item.normalItem.dto.response.ItemResponseBaseDTO;
+import com.kjw.sharemore.item.normalItem.dto.response.ItemSimpleResponse;
 import com.kjw.sharemore.reservation.Reservation;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,7 +17,7 @@ import java.util.List;
 @Getter
 public class ReservationUserResponseDTO {
 
-    private ItemResponseBaseDTO item;
+    private ItemSimpleResponse item;
 
     private LocalDateTime startDate;
 
@@ -24,7 +25,7 @@ public class ReservationUserResponseDTO {
 
     public static ReservationUserResponseDTO of(Reservation reservation) {
         return ReservationUserResponseDTO.builder()
-                .item(ItemResponseBaseDTO.of(reservation.getItem()))
+                .item(ItemSimpleResponse.of(reservation.getItem()))
                 .startDate(reservation.getStartDate())
                 .endDate(reservation.getEndDate())
                 .build();

@@ -1,6 +1,7 @@
 package com.kjw.sharemore.reivew.dto;
 
 import com.kjw.sharemore.item.normalItem.dto.response.ItemResponseBaseDTO;
+import com.kjw.sharemore.item.normalItem.dto.response.ItemSimpleResponse;
 import com.kjw.sharemore.reivew.entity.Review;
 import com.kjw.sharemore.users.dto.UserSimpleResponseDTO;
 import lombok.AllArgsConstructor;
@@ -14,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Getter
 public class ReviewResponseDTO {
 
-    private ItemResponseBaseDTO item;
+    private ItemSimpleResponse item;
 
     private UserSimpleResponseDTO reviewer;
 
@@ -24,7 +25,7 @@ public class ReviewResponseDTO {
 
     public static ReviewResponseDTO of(Review review) {
         return ReviewResponseDTO.builder()
-                .item(ItemResponseBaseDTO.of(review.getItem()))
+                .item(ItemSimpleResponse.of(review.getItem()))
                 .reviewer(UserSimpleResponseDTO.of(review.getReviewer()))
                 .comment(review.getComment())
                 .rating(review.getRating())

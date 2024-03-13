@@ -15,21 +15,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter
 @SuperBuilder
-public class ItemResponseBaseDTO {
-
-    private Long id;
-
-    private String name;
-
-    private UserSimpleResponseDTO owner;
+public class ItemResponseBaseDTO extends ItemSimpleResponse {
 
     private String description;
-
-    private String category;
-
-    private int price;
-
-    private String itemImage;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDateTime createdAt;
@@ -40,21 +28,9 @@ public class ItemResponseBaseDTO {
     @Builder.Default
     private Integer likeCount = 0;
 
-    public static ItemResponseBaseDTO of(Item item) {
-        return ItemResponseBaseDTO.builder()
-                .id(item.getItemId())
-                .name(item.getName())
-                .owner(UserSimpleResponseDTO.of(item.getOwner()))
-                .description(item.getDescription())
-                .category(item.getCategory())
-                .price(item.getPrice())
-                .itemImage(item.getItemImage())
-                .createdAt(item.getCreatedAt())
-                .likeCount(item.getLikeCount())
-                .build();
-    }
+    private Long viewCount;
 
-    public static ItemResponseBaseDTO toDTOWithLike(Item item, boolean isLike) {
+    public static ItemResponseBaseDTO of(Item item, Long viewCount ) {
         return ItemResponseBaseDTO.builder()
                 .id(item.getItemId())
                 .name(item.getName())
@@ -64,8 +40,8 @@ public class ItemResponseBaseDTO {
                 .price(item.getPrice())
                 .itemImage(item.getItemImage())
                 .createdAt(item.getCreatedAt())
-                .isLike(isLike)
                 .likeCount(item.getLikeCount())
+                .viewCount(viewCount)
                 .build();
     }
 

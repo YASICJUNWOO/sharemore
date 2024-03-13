@@ -1,6 +1,7 @@
 package com.kjw.sharemore.users.dto;
 
 import com.kjw.sharemore.item.normalItem.dto.response.ItemResponseBaseDTO;
+import com.kjw.sharemore.item.normalItem.dto.response.ItemSimpleResponse;
 import com.kjw.sharemore.reivew.dto.ReviewResponseDTO;
 import com.kjw.sharemore.users.entity.Users;
 import lombok.AllArgsConstructor;
@@ -19,13 +20,13 @@ import java.util.List;
 public class UserSimpleDetailDTO extends UserResponseDTO {
 
     @Builder.Default
-    private List<ItemResponseBaseDTO> itemList = new ArrayList<>();
+    private List<ItemSimpleResponse> itemList = new ArrayList<>();
 
     @Builder.Default
     private List<ReviewResponseDTO> getReviewList = new ArrayList<>();
 
     public static UserSimpleDetailDTO of(Users users,
-                                         List<ItemResponseBaseDTO> itemList,
+                                         List<ItemSimpleResponse> itemList,
                                          List<ReviewResponseDTO> getReviewList) {
         return UserSimpleDetailDTO.builder()
                 .name(users.getName())

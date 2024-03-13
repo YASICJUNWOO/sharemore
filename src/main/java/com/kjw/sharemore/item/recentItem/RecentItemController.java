@@ -14,22 +14,22 @@ import java.util.List;
 @RequestMapping("/api/item/recent")
 public class RecentItemController {
 
-    private final RecentItemService recentItemService;
+    private final ItemRedisService itemRedisService;
 
     @GetMapping
     public ApiResponse<List<ItemResponseBaseDTO>> getRecentItem(@AuthenticationPrincipal Users user) {
-        return ApiResponse.onSuccess(recentItemService.getRecentItem(user));
+        return ApiResponse.onSuccess(itemRedisService.getRecentItem(user));
     }
 
     @PostMapping
     public ApiResponse<String> saveRecentItem(@RequestParam("itemId") Long itemId,
                                               @AuthenticationPrincipal Users user) {
-        return ApiResponse.onSuccess(recentItemService.saveRecentItem(itemId, user));
+        return ApiResponse.onSuccess(itemRedisService.saveRecentItem(itemId, user));
     }
 
     @GetMapping("/hot")
     public ApiResponse<List<HotKeyWordDTO>> getHotKeyWord() {
-        return ApiResponse.onSuccess(recentItemService.getHotKeyWord());
+        return ApiResponse.onSuccess(itemRedisService.getHotKeyWord());
     }
 
 }

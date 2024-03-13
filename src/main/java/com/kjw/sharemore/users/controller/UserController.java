@@ -24,19 +24,6 @@ public class UserController {
 
     private final UserService userService;
 
-   /**
-   * @Description: 유저 리스트 조회
-   * @param :
-   * @path :
-   * @body :
-   * @return :
-   **/
-    @GetMapping
-    public ApiResponse<List<UserSimpleDetailDTO>> getUserList() {
-        return ApiResponse.onSuccess(userService.getUserList());
-    }
-
-
     /**
     * @Description: 유저 상세 조회
     * @param :

@@ -24,7 +24,7 @@ public class ItemResponseDTO extends ItemResponseBaseDTO {
     @Builder.Default
     private List<ReservationItemDTO> reservationList = new ArrayList<>();
 
-    public static ItemResponseDTO of(Item item) {
+    public static ItemResponseDTO of(Item item, Long viewCount) {
         return ItemResponseDTO.builder()
                 .id(item.getItemId())
                 .name(item.getName())
@@ -34,12 +34,13 @@ public class ItemResponseDTO extends ItemResponseBaseDTO {
                 .itemImage(item.getItemImage())
                 .createdAt(item.getCreatedAt())
                 .likeCount(item.getLikeCount())
+                .viewCount(viewCount)
                 .reservationList(ReservationItemDTO.createList(item.getReservationList()))
                 .owner(UserSimpleResponseDTO.of(item.getOwner()))
                 .build();
     }
 
-    public static ItemResponseDTO toDTOWithLike(Item item, boolean isLike) {
+    public static ItemResponseDTO toDTOWithUser(Item item, boolean isLike,Long viewCount) {
         return ItemResponseDTO.builder()
                 .id(item.getItemId())
                 .name(item.getName())
@@ -50,6 +51,7 @@ public class ItemResponseDTO extends ItemResponseBaseDTO {
                 .isLike(isLike)
                 .createdAt(item.getCreatedAt())
                 .likeCount(item.getLikeCount())
+                .viewCount(viewCount)
                 .reservationList(ReservationItemDTO.createList(item.getReservationList()))
                 .owner(UserSimpleResponseDTO.of(item.getOwner()))
                 .build();

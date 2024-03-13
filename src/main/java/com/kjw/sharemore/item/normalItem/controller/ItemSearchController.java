@@ -4,7 +4,7 @@ import com.kjw.sharemore.apiPayLoad.ApiResponse;
 import com.kjw.sharemore.item.normalItem.entity.ItemDocument;
 import com.kjw.sharemore.item.normalItem.service.ItemSearchService;
 import com.kjw.sharemore.item.normalItem.ItemDataInitializer;
-import com.kjw.sharemore.item.recentItem.RecentItemService;
+import com.kjw.sharemore.item.recentItem.ItemRedisService;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +20,7 @@ public class ItemSearchController {
 
     private final ItemDataInitializer ItemDataInitializer;
 
-    private final RecentItemService recentItemService;
+    private final ItemRedisService itemRedisService;
 
     @PostConstruct
     public void init() {
@@ -34,11 +34,11 @@ public class ItemSearchController {
     * @body :
     * @return :
     **/
-    @GetMapping
+/*    @GetMapping
     public ApiResponse<List<ItemDocument>> search(@RequestParam("keyword") String keyword) {
-        recentItemService.saveHotKeyWord(keyword);
+
         return ApiResponse.onSuccess(itemSearchService.getItemByName(keyword));
-    }
+    }*/
 
     /**
     * @Description: 아이템 document 생성

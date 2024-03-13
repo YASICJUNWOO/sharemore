@@ -1,6 +1,7 @@
 package com.kjw.sharemore.reservation.dto.response;
 
 import com.kjw.sharemore.item.normalItem.dto.response.ItemResponseBaseDTO;
+import com.kjw.sharemore.item.normalItem.dto.response.ItemSimpleResponse;
 import com.kjw.sharemore.reservation.Reservation;
 import com.kjw.sharemore.users.dto.UserSimpleResponseDTO;
 import lombok.AllArgsConstructor;
@@ -20,7 +21,7 @@ public class ReservationResponseDTO {
 
     private UserSimpleResponseDTO renter;
 
-    private ItemResponseBaseDTO item;
+    private ItemSimpleResponse item;
 
     private LocalDateTime startDate;
 
@@ -30,7 +31,7 @@ public class ReservationResponseDTO {
         return ReservationResponseDTO.builder()
                 .id(reservation.getReservationId())
                 .renter(UserSimpleResponseDTO.of(reservation.getUser()))
-                .item(ItemResponseBaseDTO.of(reservation.getItem()))
+                .item(ItemSimpleResponse.of(reservation.getItem()))
                 .startDate(reservation.getStartDate())
                 .endDate(reservation.getEndDate())
                 .build();

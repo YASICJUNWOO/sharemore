@@ -1,11 +1,12 @@
 package com.kjw.sharemore.item.normalItem.service;
 
 import com.kjw.sharemore.item.normalItem.dto.request.ItemRequestDTO;
-import com.kjw.sharemore.item.normalItem.dto.response.ItemResponseBaseDTO;
 import com.kjw.sharemore.item.normalItem.dto.response.ItemResponseDTO;
+import com.kjw.sharemore.item.normalItem.dto.response.ItemSimpleResponse;
 import com.kjw.sharemore.item.normalItem.entity.Item;
 import com.kjw.sharemore.item.normalItem.entity.ItemDocument;
 import com.kjw.sharemore.item.normalItem.repositoty.ItemRepository;
+import com.kjw.sharemore.item.recentItem.ItemRedisService;
 import com.kjw.sharemore.like.LikeService;
 import com.kjw.sharemore.users.entity.Users;
 import lombok.RequiredArgsConstructor;
@@ -24,37 +25,44 @@ public class ItemService {
     private final ItemRepository itemRepository;
     private final ItemSearchService itemSearchService;
     private final LikeService likeService;
+    private final ItemRedisService itemRedisService;
 
     public List<ItemResponseDTO> getItemList() {
         List<Item> all = itemRepository.findAll();
 
         if (SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
-            return all.stream().map(
-                    ItemResponseDTO::of
+            return all.stream().map(item -> {
+                    Long viewCount = itemRedisService.getViewCount(item.getItemId().toString());
+                    return ItemResponseDTO.of(item,viewCount);
+            }
             ).toList();
         }
         Users user = (Users) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return all.stream().map(
                 item -> {
                     boolean isLike = likeService.isLike(user.getUserId(), item.getItemId());
-                    return ItemResponseDTO.toDTOWithLike(item, isLike);
+                    Long viewCount = itemRedisService.getViewCount(item.getItemId().toString());
+                    return ItemResponseDTO.toDTOWithUser(item, isLike,viewCount);
                 }
         ).toList();
     }
 
     public ItemResponseDTO addItem(ItemRequestDTO itemRequestDTO, Users user) {
         Item savedItem = itemRepository.save(ItemRequestDTO.toEntity(itemRequestDTO, user)); //저장된 item
-        return ItemResponseDTO.of(savedItem);
-    }
-
-    public Item getItemByName(String itemName) {
-        log.info("itemName: {}", itemName);
-        return itemRepository.findByName(itemName);
+        return ItemResponseDTO.of(savedItem,0L);
     }
 
     //아이템 조회해서 DTO로 변환
     public ItemResponseDTO getItemResponseById(Long itemId) {
-        return ItemResponseDTO.of(getItemByItemId(itemId));
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
+            Long viewCount = itemRedisService.getViewCount(itemId.toString());
+            return ItemResponseDTO.of(getItemByItemId(itemId),viewCount);
+        }
+
+        Users user = (Users) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Long view = itemRedisService.addViewCount(itemId.toString(), user.getUserId().toString());
+        boolean isLike = likeService.isLike(user.getUserId(), itemId);
+        return ItemResponseDTO.toDTOWithUser(getItemByItemId(itemId), isLike, view);
     }
 
     //아이템 조회
@@ -65,12 +73,12 @@ public class ItemService {
     public ItemResponseDTO updateItem(ItemRequestDTO itemRequestDTO, Long itemId) {
         Item item = getItemByItemId(itemId);
         Item update = item.update(itemRequestDTO);
-        return ItemResponseDTO.of(itemRepository.save(update));
+        return ItemResponseDTO.of(itemRepository.save(update),0L);
     }
 
-    public List<ItemResponseBaseDTO> getItemByOwner(Users user) {
+    public List<ItemSimpleResponse> getItemByOwner(Users user) {
         return itemRepository.findAllByOwner(user).stream().map(
-                ItemResponseBaseDTO::of
+                ItemSimpleResponse::of
         ).toList();
     }
 
@@ -82,8 +90,10 @@ public class ItemService {
         log.info("itemList: {}", itemList.size());
 
         if (SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
-            return itemList.stream().map(
-                    ItemResponseDTO::of
+            return itemList.stream().map(item -> {
+                        Long viewCount = itemRedisService.getViewCount(item.getItemId().toString());
+                        return ItemResponseDTO.of(item, viewCount);
+                    }
             ).toList();
         }
 
@@ -91,7 +101,8 @@ public class ItemService {
         return itemList.stream().map(
                 item -> {
                     boolean isLike = likeService.isLike(user.getUserId(), item.getItemId());
-                    return ItemResponseDTO.toDTOWithLike(item, isLike);
+                    Long viewCount = itemRedisService.getViewCount(item.getItemId().toString());
+                    return ItemResponseDTO.toDTOWithUser(item, isLike,viewCount);
                 }
         ).toList();
 

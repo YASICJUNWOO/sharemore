@@ -5,7 +5,7 @@ import com.kjw.sharemore.item.normalItem.dto.request.ItemRequestDTO;
 import com.kjw.sharemore.item.normalItem.dto.response.ItemResponseDTO;
 import com.kjw.sharemore.item.normalItem.service.ItemQueryService;
 import com.kjw.sharemore.item.normalItem.service.ItemService;
-import com.kjw.sharemore.item.recentItem.RecentItemService;
+import com.kjw.sharemore.item.recentItem.ItemRedisService;
 import com.kjw.sharemore.users.entity.Users;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +23,7 @@ public class ItemController {
 
     private final ItemService itemService;
     private final ItemQueryService itemQueryService;
-    private final RecentItemService recentItemService;
+    private final ItemRedisService itemRedisService;
 
     /**
     * @Description: 아이템 리스트 조회
@@ -45,9 +45,7 @@ public class ItemController {
     * @return :
     **/
     @GetMapping("/{ItemId}")
-    public ApiResponse<ItemResponseDTO> getItemById(@PathVariable(name = "ItemId") Long ItemId,
-                                                    @AuthenticationPrincipal Users user) {
-        recentItemService.saveRecentItem(ItemId, user);
+    public ApiResponse<ItemResponseDTO> getItemById(@PathVariable(name = "ItemId") Long ItemId) {
         return ApiResponse.onSuccess(itemService.getItemResponseById(ItemId));
     }
 
