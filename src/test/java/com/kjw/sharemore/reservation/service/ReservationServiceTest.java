@@ -1,11 +1,12 @@
 package com.kjw.sharemore.reservation.service;
 
+import com.kjw.sharemore.domain.reservation.service.ReservationService;
 import com.kjw.sharemore.item.entity.Item;
 import com.kjw.sharemore.item.repositoty.ItemRepository;
-import com.kjw.sharemore.reservation.Reservation;
-import com.kjw.sharemore.reservation.repository.ReservationRepository;
-import com.kjw.sharemore.users.entity.Users;
-import com.kjw.sharemore.users.repository.UserRepository;
+import com.kjw.sharemore.domain.reservation.Reservation;
+import com.kjw.sharemore.domain.reservation.repository.ReservationRepository;
+import com.kjw.sharemore.domain.users.entity.Users;
+import com.kjw.sharemore.domain.users.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.BeforeEach;

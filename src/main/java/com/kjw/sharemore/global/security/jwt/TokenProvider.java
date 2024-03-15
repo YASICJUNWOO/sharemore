@@ -1,7 +1,9 @@
 package com.kjw.sharemore.global.security.jwt;
 
-import com.kjw.sharemore.users.entity.Users;
-import com.kjw.sharemore.users.service.UserService;
+import com.kjw.sharemore.domain.users.entity.Users;
+import com.kjw.sharemore.domain.users.service.UserQueryService;
+import com.kjw.sharemore.domain.users.service.UserService;
+import com.kjw.sharemore.global.security.jwt.dto.TokenInfo;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -9,13 +11,11 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.io.Encoders;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
@@ -33,6 +33,7 @@ public class TokenProvider {
     private static final int EXPIRE_TIME = 1000 * 60 * 60 * 24 * 7;
 
     private final UserService userService;
+    private final UserQueryService userQueryService;
     public static final String BEARER_TYPE = "Bearer";
     public static final String PREFIX = "Bearer ";
     public static final String AUTHORIZATION_HEADER = "Authorization";
@@ -92,7 +93,7 @@ public class TokenProvider {
 
     public Authentication getAuthentication(String accessToken){
         Claims claims = parse(accessToken);
-        Users users = userService.getUserByEmail(claims.getSubject());
+        Users users = userQueryService.getUserByEmail(claims.getSubject());
         return new UsernamePasswordAuthenticationToken(users,null,users.getAuthorities());
     }
 
