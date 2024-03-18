@@ -56,6 +56,60 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
+  controller:
+    container_name: ngrinder-controller
+    image: ngrinder/controller:latest
+    restart: always
+    environment:
+      - TZ=Asia/Seoul
+    ports:
+      - "8880:80"
+      - "16001:16001"
+      - "12000-12009:12000-12009"
+    volumes:
+      - ./ngrinder-controller:/opt/ngrinder-controller
+
+  agent-1:
+    container_name: ngrinder-agent-1
+    image: ngrinder/agent:latest
+    command: [ "192.168.0.18:8880" ]
+    environment:
+      - TZ=Asia/Seoul
+    volumes:
+      - ./ngrinder-agent-1:/opt/ngrinder-agent
+  agent-2:
+    container_name: ngrinder-agent-2
+    image: ngrinder/agent:latest
+    command: [ "192.168.0.18:8880" ]
+    environment:
+      - TZ=Asia/Seoul
+    volumes:
+      - ./ngrinder-agent-2:/opt/ngrinder-agent
+  agent-3:
+    container_name: ngrinder-agent-3
+    image: ngrinder/agent:latest
+    command: [ "192.168.0.18:8880" ]
+    environment:
+      - TZ=Asia/Seoul
+    volumes:
+      - ./ngrinder-agent-3:/opt/ngrinder-agent
+  agent-4:
+    container_name: ngrinder-agent-4
+    image: ngrinder/agent:latest
+    command: [ "192.168.0.18:8880" ]
+    environment:
+      - TZ=Asia/Seoul
+    volumes:
+      - ./ngrinder-agent-4:/opt/ngrinder-agent
+  agent-5:
+    container_name: ngrinder-agent-5
+    image: ngrinder/agent:latest
+    command: [ "192.168.0.18:8880" ]
+    environment:
+      - TZ=Asia/Seoul
+    volumes:
+      - ./ngrinder-agent-5:/opt/ngrinder-agent
+
 networks:
   es-bridge:
     driver: bridge

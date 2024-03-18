@@ -1,0 +1,997 @@
+2024-03-17 03:43:55,244 INFO  starter  :  ***************************************************
+2024-03-17 03:43:55,246 INFO  starter  :     Start nGrinder Agent ...
+2024-03-17 03:43:55,247 INFO  starter  :  ***************************************************
+2024-03-17 03:43:55,248 INFO  starter  :  JVM server mode is disabled.
+2024-03-17 03:43:55,334 INFO  starter  :  connecting to controller 192.168.0.18:16001
+2024-03-17 03:43:55,401 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-17 03:43:55,550 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 03:43:55,574 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 03:49:41,547 INFO  agent controller  :  Received a start agent message
+2024-03-17 03:49:41,549 INFO  agent controller  :  Agent start message is received from controller net.grinder.messages.agent.StartGrinderMessage@6a65f406
+2024-03-17 03:49:41,549 INFO  agent controller  :  Starting agent... for test_1
+2024-03-17 03:49:41,554 INFO  agent daemon  :  Agent daemon connecting to port 12000 is started.
+2024-03-17 03:49:41,565 INFO  agent controller  :  Agent is started. Waiting for agent controller signal
+2024-03-17 03:49:41,574 INFO  agent daemon  :  The Grinder 3.9.1
+2024-03-17 03:49:41,610 INFO  agent daemon  :  Send digest of cached files to controller.
+2024-03-17 03:49:41,620 INFO  agent daemon  :  Connect to console at /192.168.0.18:12000
+2024-03-17 03:49:41,621 INFO  agent daemon  :  Waiting for console signal
+2024-03-17 03:49:42,524 INFO  agent daemon  :  Refresh cached file store
+2024-03-17 03:49:42,654 INFO  agent daemon  :  Updating file store: "test.groovy" (2115 bytes)
+2024-03-17 03:49:43,680 INFO  agent daemon  :  received a start message
+2024-03-17 03:49:43,729 INFO  agent daemon  :  log file : /opt/ngrinder-agent/.ngrinder-agent/log/test_1/59d340e351de-0.log
+2024-03-17 03:49:43,918 INFO  agent daemon  :  grinder properties {grinder.reportToConsole.interval=500, grinder.security.level=normal, grinder.useConsole=true, grinder.security=false, grinder.sleepTimeFactor=1, grinder.logProcessStreams=true, grinder.jvm.user.library.classpath=., grinder.duration=60000, grinder.processIncrement=0, grinder.user=admin, grinder.agents=1, grinder.sleepTimeVariation=0.2, grinder.runs=0, grinder.ignoreSampleCount=0, grinder.connectionReset=true, grinder.jvm=java, ngrinder.etc.hosts=, grinder.dcrinstrumentation=true, grinder.reportTimesToConsole=true, grinder.consolePort=12000, grinder.processes=10, grinder.numberOfOldLogs=1, grinder.test.id=test_1, grinder.threads=100, grinder.script=test.groovy, grinder.debug.singleprocess=false, grinder.jvm.classpath=/opt/ngrinder-agent/lib/ngrinder-runtime-3.5.9.jar::/opt/ngrinder-agent/.ngrinder-agent/file-store/admin/current/, grinder.consoleHost=192.168.0.18, grinder.logDirectory=/opt/ngrinder-agent/.ngrinder-agent/log/test_1}
+2024-03-17 03:49:43,919 INFO  agent daemon  :  jvm arguments  -Djna.library.path=/opt/ngrinder-agent/.ngrinder-agent/file-store/admin/current/lib  -Dngrinder.connection.reset.on.each.test.run=true  -Dpython.path=/opt/ngrinder-agent/.ngrinder-agent/file-store/admin/current/lib  -Dpython.cachedir=/tmp/jython  -Dngrinder.etc.hosts=59d340e351de:127.0.0.1,localhost:127.0.0.1 -Dngrinder.enable.local-dns=true  -Duser.dir=/opt/ngrinder-agent/.ngrinder-agent/file-store/admin/current  -Dngrinder.context=agent  -Dhttps.protocols=TLSv1.3,TLSv1.2,TLSv1.1,TLSv1,SSLv3  -Djsse.enableSNIExtension=false  --add-opens java.base/java.net=ALL-UNNAMED  -Xms46m -Xmx46m 
+2024-03-17 03:49:43,927 INFO  agent daemon  :  Worker process command line: java '-javaagent:../../../../lib/grinder-dcr-agent-3.9.1.jar' '-Djna.library.path=/opt/ngrinder-agent/.ngrinder-agent/file-store/admin/current/lib' '-Dngrinder.connection.reset.on.each.test.run=true' '-Dpython.path=/opt/ngrinder-agent/.ngrinder-agent/file-store/admin/current/lib' '-Dpython.cachedir=/tmp/jython' '-Dngrinder.etc.hosts=59d340e351de:127.0.0.1,localhost:127.0.0.1' '-Dngrinder.enable.local-dns=true' '-Duser.dir=/opt/ngrinder-agent/.ngrinder-agent/file-store/admin/current' '-Dngrinder.context=agent' '-Dhttps.protocols=TLSv1.3,TLSv1.2,TLSv1.1,TLSv1,SSLv3' '-Djsse.enableSNIExtension=false' '--add-opens' 'java.base/java.net=ALL-UNNAMED' '-Xms46m' '-Xmx46m' -classpath '../../../../lib/ngrinder-runtime-3.5.9.jar:../../../..:.:../../../../lib/ngrinder-runime-3.5.9.jar:../../../../lib/asm-9.0.jar:../../../../lib/commons-io-2.6.jar:../../../../lib/commons-lang-2.6.jar:../../../../lib/dnsjava-3.2.2.jar:../../../../lib/grinder-core-3.9.1.jar:../../../../lib/grinder-dcr-agent-3.9.1.jar:../../../../lib/grinder-http-3.9.1.jar:../../../../lib/grinder-httpclient-3.9.1.jar:../../../../lib/groovy-3.0.5.jar:../../../../lib/groovy-datetime-3.0.5.jar:../../../../lib/groovy-json-3.0.5.jar:../../../../lib/groovy-sql-3.0.5.jar:../../../../lib/groovy-templates-3.0.5.jar:../../../../lib/groovy-xml-3.0.5.jar:../../../../lib/hamcrest-all-1.1.jar:../../../../lib/hamcrest-core-2.2.jar:../../../../lib/httpcore5-5.0.3.jar:../../../../lib/httpcore5-h2-5.0.3.jar:../../../../lib/jna-5.14.0.jar:../../../../lib/jna-jpms-5.14.0.jar:../../../../lib/jna-platform-jpms-5.14.0.jar:../../../../lib/json-20090211.jar:../../../../lib/junit-4.13.1.jar:../../../../lib/logback-classic-1.2.3.jar:../../../../lib/logback-core-1.2.3.jar:../../../../lib/ngrinder-groovy-3.5.9.jar:../../../../lib/ngrinder-runtime-3.5.9.jar:../../../../lib/picocontainer-2.13.6.jar:../../../../lib/slf4j-api-1.7.30.jar' net.grinder.engine.process.WorkerProcessEntryPoint
+2024-03-17 03:49:43,948 INFO  agent daemon  :  worker 59d340e351de-0 started
+2024-03-17 03:49:43,952 INFO  agent daemon  :  worker 59d340e351de-1 started
+2024-03-17 03:49:43,956 INFO  agent daemon  :  worker 59d340e351de-2 started
+2024-03-17 03:49:43,964 INFO  agent daemon  :  worker 59d340e351de-3 started
+2024-03-17 03:49:43,967 INFO  agent daemon  :  worker 59d340e351de-4 started
+2024-03-17 03:49:43,974 INFO  agent daemon  :  worker 59d340e351de-5 started
+2024-03-17 03:49:44,015 INFO  agent daemon  :  worker 59d340e351de-6 started
+2024-03-17 03:49:44,029 INFO  agent daemon  :  worker 59d340e351de-7 started
+2024-03-17 03:49:44,048 INFO  agent daemon  :  worker 59d340e351de-8 started
+2024-03-17 03:49:44,056 INFO  agent daemon  :  worker 59d340e351de-9 started
+2024-03-17 03:50:44,445 INFO  agent daemon  :  received a stop message
+2024-03-17 03:50:44,456 INFO  agent daemon  :  Don't start anymore by message from controller.
+2024-03-17 03:50:47,270 INFO  agent daemon  :  received a stop message
+2024-03-17 03:50:51,265 INFO  agent daemon  :  received a stop message
+2024-03-17 03:50:51,272 INFO  agent daemon  :  Terminating unresponsive processes by force
+2024-03-17 03:50:52,451 INFO  agent daemon  :  All workers are finished
+2024-03-17 03:50:52,471 INFO  agent daemon  :  communication shut down
+2024-03-17 03:50:52,494 INFO  agent daemon  :  Test shuts down.
+2024-03-17 03:50:52,524 INFO  agent controller  :  Send log for test_1
+2024-03-17 03:50:52,642 INFO  agent controller  :  Clean up the perftest logs
+2024-03-17 23:16:44,017 INFO  starter  :  ***************************************************
+2024-03-17 23:16:44,061 INFO  starter  :     Start nGrinder Agent ...
+2024-03-17 23:16:44,070 INFO  starter  :  ***************************************************
+2024-03-17 23:16:44,081 INFO  starter  :  JVM server mode is disabled.
+2024-03-17 23:16:44,511 INFO  starter  :  connecting to controller 192.168.0.18:16001
+2024-03-17 23:16:44,726 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-17 23:16:45,573 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:16:45,606 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:16:45,609 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:16:45,655 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:16:47,707 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:16:47,709 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:16:47,723 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:16:47,729 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:16:49,749 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:16:49,758 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:16:49,780 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:16:49,793 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:16:49,792 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:16:51,803 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:16:51,805 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:16:51,821 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:16:51,821 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:16:51,829 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:16:53,843 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:16:53,860 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:16:53,863 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:16:53,863 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:16:53,873 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:16:55,880 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-17 23:16:55,892 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:16:55,890 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:16:55,902 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:16:55,901 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:16:55,908 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:16:57,931 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:16:57,943 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:16:57,942 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:16:57,960 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:16:59,985 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:16:59,978 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:17:00,032 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:00,032 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:17:00,057 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:02,076 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:17:02,080 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:17:02,085 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:17:02,086 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:02,094 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:04,106 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:17:04,109 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:17:04,109 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:17:04,115 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:04,125 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:06,126 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-17 23:17:06,134 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:17:06,136 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:17:06,142 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:17:06,145 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:06,147 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:08,161 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:17:08,168 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:17:08,167 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:17:08,173 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:08,181 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:08,180 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:17:10,190 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:17:10,191 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:17:10,195 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:17:10,198 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:12,208 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:17:12,209 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:17:12,218 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:17:12,218 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:12,220 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:17:12,220 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:14,229 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:17:14,230 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:17:14,244 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:17:14,247 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:16,248 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-17 23:17:16,262 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:17:16,264 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:17:16,269 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:17:16,277 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:18,342 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:17:18,351 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:17:18,357 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:17:18,364 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:20,396 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:17:20,405 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:17:20,406 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:17:20,410 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:20,412 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:22,430 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:17:22,432 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:17:22,433 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:17:22,434 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:22,436 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:24,442 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:17:24,443 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:17:24,444 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:17:24,445 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:24,447 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:26,448 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-17 23:17:26,455 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:17:26,456 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:17:26,457 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:17:26,460 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:26,463 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:28,471 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:17:28,472 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:17:28,473 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:17:28,475 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:28,480 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:30,489 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:17:30,491 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:17:30,491 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:17:30,495 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:30,499 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:32,517 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:17:32,518 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:17:32,519 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:17:32,520 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:32,522 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:34,532 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:17:34,534 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:17:34,534 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:17:34,535 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:34,536 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:36,537 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-17 23:17:36,543 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:17:36,545 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:17:36,545 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:36,545 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:17:36,548 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:38,554 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:17:38,555 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:17:38,556 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:17:38,557 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:38,559 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:40,564 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:17:40,565 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-17 23:17:40,566 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-17 23:17:40,567 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:40,568 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-17 23:17:42,573 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-17 23:17:42,575 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:35:48,201 INFO  starter  :  ***************************************************
+2024-03-18 15:35:48,217 INFO  starter  :     Start nGrinder Agent ...
+2024-03-18 15:35:48,220 INFO  starter  :  ***************************************************
+2024-03-18 15:35:48,233 INFO  starter  :  JVM server mode is disabled.
+2024-03-18 15:35:48,597 INFO  starter  :  connecting to controller 192.168.0.18:16001
+2024-03-18 15:35:49,028 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 15:35:49,734 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:35:49,740 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:35:49,739 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:35:49,814 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:35:49,847 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:35:51,910 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:35:51,929 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:35:51,948 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:35:51,967 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:35:54,006 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:35:54,016 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:35:54,042 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:35:54,049 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:35:56,107 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:35:56,112 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:35:56,130 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:35:56,139 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:35:56,151 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:35:58,163 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:35:58,178 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:35:58,192 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:35:58,199 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:00,206 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 15:36:00,256 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:00,261 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:00,265 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:00,276 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:02,291 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:02,298 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:02,299 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:02,307 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:02,310 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:04,360 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:04,363 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:04,366 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:04,376 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:04,438 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:06,595 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:06,641 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:06,658 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:06,666 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:08,694 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:08,711 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:08,710 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:08,723 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:10,726 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 15:36:10,992 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:11,024 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:11,041 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:11,063 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:13,115 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:13,131 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:13,132 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:13,137 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:13,138 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:15,169 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:15,176 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:15,182 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:15,188 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:17,214 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:17,217 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:17,296 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:17,305 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:19,342 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:19,346 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:19,348 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:19,361 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:21,379 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 15:36:21,471 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:21,539 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:21,540 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:21,583 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:21,592 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:23,720 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:23,731 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:23,727 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:23,735 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:23,741 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:25,780 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:25,782 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:25,793 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:25,789 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:25,809 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:28,235 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:28,243 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:28,243 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:28,256 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:30,292 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:30,362 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:30,304 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:30,384 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:30,388 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:32,425 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 15:36:32,523 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:32,532 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:32,533 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:32,540 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:32,545 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:34,568 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:34,579 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:34,575 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:34,588 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:36,600 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:36,604 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:36,605 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:36,623 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:36,638 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:38,730 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:38,760 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:38,780 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:38,803 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:40,836 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:40,844 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:40,867 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:40,867 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:40,883 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:42,885 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 15:36:42,907 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:42,924 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:42,927 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:42,935 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:42,996 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:45,044 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:45,053 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:45,053 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:45,067 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:45,075 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:47,106 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:47,107 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:47,119 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:47,141 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:49,158 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:49,175 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:49,188 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:49,189 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:49,195 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:51,232 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:51,245 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:51,247 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:51,258 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:51,276 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:53,281 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 15:36:53,296 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:53,297 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:53,298 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:53,301 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:53,304 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:55,319 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:55,329 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:55,330 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:55,325 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:55,339 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:57,680 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:57,692 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:57,705 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:57,712 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:59,729 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:36:59,730 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:36:59,737 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:36:59,737 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:36:59,761 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:01,783 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:01,796 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:01,797 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:01,799 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:01,809 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:01,808 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:03,823 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 15:37:03,873 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:03,874 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:03,877 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:03,879 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:05,892 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:05,893 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:05,896 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:05,901 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:07,942 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:07,949 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:07,951 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:07,952 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:07,961 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:09,993 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:10,009 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:10,009 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:10,019 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:10,060 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:12,077 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:12,079 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:12,080 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:12,081 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:12,086 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:14,089 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 15:37:14,097 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:14,099 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:14,099 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:14,101 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:14,103 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:16,113 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:16,116 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:16,116 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:16,120 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:16,121 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:18,130 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:18,132 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:18,133 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:18,137 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:18,138 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:20,147 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:20,149 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:20,149 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:20,151 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:20,153 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:22,165 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:22,167 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:22,167 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:22,171 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:22,174 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:24,176 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 15:37:24,185 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:24,186 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:24,188 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:24,188 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:24,191 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:26,198 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:26,199 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:26,200 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:26,200 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:26,203 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:28,218 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:28,271 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:28,273 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:28,331 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:30,373 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:30,379 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:30,380 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:30,391 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:30,407 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:32,433 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:32,441 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:32,442 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:32,442 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:32,453 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:34,458 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 15:37:34,467 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:34,469 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:34,470 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:34,473 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:34,474 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:36,482 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:36,484 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:36,485 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:36,487 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:36,488 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:38,507 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:38,509 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:38,511 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:38,515 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:38,518 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:40,544 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:40,548 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:40,548 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:40,557 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:40,559 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:42,572 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:42,574 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:42,578 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:42,584 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:44,588 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 15:37:44,609 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:44,614 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:44,618 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:44,628 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:46,755 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:46,831 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:46,843 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:47,334 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:47,365 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:49,417 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:49,430 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:49,441 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:49,443 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:49,454 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:51,500 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:51,508 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:51,507 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:51,505 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:51,523 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:53,563 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:53,569 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:53,577 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:53,580 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:53,583 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:53,586 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:55,589 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 15:37:55,938 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:56,661 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:56,664 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:56,826 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:37:58,920 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:37:58,941 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:37:58,943 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:37:59,011 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:01,092 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:38:01,093 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:38:01,108 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:38:01,132 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:03,293 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:38:03,315 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:38:03,367 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:38:03,614 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:05,699 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:38:05,721 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:38:05,726 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:38:05,827 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:08,353 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 15:38:09,030 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:38:09,032 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:38:09,108 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:38:09,212 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:09,220 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:11,494 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:38:11,515 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:38:11,582 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:38:11,565 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:11,721 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:13,962 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:38:13,983 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:38:13,999 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:38:14,177 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:16,368 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:38:16,645 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:16,557 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:38:16,645 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:38:16,945 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:19,638 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:38:19,671 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:19,653 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:38:19,774 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:38:20,344 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:22,507 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 15:38:22,967 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:38:22,996 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:38:25,049 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:25,068 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:38:25,587 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:25,783 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:31,718 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:38:31,772 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:31,756 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:38:32,084 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:38:32,627 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:34,789 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:38:34,903 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:38:34,908 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:38:35,800 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:36,572 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:38,724 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:38:38,738 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:38:38,746 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:38,743 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:38:38,894 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:41,066 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:38:41,309 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:38:41,885 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:38:41,913 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:38:42,038 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:43,735 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:44,325 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:46,315 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 15:38:46,397 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:38:46,400 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:38:46,424 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:46,444 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:38:46,563 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:48,686 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:38:48,711 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:38:48,720 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:38:48,755 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:48,797 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:51,022 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:38:51,030 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:38:51,041 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:51,030 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:38:51,099 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:53,136 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:38:53,141 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:38:53,144 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:38:53,149 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:55,184 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:38:55,209 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:38:55,237 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:38:55,282 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:57,289 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 15:38:57,310 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:38:57,311 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:38:57,315 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:38:57,316 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:57,333 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:38:59,504 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:38:59,518 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:38:59,522 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:38:59,869 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:39:01,913 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:39:01,918 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:39:01,982 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:39:01,989 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:39:02,052 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:39:04,098 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:39:04,110 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:39:04,138 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:39:04,143 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:39:04,157 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:39:06,407 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:39:06,408 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:39:06,413 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:39:06,416 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:39:06,623 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:39:08,629 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 15:39:08,650 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:39:08,661 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:39:08,656 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:39:08,820 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:39:10,918 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:39:10,927 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:39:10,920 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:39:10,942 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:39:10,969 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:39:13,084 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:39:13,087 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:39:13,158 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:39:13,174 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:39:13,195 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:39:15,213 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:39:15,215 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:39:15,216 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:39:15,218 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:39:15,250 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:39:17,945 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:39:17,993 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:39:17,961 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:39:18,118 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:39:18,209 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:39:20,219 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 15:39:20,279 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:39:20,281 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:39:20,284 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:39:20,285 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:39:20,292 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:39:22,309 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:39:22,320 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:39:22,318 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:39:22,310 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:39:22,334 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:39:24,349 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:39:24,352 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:39:24,353 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:39:24,354 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:39:24,363 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:39:26,421 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 15:39:26,429 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 15:57:42,530 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 15:57:42,560 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 15:57:42,577 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 20:26:17,572 ERROR agent controller  :  Error while connecting to agent controller server at /192.168.0.18:16001
+2024-03-18 20:26:19,576 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 20:26:19,621 ERROR agent controller  :  Error while connecting to agent controller server at /192.168.0.18:16001
+2024-03-18 22:43:56,788 INFO  starter  :  ***************************************************
+2024-03-18 22:43:56,795 INFO  starter  :     Start nGrinder Agent ...
+2024-03-18 22:43:56,801 INFO  starter  :  ***************************************************
+2024-03-18 22:43:56,802 INFO  starter  :  JVM server mode is disabled.
+2024-03-18 22:43:57,042 INFO  starter  :  connecting to controller 192.168.0.18:16001
+2024-03-18 22:43:57,119 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 22:43:57,678 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:43:57,689 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:43:57,723 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:43:57,762 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:43:59,784 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:43:59,789 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:43:59,794 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:43:59,803 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:43:59,809 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:02,213 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:02,262 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:02,267 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:02,270 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:02,407 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:04,521 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:04,582 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:04,600 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:04,645 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:06,795 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:06,804 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:06,823 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:06,854 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:06,846 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:08,859 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 22:44:08,872 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:08,882 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:08,879 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:08,884 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:08,887 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:08,889 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:10,899 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:10,908 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:10,910 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:10,921 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:10,925 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:12,949 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:13,019 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:13,044 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:13,047 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:13,047 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:15,085 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:15,089 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:15,095 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:15,098 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:17,118 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:17,121 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:17,123 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:17,132 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:19,134 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 22:44:19,146 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:19,150 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:19,156 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:19,162 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:19,174 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:19,176 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:21,211 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:21,214 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:21,215 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:21,230 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:21,231 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:23,243 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:23,244 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:23,249 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:23,252 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:25,261 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:25,263 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:25,263 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:25,265 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:25,267 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:27,277 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:27,284 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:27,284 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:27,290 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:27,301 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:29,309 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 22:44:29,317 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:29,318 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:29,321 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:29,324 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:31,334 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:31,335 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:31,335 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:31,338 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:31,340 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:33,350 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:33,351 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:33,352 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:33,356 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:33,357 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:35,376 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:35,379 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:35,382 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:35,388 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:35,390 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:37,428 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:37,434 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:37,435 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:37,443 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:39,446 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 22:44:39,472 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:39,475 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:39,477 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:39,477 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:39,482 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:41,514 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:41,516 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:41,519 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:41,519 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:41,534 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:43,563 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:43,554 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:43,578 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:43,575 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:43,592 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:45,669 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:45,689 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:45,690 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:45,708 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:45,720 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:47,795 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:47,812 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:47,814 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:47,854 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:49,877 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 22:44:49,891 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:49,927 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:49,929 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:49,932 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:49,950 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:52,002 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:52,022 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:52,025 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:52,011 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:52,036 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:54,060 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:54,069 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:54,070 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:54,070 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:54,075 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:56,094 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:56,092 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:56,099 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:56,101 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:56,106 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:58,120 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:44:58,126 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:44:58,125 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:44:58,128 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:44:58,134 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:00,136 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 22:45:00,162 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:00,163 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:00,186 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:00,192 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:02,207 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:02,208 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:02,210 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:02,220 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:02,219 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:04,229 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:04,231 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:04,235 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:04,235 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:04,239 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:06,259 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:06,261 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:06,261 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:06,263 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:06,338 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:08,349 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:08,351 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:08,354 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:08,354 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:08,359 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:10,361 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 22:45:10,374 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:10,376 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:10,381 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:10,387 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:12,409 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:12,411 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:12,414 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:12,416 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:12,421 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:14,529 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:14,678 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:14,985 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:15,317 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:17,397 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:17,413 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:17,417 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:17,456 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:17,469 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:19,501 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:19,503 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:19,504 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:19,506 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:19,511 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:21,520 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 22:45:21,534 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:21,536 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:21,536 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:21,538 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:21,540 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:23,552 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:23,557 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:23,558 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:23,562 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:25,637 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:25,671 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:25,671 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:25,789 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:25,888 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:27,991 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:27,993 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:27,994 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:27,996 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:28,004 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:30,040 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:30,043 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:30,079 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:30,133 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:32,138 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 22:45:32,151 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:32,155 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:32,155 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:32,157 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:32,160 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:34,178 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:34,185 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:34,181 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:34,185 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:34,193 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:36,218 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:36,221 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:36,223 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:36,224 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:36,229 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:38,243 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:38,245 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:38,245 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:38,249 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:38,254 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:40,266 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:40,268 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:40,270 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:40,271 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:40,275 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:42,277 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 22:45:42,296 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:42,304 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:42,308 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:42,310 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:42,319 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:44,333 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:44,337 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:44,338 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:44,339 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:44,343 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:46,366 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:46,371 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:46,372 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:46,382 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:46,390 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:48,405 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:48,407 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:48,413 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:48,417 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:50,445 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:50,448 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:50,449 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:50,460 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:50,468 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:52,470 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 22:45:52,497 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:52,501 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:52,503 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:52,512 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:52,520 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:54,534 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:54,539 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:54,540 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:54,537 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:54,549 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:56,608 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:56,621 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:56,623 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:56,630 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:56,636 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:45:58,673 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:45:58,678 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:45:58,687 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:45:58,695 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:46:00,735 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:46:00,747 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:46:00,758 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:46:00,777 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:46:02,790 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 22:46:02,825 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:46:02,830 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:46:02,835 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:46:02,842 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:46:02,846 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:46:04,876 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:46:04,898 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:46:04,896 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:46:04,897 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:46:04,915 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:46:06,974 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:46:06,996 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:46:06,997 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:46:07,011 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:46:07,024 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:46:07,011 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:46:09,062 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:46:09,072 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:46:09,075 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:46:09,082 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:46:09,092 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:46:11,132 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:46:11,139 INFO  agent controller  :  agent controller communication is shutdown
+2024-03-18 22:46:11,140 INFO  agent controller  :  Waiting for agent controller server signal
+2024-03-18 22:46:11,148 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:46:11,150 ERROR agent controller  :  Exception whilst sending message. This error is not critical if it doesn't occur much.
+2024-03-18 22:46:13,154 INFO  agent controller daemon  :  The agent controller daemon is started.
+2024-03-18 22:46:13,176 INFO  agent controller  :  Connected to agent controller server at /192.168.0.18:16001
+2024-03-18 22:46:13,179 INFO  agent controller  :  Waiting for agent controller server signal
