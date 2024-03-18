@@ -34,6 +34,9 @@ public class Users extends BaseEntity implements UserDetails {
     @Column(nullable = false)
     private String password;
 
+    @Builder.Default
+    private int point = 0;
+
     @Column(nullable = true)
     private String address;
 

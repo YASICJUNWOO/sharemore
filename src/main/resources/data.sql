@@ -1,16 +1,16 @@
-INSERT INTO USERS (name, email, password, address)
-VALUES ('김철수', 'chulsoo1@example.com', 'password123', '서울특별시 강남구'),
-       ('이영희', 'younghee2@example.com', 'password456', '서울특별시 서초구'),
-       ('박지성', 'jisung3@example.com', 'password789', '서울특별시 송파구'),
-       ('최유나', 'yuna4@example.com', 'password321', '서울특별시 강동구'),
-       ('김태현', 'taehyun5@example.com', 'password654', '서울특별시 관악구'),
-       ('이민준', 'minjun6@example.com', 'password987', '서울특별시 양천구'),
-       ('박서아', 'seoah7@example.com', 'password741', '서울특별시 동작구'),
-       ('최준영', 'junyoung8@example.com', 'password852', '서울특별시 성동구'),
-       ('김하은', 'haeun9@example.com', 'password963', '서울특별시 중랑구'),
-       ('이지아', 'jia10@example.com', 'password159', '서울특별시 강북구'),
-       ('공준우', 'joonoo3@inha.edu', 'hwilove', '성남시 분당구'),
-       ('정휘진', 'hwiollf@naver.edu', 'konglove', '성남시 분당구');
+INSERT INTO USERS (name, email, password, address,point)
+VALUES ('김철수', 'chulsoo1@example.com', 'password123', '서울특별시 강남구',1000000),
+       ('이영희', 'younghee2@example.com', 'password456', '서울특별시 서초구',1000000),
+       ('박지성', 'jisung3@example.com', 'password789', '서울특별시 송파구',1000000),
+       ('최유나', 'yuna4@example.com', 'password321', '서울특별시 강동구',1000000),
+       ('김태현', 'taehyun5@example.com', 'password654', '서울특별시 관악구',1000000),
+       ('이민준', 'minjun6@example.com', 'password987', '서울특별시 양천구',1000000),
+       ('박서아', 'seoah7@example.com', 'password741', '서울특별시 동작구',1000000),
+       ('최준영', 'junyoung8@example.com', 'password852', '서울특별시 성동구',1000000),
+       ('김하은', 'haeun9@example.com', 'password963', '서울특별시 중랑구',1000000),
+       ('이지아', 'jia10@example.com', 'password159', '서울특별시 강북구',1000000),
+       ('공준우', 'joonoo3@inha.edu', 'hwilove', '성남시 분당구',1000000),
+       ('정휘진', 'hwiollf@naver.edu', 'konglove', '성남시 분당구',1000000);
 
 INSERT INTO item (owner_id, name, description, category, price,item_image, created_at, like_count)
 VALUES (1, '데스크탑용 책상', '나무로 만든 책상', '가구', 50000, 'https://source.unsplash.com/random/?desk','1995-01-01',0),

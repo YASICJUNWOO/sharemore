@@ -48,10 +48,10 @@ public class ReservationQueryService {
     /**
      * @Description: 중복 예약 확인
      **/
-    public void validateDuplicateReservation(ReservationRequestDTO reservationRequestDTO) {
+    public void validateDuplicateReservation(ReservationRequestDTO reservationRequestDTO) throws ReservationExceptionHandler.DuplicateReservation {
 
         Optional<Reservation> findByDate = reservationRepository.findFirstByItem_ItemIdAndStartDateLessThanEqualAndEndDateGreaterThanEqual(
-                reservationRequestDTO.getItemId(), reservationRequestDTO.getStartDate(), reservationRequestDTO.getEndDate()
+                reservationRequestDTO.getItemId(), reservationRequestDTO.getEndDate(),reservationRequestDTO.getStartDate()
         );
 
         if (findByDate.isPresent()) {

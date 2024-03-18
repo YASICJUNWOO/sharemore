@@ -1,7 +1,7 @@
 package com.kjw.sharemore.domain.users.dto;
 
-import com.kjw.sharemore.domain.item.normalItem.entity.Item;
-import com.kjw.sharemore.domain.reivew.entity.Review;
+import com.kjw.sharemore.domain.item.normalItem.dto.response.ItemResponseDTO;
+import com.kjw.sharemore.domain.reivew.dto.ReviewResponseDTO;
 import com.kjw.sharemore.domain.reservation.dto.response.ReservationResponseDTO;
 import com.kjw.sharemore.domain.users.entity.Users;
 import lombok.AllArgsConstructor;
@@ -25,6 +25,7 @@ public class UserResponseDTO {
         private String name;
         private String email;
         private String address;
+        private int point;
 
         public static UserResponseDTO.Simple of(Users user) {
             return UserResponseDTO.Simple.builder()
@@ -32,6 +33,7 @@ public class UserResponseDTO {
                     .name(user.getName())
                     .email(user.getEmail())
                     .address(user.getAddress())
+                    .point(user.getPoint())
                     .build();
         }
 
@@ -47,8 +49,9 @@ public class UserResponseDTO {
         private String name;
         private String email;
         private String address;
-        private List<Item> itemList;
-        private List<Review> postReviewList;
+        private int point;
+        private List<ItemResponseDTO.Simple> itemList;
+        private List<ReviewResponseDTO.Detail> postReviewList;
         private List<ReservationResponseDTO.Detail> reservationList;
         private Long viewCount;
 
@@ -58,8 +61,9 @@ public class UserResponseDTO {
                     .name(user.getName())
                     .email(user.getEmail())
                     .address(user.getAddress())
-                    .itemList(user.getItemList())
-                    .postReviewList(user.getPostReviewList())
+                    .point(user.getPoint())
+                    .itemList(user.getItemList().stream().map(ItemResponseDTO.Simple::of).toList())
+                    .postReviewList(user.getPostReviewList().stream().map(ReviewResponseDTO.Detail::of).toList())
                     .reservationList(user.getReservationList().stream().map(ReservationResponseDTO.Detail::of).toList())
                     .viewCount(viewCount)
                     .build();

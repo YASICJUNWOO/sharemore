@@ -23,6 +23,7 @@ public class ItemResponseDTO {
     public static class Simple {
         private Long itemId;
         private String name;
+        private UserResponseDTO.Simple owner;
         private String description;
         private String category;
         private int price;
@@ -33,6 +34,7 @@ public class ItemResponseDTO {
             return Simple.builder()
                     .itemId(item.getItemId())
                     .name(item.getName())
+                    .owner(UserResponseDTO.Simple.of(item.getOwner()))
                     .description(item.getDescription())
                     .category(item.getCategory())
                     .price(item.getPrice())

@@ -11,6 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 public class ReservationResponseDTO {
 
@@ -54,7 +55,8 @@ public class ReservationResponseDTO {
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
         private LocalDateTime endDate;
 
-        private UserCouponResponseDTO usedCoupon;
+        @Builder.Default
+        private UserCouponResponseDTO usedCoupon = null;
 
         private LocalDateTime createdAt;
 
@@ -66,7 +68,7 @@ public class ReservationResponseDTO {
                     .startDate(reservation.getStartDate())
                     .endDate(reservation.getEndDate())
                     .createdAt(reservation.getCreatedAt())
-                    .usedCoupon(UserCouponResponseDTO.of(reservation.getUsedCoupon()))
+                    .usedCoupon(Optional.ofNullable(reservation.getUsedCoupon()).map(UserCouponResponseDTO::of).orElse(null))
                     .build();
         }
 

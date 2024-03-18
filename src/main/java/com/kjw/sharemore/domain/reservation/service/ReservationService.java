@@ -31,6 +31,7 @@ public class ReservationService {
     private final CouponQueryService couponQueryService;
     private final UserCouponQueryService userCouponQueryService;
     private final UserCouponService userCouponService;
+    private final ReservationLockService reservationLockService;
 
     /**
      * @Description: 예약 등록
@@ -67,6 +68,14 @@ public class ReservationService {
     public Boolean checkReservation(ReservationRequestDTO reservationRequestDTO) {
         validateTimeOrder(reservationRequestDTO);
         reservationQueryService.validateDuplicateReservation(reservationRequestDTO);
+
+        try
+        {
+            reservationLockService.lockReservation(reservationRequestDTO.getItemId(), reservationRequestDTO.getStartDate(), reservationRequestDTO.getEndDate());
+        } catch (Exception e) {
+            throw new ReservationExceptionHandler.DuplicateReservation();
+        }
+
         return true;
     }
 
