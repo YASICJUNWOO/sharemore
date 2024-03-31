@@ -1,7 +1,7 @@
 package com.kjw.sharemore.domain.reservation.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.kjw.sharemore.domain.coupon.dto.UserCouponResponseDTO;
+import com.kjw.sharemore.domain.coupon.dto.CouponResponseDTO;
 import com.kjw.sharemore.domain.item.normalItem.dto.response.ItemResponseDTO;
 import com.kjw.sharemore.domain.reservation.Reservation;
 import com.kjw.sharemore.domain.users.dto.UserResponseDTO;
@@ -11,7 +11,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 public class ReservationResponseDTO {
 
@@ -56,7 +55,7 @@ public class ReservationResponseDTO {
         private LocalDateTime endDate;
 
         @Builder.Default
-        private UserCouponResponseDTO usedCoupon = null;
+        private CouponResponseDTO usedCoupon = null;
 
         private LocalDateTime createdAt;
 
@@ -68,7 +67,7 @@ public class ReservationResponseDTO {
                     .startDate(reservation.getStartDate())
                     .endDate(reservation.getEndDate())
                     .createdAt(reservation.getCreatedAt())
-                    .usedCoupon(Optional.ofNullable(reservation.getUsedCoupon()).map(UserCouponResponseDTO::of).orElse(null))
+                    .usedCoupon(reservation.getUsedCoupon() == null ? null : CouponResponseDTO.of(reservation.getUsedCoupon().getCoupon()))
                     .build();
         }
 

@@ -3,6 +3,7 @@ package com.kjw.sharemore.domain.item.recentItem;
 import com.kjw.sharemore.domain.item.normalItem.dto.response.ItemResponseDTO;
 import com.kjw.sharemore.domain.item.normalItem.entity.Item;
 import com.kjw.sharemore.domain.item.normalItem.repositoty.ItemRepository;
+import com.kjw.sharemore.domain.item.normalItem.service.ItemQueryService;
 import com.kjw.sharemore.domain.users.entity.Users;
 import com.kjw.sharemore.domain.users.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -12,10 +13,12 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 @Slf4j
@@ -25,6 +28,7 @@ public class ItemRedisService {
 
     private final ItemRepository itemRepository;
     private final UserRepository userRepository;
+    private final ItemQueryService itemQueryService;
     private final RedisTemplate<String, Object> redisTemplate;
 
 
@@ -80,6 +84,7 @@ public class ItemRedisService {
         if (!validateViewDuplicate(itemId, viewerId)) {
             addViewUser(itemId, viewerId);
             redisTemplate.opsForValue().increment("viewCount:" + itemId);
+            saveDailyViewCount(itemId);
             return getViewCount(itemId);
         }
         return getViewCount(itemId);
@@ -103,6 +108,21 @@ public class ItemRedisService {
         }
         return Long.parseLong(viewCount.toString());
 
+    }
+
+    public void saveDailyViewCount(String itemId) {
+        String key = "dailyViewCount:" + LocalDate.now();
+        redisTemplate.opsForZSet().incrementScore(key, itemId, 1);
+    }
+
+    public List<Item> getDailyViewCountRank() {
+        String key = "dailyViewCount:" + LocalDate.now();
+        Set<Object> objects = redisTemplate.opsForZSet().reverseRange(key, 0, 9);
+        return Optional.ofNullable(objects).map(
+                o -> o.stream().map(
+                        r -> itemRepository.findById(Long.parseLong((String) r)).get()
+                ).toList()
+        ).orElse(null);
     }
 
 }

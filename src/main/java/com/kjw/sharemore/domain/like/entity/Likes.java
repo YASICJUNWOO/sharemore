@@ -20,8 +20,7 @@ public class Likes extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long likeId;
 
-    @Builder.Default
-    private boolean state = true;
+    private boolean state;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Users user;
@@ -36,6 +35,7 @@ public class Likes extends BaseEntity {
 
     public static Likes of(Users user, Item item) {
         return Likes.builder()
+                .state(true)
                 .user(user)
                 .item(item)
                 .build();

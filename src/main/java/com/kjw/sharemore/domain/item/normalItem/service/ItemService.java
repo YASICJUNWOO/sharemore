@@ -1,11 +1,12 @@
 package com.kjw.sharemore.domain.item.normalItem.service;
 
 import com.kjw.sharemore.domain.item.normalItem.dto.request.ItemRequestDTO;
+import com.kjw.sharemore.domain.item.normalItem.dto.response.ItemResponseDTO;
+import com.kjw.sharemore.domain.item.normalItem.entity.Item;
 import com.kjw.sharemore.domain.item.normalItem.entity.ItemDocument;
 import com.kjw.sharemore.domain.item.normalItem.repositoty.ItemRepository;
 import com.kjw.sharemore.domain.item.recentItem.ItemRedisService;
-import com.kjw.sharemore.domain.item.normalItem.dto.response.ItemResponseDTO;
-import com.kjw.sharemore.domain.item.normalItem.entity.Item;
+import com.kjw.sharemore.domain.like.entity.Likes;
 import com.kjw.sharemore.domain.like.service.LikeQueryService;
 import com.kjw.sharemore.domain.like.service.LikeService;
 import com.kjw.sharemore.domain.users.entity.Users;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -37,16 +39,20 @@ public class ItemService {
     }
 
     //아이템 리스트 jwt 유무에 따라 다르게 반환
-    private ItemResponseDTO.Detail convertToDetail(Item item, Object principal) {
+    public ItemResponseDTO.Detail convertToDetail(Item item, Object principal) {
 
-        if (principal.equals("anonymousUser")) {
+        if (principal == null || principal.equals("anonymousUser")) {
+
             Long viewCount = itemRedisService.getViewCount(item.getItemId().toString());
             return ItemResponseDTO.Detail.of(item, false, viewCount);
         }
 
         Users user = (Users) principal;
-        Long view = itemRedisService.addViewCount(item.getItemId().toString(), user.getUserId().toString());
-        boolean isLike = likeQueryService.isLike(user.getUserId(), item.getItemId());
+        itemRedisService.saveRecentItem(item.getItemId(), user);
+        Long view = itemRedisService.getViewCount(item.getItemId().toString());
+        boolean isLike = Optional.ofNullable(likeQueryService.findByUserAndItem(user.getUserId(), item.getItemId()))
+                .map(Likes::isState).orElse(false);
+
         return ItemResponseDTO.Detail.of(item, isLike, view);
     }
 
@@ -59,6 +65,12 @@ public class ItemService {
     public ItemResponseDTO.Detail getItemById(Long itemId) {
         Item item = itemQueryService.getItemByItemId(itemId);
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (!principal.equals("anonymousUser")) {
+            Users user = (Users) principal;
+            Long view = itemRedisService.addViewCount(item.getItemId().toString(), user.getUserId().toString());
+        }
+
         return convertToDetail(item, principal);
     }
 
@@ -75,8 +87,10 @@ public class ItemService {
         itemList = sortList(sortType, itemList);
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return itemList.stream().map(
+        List<ItemResponseDTO.Detail> list = itemList.stream().map(
                 item -> convertToDetail(item, principal)).toList();
+        log.info("{}", list.size());
+        return list;
     }
 
     //아이템 검색
@@ -107,7 +121,15 @@ public class ItemService {
         }
         //최신순으로 정렬
         else if (sortType.equals("recentDesc") || sortType.isEmpty()) {
+            log.info("recentDesc");
             sortedList = itemList.stream().sorted((o1, o2) -> o2.getCreatedAt().compareTo(o1.getCreatedAt())).toList();
+        }
+        else if (sortType.equals("lookDesc")){
+            sortedList = itemList.stream().sorted((o1, o2) -> {
+                Long viewCount1 = itemRedisService.getViewCount(o1.getItemId().toString());
+                Long viewCount2 = itemRedisService.getViewCount(o2.getItemId().toString());
+                return viewCount2.compareTo(viewCount1);
+            }).toList();
         }
 
         return sortedList;

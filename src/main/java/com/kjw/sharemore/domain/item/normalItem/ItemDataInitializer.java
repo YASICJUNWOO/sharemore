@@ -219,11 +219,11 @@ public class ItemDataInitializer {
         ItemDocument itemDocument21 = ItemDocument.builder()
                         .id("21")
                         .user("김철수")
-                        .name("책상")
-                        .description("나무로 만든 책상")
+                        .name("게임용 책상")
+                        .description("플라스틱로 만든 책상")
                         .category("가구")
-                        .price(55000)
-                        .itemImage("https://source.unsplash.com/random/?desks")
+                        .price(80000)
+                        .itemImage("https://source.unsplash.com/random/?table")
                         .build();
 
         itemSearchRepository.deleteAll();

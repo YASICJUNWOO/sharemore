@@ -1,8 +1,8 @@
 package com.kjw.sharemore.domain.coupon.service;
 
+import com.kjw.sharemore.domain.coupon.dto.CouponResponseDTO;
 import com.kjw.sharemore.domain.coupon.entity.Coupon;
 import com.kjw.sharemore.domain.coupon.entity.UserCoupon;
-import com.kjw.sharemore.domain.coupon.dto.UserCouponResponseDTO;
 import com.kjw.sharemore.domain.coupon.repository.CouponRepository;
 import com.kjw.sharemore.domain.coupon.repository.UserCouponRepository;
 import com.kjw.sharemore.domain.users.entity.Users;
@@ -21,10 +21,12 @@ public class UserCouponService {
     private final UserCouponQueryService userCouponQueryService;
     private final CouponQueryService couponQueryService;
 
-    public List<UserCouponResponseDTO> getCouponList(Users user) {
+    public List<CouponResponseDTO> getCouponList(Users user) {
         return userCouponQueryService.findByUserId(user.getUserId()).stream()
                 .filter(userCoupon -> !userCoupon.isUsed())
-                .map(UserCouponResponseDTO::of)
+                .map(e->{
+                    return CouponResponseDTO.of(e.getCoupon());
+                })
                 .toList();
     }
 

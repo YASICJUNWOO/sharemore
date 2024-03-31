@@ -1,7 +1,7 @@
 package com.kjw.sharemore.domain.coupon.service;
 
 import com.kjw.sharemore.domain.coupon.entity.Coupon;
-import com.kjw.sharemore.domain.coupon.dto.CouponResponseDTO;
+import com.kjw.sharemore.domain.coupon.dto.CouponListResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,19 +13,19 @@ public class CouponService {
 
     private final CouponQueryService couponQueryService;
 
-    public CouponResponseDTO getCouponList() {
+    public CouponListResponseDTO getCouponList() {
         List<Coupon> couponList = couponQueryService.findAll();
-        CouponResponseDTO couponResponseDTO = CouponResponseDTO.of();
+        CouponListResponseDTO couponListResponseDTO = CouponListResponseDTO.of();
 
         couponList.forEach(
                 coupon -> {
                     if(coupon.getCouponType().equals("month"))
-                        couponResponseDTO.addMonthlyCoupon(coupon);
+                        couponListResponseDTO.addMonthlyCoupon(coupon);
                     else
-                        couponResponseDTO.addCategoryCoupon(coupon);
+                        couponListResponseDTO.addCategoryCoupon(coupon);
                 }
         );
 
-        return couponResponseDTO;
+        return couponListResponseDTO;
     }
 }

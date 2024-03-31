@@ -12,6 +12,7 @@ import com.kjw.sharemore.domain.reservation.dto.request.ReservationRequestDTO;
 import com.kjw.sharemore.domain.reservation.dto.response.ReservationResponseDTO;
 import com.kjw.sharemore.domain.reservation.repository.ReservationRepository;
 import com.kjw.sharemore.domain.users.entity.Users;
+import com.kjw.sharemore.domain.users.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -31,17 +32,20 @@ public class ReservationService {
     private final CouponQueryService couponQueryService;
     private final UserCouponQueryService userCouponQueryService;
     private final UserCouponService userCouponService;
+    private final UserService userService;
     private final ReservationLockService reservationLockService;
 
     /**
      * @Description: 예약 등록
      **/
     public ReservationResponseDTO.Detail adddReservation(ReservationRequestDTO reservationRequestDTO, Users user) {
-        checkReservation(reservationRequestDTO);
+        checkDuplicationInDB(reservationRequestDTO);
         Item itemByItemId = itemQueryService.getItemByItemId(reservationRequestDTO.getItemId());
 
         UserCoupon coupon = existCoupon(reservationRequestDTO, user);
         Reservation entity = ReservationRequestDTO.toEntity(reservationRequestDTO, user, itemByItemId, coupon);
+
+        userService.updatePoint(user, entity.getFinalPrice());
 
         return ReservationResponseDTO.Detail.of(reservationRepository.save(entity));
     }
@@ -66,17 +70,22 @@ public class ReservationService {
 
 
     public Boolean checkReservation(ReservationRequestDTO reservationRequestDTO) {
-        validateTimeOrder(reservationRequestDTO);
-        reservationQueryService.validateDuplicateReservation(reservationRequestDTO);
+        checkDuplicationInDB(reservationRequestDTO);
 
         try
         {
             reservationLockService.lockReservation(reservationRequestDTO.getItemId(), reservationRequestDTO.getStartDate(), reservationRequestDTO.getEndDate());
         } catch (Exception e) {
+            e.printStackTrace();
             throw new ReservationExceptionHandler.DuplicateReservation();
         }
 
         return true;
+    }
+
+    private void checkDuplicationInDB(ReservationRequestDTO reservationRequestDTO) {
+        validateTimeOrder(reservationRequestDTO);
+        reservationQueryService.validateDuplicateReservation(reservationRequestDTO);
     }
 
     public List<String> getReservationByMonth(Long itemId, int year, int month) {

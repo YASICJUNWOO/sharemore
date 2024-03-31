@@ -2,6 +2,7 @@ package com.kjw.sharemore.domain.item.normalItem.controller;
 
 import com.kjw.sharemore.apiPayLoad.ApiResponse;
 import com.kjw.sharemore.domain.item.normalItem.dto.request.ItemRequestDTO;
+import com.kjw.sharemore.domain.item.normalItem.service.ItemBatchService;
 import com.kjw.sharemore.domain.item.recentItem.ItemRedisService;
 import com.kjw.sharemore.domain.item.normalItem.dto.response.ItemResponseDTO;
 import com.kjw.sharemore.domain.item.normalItem.service.ItemQueryService;
@@ -24,6 +25,7 @@ public class ItemController {
     private final ItemService itemService;
     private final ItemQueryService itemQueryService;
     private final ItemRedisService itemRedisService;
+    private final ItemBatchService itemBatchService;
 
     @GetMapping
     public ApiResponse<List<ItemResponseDTO.Detail>> getItemList() {
@@ -51,6 +53,11 @@ public class ItemController {
     public ApiResponse<List<ItemResponseDTO.Detail>> getFilterItem(@RequestParam(name = "keyword", required = false) String keyword,
                                                                    @RequestParam(name = "sort-type", required = false) String sortType) {
         return ApiResponse.onSuccess(itemService.getItemListByFilter(keyword, sortType));
+    }
+
+    @GetMapping("/rank/daily")
+    public ApiResponse<List<ItemResponseDTO.Detail>> getDailyRank() {
+        return ApiResponse.onSuccess(itemBatchService.getPopularItems());
     }
 
 }

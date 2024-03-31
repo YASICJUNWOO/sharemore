@@ -1,35 +1,35 @@
 package com.kjw.sharemore.domain.coupon.dto;
 
 import com.kjw.sharemore.domain.coupon.entity.Coupon;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
-
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Builder
 public class CouponResponseDTO {
 
-    @Builder.Default
-    private List<Coupon> monthlyCoupons = new ArrayList<>();
+    private Long couponId;
 
-    @Builder.Default
-    private List<Coupon> categoryCoupons = new ArrayList<>();
+    private String couponName;
 
-    public static CouponResponseDTO of() {
+    private String couponImageURL;
+
+    private int discountAmount;
+
+    private int discountRate;
+
+    public static CouponResponseDTO of(Coupon coupon) {
         return CouponResponseDTO.builder()
-                .monthlyCoupons(new ArrayList<>())
-                .categoryCoupons(new ArrayList<>())
+                .couponId(coupon.getCouponId())
+                .couponName(coupon.getCouponName())
+                .couponImageURL(coupon.getCouponImageURL())
+                .discountAmount(coupon.getDiscountAmount())
+                .discountRate(coupon.getDiscountRate())
                 .build();
-    }
-
-    public void addMonthlyCoupon(Coupon coupon) {
-        this.monthlyCoupons.add(coupon);
-    }
-
-    public void addCategoryCoupon(Coupon coupon) {
-        this.categoryCoupons.add(coupon);
     }
 
 }

@@ -8,11 +8,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Service
@@ -47,6 +49,10 @@ public class ReservationLockService {
             String reservationValue = redisTemplate.opsForValue().get(reservationKey);
             ReservationLockVO reservationLockValue = null;
 
+            if(reservationValue == null) {
+                return;
+            }
+
             try {
                 reservationLockValue = objectMapper.readValue(reservationValue, ReservationLockVO.class);
                 log.info("reservationLockValue: {}", reservationLockValue.toString());
@@ -55,8 +61,17 @@ public class ReservationLockService {
                 e.printStackTrace();
             }
             if (reservationLockValue.getStartDate() <= endDateValue && reservationLockValue.getEndDate() >= startDateValue) {
-                log.info(endDateValue + " " + startDateValue);
-                log.info("예약 불가능한 시간입니다. itemId: {}, startDate: {}, endDate: {}", reservationLockValue.getItemId(), reservationLockValue.getStartDate(), reservationLockValue.getEndDate());
+
+
+                LocalDateTime start = Instant.ofEpochMilli(endDateValue).atZone(ZoneId.systemDefault()).toLocalDateTime();
+                LocalDateTime end = Instant.ofEpochMilli(startDateValue).atZone(ZoneId.systemDefault()).toLocalDateTime();
+
+                log.info("start: {}, end: {}", start, end);
+
+                LocalDateTime start1 = Instant.ofEpochMilli(reservationLockValue.getEndDate()).atZone(ZoneId.systemDefault()).toLocalDateTime();
+                LocalDateTime end1 = Instant.ofEpochMilli(reservationLockValue.getStartDate()).atZone(ZoneId.systemDefault()).toLocalDateTime();
+
+                log.info("start1: {}, end1: {}", start1, end1);
                 throw new IllegalArgumentException("이미 예약된 시간입니다.");
             }
 
@@ -72,7 +87,7 @@ public class ReservationLockService {
     private String saveReservationValue(ReservationLockVO reservationLockVO) throws JsonProcessingException {
         String reservationKey  = UUID.randomUUID().toString();
         String value = objectMapper.writeValueAsString(reservationLockVO);
-        redisTemplate.opsForValue().set(reservationKey, value);
+        redisTemplate.opsForValue().set(reservationKey, value, 10, TimeUnit.MINUTES);
         return reservationKey;
     }
 

@@ -58,4 +58,11 @@ public class UserService {
         return UserResponseDTO.Simple.of(user);
     }
 
+
+    public void updatePoint(Users user, int point) {
+        user.usePoint(point);
+        userRepository.save(user);
+        log.info("updatePoint : " + user.getPoint());
+    }
+
 }

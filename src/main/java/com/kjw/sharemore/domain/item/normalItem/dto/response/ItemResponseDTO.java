@@ -6,6 +6,7 @@ import com.kjw.sharemore.domain.item.normalItem.entity.Item;
 import com.kjw.sharemore.domain.reivew.dto.ReviewResponseDTO;
 import com.kjw.sharemore.domain.reservation.dto.response.ReservationResponseDTO;
 import com.kjw.sharemore.domain.users.dto.UserResponseDTO;
+import com.kjw.sharemore.domain.users.entity.Users;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -67,9 +68,10 @@ public class ItemResponseDTO {
         private Long viewCount;
 
         public static ItemResponseDTO.Detail of(Item item, boolean isLike, Long viewCount){
+            Users owner = item.getOwner();
             return Detail.builder()
                     .itemId(item.getItemId())
-                    .owner(UserResponseDTO.Simple.of(item.getOwner()))
+                    .owner(UserResponseDTO.Simple.of(owner))
                     .name(item.getName())
                     .description(item.getDescription())
                     .category(item.getCategory())
@@ -79,6 +81,7 @@ public class ItemResponseDTO {
                     .likeCount(item.getLikeCount())
                     .reservationList(item.getReservationList().stream().map(ReservationResponseDTO.Simple::of).toList())
                     .reviewList(item.getReviewList().stream().map(ReviewResponseDTO.Simple::of).toList())
+                    .isLike(isLike)
                     .viewCount(viewCount)
                     .build();
         }

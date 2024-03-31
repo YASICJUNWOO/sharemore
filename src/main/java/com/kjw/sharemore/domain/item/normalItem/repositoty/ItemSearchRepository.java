@@ -1,6 +1,7 @@
 package com.kjw.sharemore.domain.item.normalItem.repositoty;
 
 import com.kjw.sharemore.domain.item.normalItem.entity.ItemDocument;
+import org.springframework.data.elasticsearch.annotations.Query;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
 import java.util.List;
@@ -10,4 +11,7 @@ public interface ItemSearchRepository extends ElasticsearchRepository<ItemDocume
     List<ItemDocument> findByName(String keyword);
 
     List<ItemDocument> findByNameContainingOrDescriptionContaining(String keyword1, String keyword2);
+
+    @Query("{\"match\": {\"name\": \"?0\"}}")
+    List<ItemDocument> findByMatchingName(String keyword);
 }

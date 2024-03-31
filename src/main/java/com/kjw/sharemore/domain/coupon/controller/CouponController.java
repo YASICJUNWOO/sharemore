@@ -1,7 +1,7 @@
 package com.kjw.sharemore.domain.coupon.controller;
 
 import com.kjw.sharemore.apiPayLoad.ApiResponse;
-import com.kjw.sharemore.domain.coupon.dto.CouponResponseDTO;
+import com.kjw.sharemore.domain.coupon.dto.CouponListResponseDTO;
 import com.kjw.sharemore.domain.coupon.service.CouponQueryService;
 import com.kjw.sharemore.domain.coupon.service.CouponService;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ public class CouponController {
     private final CouponService couponService;
 
     @GetMapping
-    public ApiResponse<CouponResponseDTO> getCouponList() {
+    public ApiResponse<CouponListResponseDTO> getCouponList() {
         return ApiResponse.onSuccess(couponService.getCouponList());
     }
 

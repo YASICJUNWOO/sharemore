@@ -30,6 +30,12 @@ public class ReservationRequestDTO {
 
     private Long couponId;
 
+    private int totalPrice;
+
+    private int discountPrice;
+
+    private int paymentPrice;
+
     public static Reservation toEntity(ReservationRequestDTO dto, Users user, Item item, UserCoupon userCoupon) {
         return Reservation.builder()
                 .renter(user)
@@ -37,6 +43,9 @@ public class ReservationRequestDTO {
                 .startDate(dto.getStartDate())
                 .endDate(dto.getEndDate())
                 .usedCoupon(userCoupon)
+                .totalPrice(dto.getTotalPrice())
+                .discountPrice(dto.getDiscountPrice())
+                .finalPrice(dto.getPaymentPrice())
                 .build();
     }
 }

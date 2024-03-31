@@ -60,6 +60,14 @@ public class Users extends BaseEntity implements UserDetails {
         this.address = userRequestDTO.getAddress();
     }
 
+    public void addPoint(int point) {
+        this.point += point;
+    }
+
+    public void usePoint(int point) {
+        this.point -= point;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;

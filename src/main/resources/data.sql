@@ -1,4 +1,4 @@
-INSERT INTO USERS (name, email, password, address,point)
+INSERT INTO users (name, email, password, address,point)
 VALUES ('김철수', 'chulsoo1@example.com', 'password123', '서울특별시 강남구',1000000),
        ('이영희', 'younghee2@example.com', 'password456', '서울특별시 서초구',1000000),
        ('박지성', 'jisung3@example.com', 'password789', '서울특별시 송파구',1000000),
@@ -33,8 +33,9 @@ VALUES (1, '데스크탑용 책상', '나무로 만든 책상', '가구', 50000,
        (8, '리클라이너 소파', '편안한 소파', '가구', 300000, 'https://source.unsplash.com/random/?sofa',now(),0),
        (9, '세탁기', '능률적인 세탁기', '가전제품', 800000, 'https://source.unsplash.com/random/?washingmachine',now(),0),
        (10, '리바이스 청바지', '편안한 청바지', '의류', 50000, 'https://source.unsplash.com/random/?jeans',now(),0),
-       (1, '책상', '나무로 만든 책상', '가구', 55000, 'https://source.unsplash.com/random/?desks',now(),0),
+       (1, '게임용 책상', '플라스틱로 만든 책상', '가구', 80000, 'https://source.unsplash.com/random/?table','1995-01-01',0),
        (11,'나이키 머큐리얼 상태 좋음','축구화','운동용품',100000,'https://source.unsplash.com/random/?soccer',now(),0);
+
 /*VALUES (1, '데스크탑용 책상', '나무로 만든 책상', '가구', 50000, 'https://source.unsplash.com/random','1995-01-01',0),
        (2, '플라스틱 의자', '편안한 의자', '가구', 30000, 'https://source.unsplash.com/random',now(),0),
        (3, '그램 2023 15인치', '빠른 속도의 노트북', '전자제품', 1000000, 'https://source.unsplash.com/random',now(),0),
@@ -77,7 +78,7 @@ VALUES (1, 11),
        (3, 11),
        (3, 4);
 
-INSERT INTO Coupon (discount_type,coupon_type, coupon_name, discount_amount, discount_rate, minimum_price, maximum_discount_amount, expire_date, coupon_image_url)
+INSERT INTO coupon (discount_type,coupon_type, coupon_name, discount_amount, discount_rate, minimum_price, maximum_discount_amount, expire_date, coupon_image_url)
 VALUES ('PERCENT','month', '5% 할인 쿠폰', 0, 5, 10000, 1000, '2023-12-19 02:00:00','https://i.ibb.co/WBwFFDv/coupon5.png'),
        ('PERCENT','month', '10% 할인 쿠폰', 0, 10, 20000, 2000, '2023-12-19 02:00:00','https://i.ibb.co/WBwFFDv/coupon5.png'),
        ('PERCENT','month', '15% 할인 쿠폰', 0, 15, 30000, 3000, '2023-12-19 02:00:00','https://i.ibb.co/WBwFFDv/coupon5.png'),

@@ -42,4 +42,10 @@ public class Reservation extends BaseEntity {
     @Column(nullable = false)
     private LocalDateTime endDate;
 
+    private int totalPrice;
+
+    private int discountPrice;
+
+    private int finalPrice;
+
 }
