@@ -10,16 +10,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RedissonConfig {
 
-    @Value("${spring.redis.host}")
-    private String redisHost;
-
-    @Value("${spring.redis.port}")
-    private int redisPort;
+    @Value("${aws.ec2}")
+    private String ec2;
 
     @Bean
     public RedissonClient redissonClient() {
         Config config = new Config();
-        config.useSingleServer().setAddress("redis://" + redisHost + ":" + redisPort);
+        config.useSingleServer().setAddress("redis://" + ec2 + ":" + "6379");
         return Redisson.create(config);
     }
 

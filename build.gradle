@@ -79,3 +79,7 @@ tasks.register('copyYML', Copy) {
 		into './src/main/resources'
 	}
 }
+
+tasks.named('bootJar') {
+	dependsOn 'copyYML'
+}

@@ -3,6 +3,7 @@ package com.kjw.sharemore.global.config.kafka;
 import com.kjw.sharemore.global.config.ChatProtocol;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;
@@ -19,10 +20,13 @@ import java.util.Map;
 @Configuration
 public class KafkaProducerConfig {
 
+    @Value("${aws.ec2}")
+    private String ec2;
+
     @Bean
     public ProducerFactory<String, ChatProtocol> producerFactory() {
         Map<String, Object> config = new HashMap<>();
-        config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, ec2+":9092");
         config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
         config.put(JsonDeserializer.TRUSTED_PACKAGES,"*");
