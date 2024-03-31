@@ -71,3 +71,11 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+tasks.register('copyYML', Copy) {
+	copy {
+		from './submodule/application.yml'
+		include "*.yml"
+		into './src/main/resources'
+	}
+}
