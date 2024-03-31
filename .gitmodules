@@ -1,4 +1,0 @@
-[submodule "sharemore-submodule"]
-	path = sharemore-submodule
-	url = https://github.com/YASICJUNWOO/sharemore-submodule
-	branch = main
