@@ -13,9 +13,9 @@ public class KafkaProducer {
 
     private final KafkaTemplate<String, ChatProtocol> kafkaTemplate;
 
-    public void send(ChatProtocol chatProtocol) {
+/*    public void send(ChatProtocol chatProtocol) {
         log.info("kafkaTemplate");
         kafkaTemplate.send("kafka-chat", chatProtocol);
-    }
+    }*/
 
 }

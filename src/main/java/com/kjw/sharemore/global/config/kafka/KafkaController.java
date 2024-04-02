@@ -1,11 +1,12 @@
 package com.kjw.sharemore.global.config.kafka;
 
-import com.kjw.sharemore.global.config.ChatProtocol;
 import com.kjw.sharemore.global.kafka.KafkaProducer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
@@ -16,10 +17,10 @@ public class KafkaController {
     private final KafkaProducer kafkaProducer;
     private final SimpMessagingTemplate simpMessagingTemplate;
 
-    @PostMapping("/publish")
+/*    @PostMapping("/publish")
     public void send(@RequestBody ChatProtocol chatProtocol) {
         kafkaProducer.send(chatProtocol);
-    }
+    }*/
 
     @PostMapping("/test")
     public void sendDirect() {

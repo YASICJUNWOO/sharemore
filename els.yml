@@ -29,7 +29,7 @@ services:
     image: docker.elastic.co/kibana/kibana:7.15.2
     environment:
       SERVER_NAME: kibana
-      ELASTICSEARCH_HOSTS: http://es:9200
+      ELASTICSEARCH_HOSTS: http://3.37.43.165:9200
     ports:
       - 5601:5601
     # Elasticsearch Start Dependency
@@ -53,70 +53,81 @@ services:
     container_name: zookeeper
     ports:
       - "2181:2181"
+    environment:
+        ZOOKEEPER_CLIENT_PORT: 2181
+        ZOOKEEPER_TICK_TIME: 2000
   kafka:
     image: wurstmeister/kafka:2.12-2.5.0
     container_name: kafka
     ports:
       - "9092:9092"
     environment:
-      KAFKA_ADVERTISED_HOST_NAME: ec2-43-203-126-17.ap-northeast-2.compute.amazonaws.com
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENERS: INTERNAL://:9093,EXTERNAL://:9092
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://localhost:9093,EXTERNAL://3.37.43.165:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_ADVERTISED_HOST_NAME: 3.38.135.51
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+        - zookeeper
 
-  controller:
-    container_name: ngrinder-controller
-    image: ngrinder/controller:latest
-    restart: always
-    environment:
-      - TZ=Asia/Seoul
-    ports:
-      - "8880:80"
-      - "16001:16001"
-      - "12000-12009:12000-12009"
-    volumes:
-      - ./ngrinder-controller:/opt/ngrinder-controller
+#  controller:
+#    container_name: ngrinder-controller
+#    image: ngrinder/controller:latest
+#    restart: always
+#    environment:
+#      - TZ=Asia/Seoul
+#    ports:
+#      - "8880:80"
+#      - "16001:16001"
+#      - "12000-12009:12000-12009"
+#    volumes:
+#      - ./ngrinder-controller:/opt/ngrinder-controller
 
-  agent-1:
-    container_name: ngrinder-agent-1
-    image: ngrinder/agent:latest
-    command: [ "192.168.0.18:8880" ]
-    environment:
-      - TZ=Asia/Seoul
-    volumes:
-      - ./ngrinder-agent-1:/opt/ngrinder-agent
-  agent-2:
-    container_name: ngrinder-agent-2
-    image: ngrinder/agent:latest
-    command: [ "192.168.0.18:8880" ]
-    environment:
-      - TZ=Asia/Seoul
-    volumes:
-      - ./ngrinder-agent-2:/opt/ngrinder-agent
-  agent-3:
-    container_name: ngrinder-agent-3
-    image: ngrinder/agent:latest
-    command: [ "192.168.0.18:8880" ]
-    environment:
-      - TZ=Asia/Seoul
-    volumes:
-      - ./ngrinder-agent-3:/opt/ngrinder-agent
-  agent-4:
-    container_name: ngrinder-agent-4
-    image: ngrinder/agent:latest
-    command: [ "192.168.0.18:8880" ]
-    environment:
-      - TZ=Asia/Seoul
-    volumes:
-      - ./ngrinder-agent-4:/opt/ngrinder-agent
-  agent-5:
-    container_name: ngrinder-agent-5
-    image: ngrinder/agent:latest
-    command: [ "192.168.0.18:8880" ]
-    environment:
-      - TZ=Asia/Seoul
-    volumes:
-      - ./ngrinder-agent-5:/opt/ngrinder-agent
+#  agent-1:
+#    container_name: ngrinder-agent-1
+#    image: ngrinder/agent:latest
+#    command: [ "192.168.0.18:8880" ]
+#    environment:
+#      - TZ=Asia/Seoul
+#    volumes:
+#      - ./ngrinder-agent-1:/opt/ngrinder-agent
+#  agent-2:
+#    container_name: ngrinder-agent-2
+#    image: ngrinder/agent:latest
+#    command: [ "192.168.0.18:8880" ]
+#    environment:
+#      - TZ=Asia/Seoul
+#    volumes:
+#      - ./ngrinder-agent-2:/opt/ngrinder-agent
+#  agent-3:
+#    container_name: ngrinder-agent-3
+#    image: ngrinder/agent:latest
+#    command: [ "192.168.0.18:8880" ]
+#    environment:
+#      - TZ=Asia/Seoul
+#    volumes:
+#      - ./ngrinder-agent-3:/opt/ngrinder-agent
+#  agent-4:
+#    container_name: ngrinder-agent-4
+#    image: ngrinder/agent:latest
+#    command: [ "192.168.0.18:8880" ]
+#    environment:
+#      - TZ=Asia/Seoul
+#    volumes:
+#      - ./ngrinder-agent-4:/opt/ngrinder-agent
+ # agent-5:
+ #   container_name: ngrinder-agent-5
+ #   image: ngrinder/agent:latest
+ #   command: [ "192.168.0.18:8880" ]
+ #   environment:
+ #     - TZ=Asia/Seoul
+ #   volumes:
+ #     - ./ngrinder-agent-5:/opt/ngrinder-agent
+
 
 networks:
   es-bridge:
