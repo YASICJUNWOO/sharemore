@@ -18,25 +18,26 @@ services:
       - node.name=single-node
       - cluster.name=backtony
       - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms256m -Xmx256m
     ports:
       - 9200:9200
       - 9300:9300
     networks:
       - es-bridge
 
-  kibana:
-    container_name: kibana
-    image: docker.elastic.co/kibana/kibana:7.15.2
-    environment:
-      SERVER_NAME: kibana
-      ELASTICSEARCH_HOSTS: http://3.37.43.165:9200
-    ports:
-      - 5601:5601
-    # Elasticsearch Start Dependency
-    depends_on:
-      - es
-    networks:
-      - es-bridge
+  #kibana:
+  #  container_name: kibana
+  #  image: docker.elastic.co/kibana/kibana:7.15.2
+  #  environment:
+  #    SERVER_NAME: kibana
+  #    ELASTICSEARCH_HOSTS: http://3.37.43.165:9200
+  #  ports:
+  #    - 5601:5601
+  #  # Elasticsearch Start Dependency
+   ## depends_on:
+   #   - es
+   # networks:
+   #   - es-bridge
 
   redis: # container name
     image: redis:latest
