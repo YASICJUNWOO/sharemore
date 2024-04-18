@@ -138,7 +138,7 @@
   
   ➡️ Redis TTL, List, String 사용하여 결제 프로세스 진입 시 일정 시간 예약 확보 기능
   
-  ➡️ DB에 보류에 비해 TPS 40% 감소 -> [!트러블 슈팅 보러가기!](https://drive.google.com/file/d/1svZgfCBNPALyKjAIGlXejOJnl8MwTcFx/view?usp=sharing)
+  ➡️ DB에 보류에 비해 TPS 40% 감소 -> <a href="https://drive.google.com/file/d/1svZgfCBNPALyKjAIGlXejOJnl8MwTcFx/view?usp=sharing" target="_blank">!트러블 슈팅 보러가기!</a>
   
 - **카테고리, 월별 쿠폰**
   
